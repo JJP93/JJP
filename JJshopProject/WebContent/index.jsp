@@ -14,7 +14,7 @@
 <title>J&J Shop</title>
 </head>
 <style>
-s
+
 </style>
 <body>
 
