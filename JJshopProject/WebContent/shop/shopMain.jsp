@@ -10,6 +10,12 @@
 <title>상세페이지</title>
 </head>
 <body>
+<script>
+function order(){
+	
+	document.order_tb.submit();
+}
+</script>
 	<%
 	
    String userID = null;
@@ -24,7 +30,7 @@ mdto = mdao.memberInfo(userID);
 <jsp:include page="/menu.jsp"></jsp:include>
 <% ShopDTO dto = (ShopDTO)request.getAttribute("pd"); %>
 <center>
-<form action="order.app">
+<form action="order.app" method="post" name = "order_tb">
 <table width="1000">
 <tr height="100">
 <td align="center" colspan="3">
@@ -85,7 +91,7 @@ mdto = mdao.memberInfo(userID);
 		<input type="hidden" name="oruser" value="<%=userID %>">
 		<input type="hidden" name="oraddr" value="<%=mdto.getAddr() %>">
 
-<input type="submit"class="btn btn-primary pull-right" value="주문하기"></td>
+<input type="button"class="btn btn-primary pull-right" value="주문하기" onclick="order()"></td>
 </tr>
 </table>
 </form>

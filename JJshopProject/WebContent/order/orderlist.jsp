@@ -19,6 +19,7 @@ if(session.getAttribute("userID") != null){
    userID = (String)session.getAttribute("userID");
 }
 
+
 %>
 <jsp:include page="/menu.jsp"></jsp:include>
 		<div class="container">

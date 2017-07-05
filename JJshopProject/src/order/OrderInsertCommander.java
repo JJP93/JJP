@@ -24,11 +24,12 @@ public class OrderInsertCommander implements CommandIf {
 
 
 
+		
 
 
 		
 		try {
-			System.out.println(oruser);
+			
 			dao.addOrder(pdnum, orname, orprice, orsize, orcnt, orcolor, oruser, oraddr);
 		} catch (Exception e) {
 			// TODO: handle exception

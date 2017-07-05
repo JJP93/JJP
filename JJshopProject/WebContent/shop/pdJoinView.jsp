@@ -35,28 +35,7 @@ function aa(){
 </script>
 
 	<%String contextpath = request.getContextPath(); %>
-	<%-- 
-<form name ="pdJoin"action="<%= contextpath %>/pdJoin.app" method="post">
 
-상품명: <input name="pdname" type="text"><br>
-재고 : <input name="countpd" type="text"><br>
-카테고리: <select name = "category">
-
-<option value="1">모자</option>
-<option value="2">상의</option>
-<option value="3">바지</option>
-<option value="4">신발</option>
-<option value="5">악세사리</option>
-</select><br>
-가격: <input name="price" type="text"><br>
-사진: <input id = "imgFile"  type="file" onchange="aa()" > <br>
-등록되는 파일 명 : <input type="text" id = "img" name="img"><br>
-설명: <input name="info" type="text"><br>
-색상: <input name="color" type="text"><br>
-사이즈: <input name="pdname" type="text"><br>
-
-<input type="submit" value="상품 등록">
-</form> --%>
 
 
 

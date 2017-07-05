@@ -18,17 +18,22 @@ public class PdJoinCommander implements CommandIf {
 		String info = req.getParameter("info");
 		String color = req.getParameter("color");
 		String pdsize = req.getParameter("size");
-
-		
+		int a = 0;
+		String Npage = null;
 		
 		try {
-		dao.addPD(pdname, countpd, category, price, img, info, color, pdsize);
+		a = dao.addPD(pdname, countpd, category, price, img, info, color, pdsize);
 		
+		if(a==1){
+			Npage = "index.jsp";
+		}else{
+			Npage = "pdJoinView.jsp";
+		}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return "index.jsp";
+		return Npage;
 	}
 
 }
