@@ -42,7 +42,7 @@ public class OrderDAO {
 				
 				while(rs.next()){
 					int ornum = rs.getInt("ornum");
-					int pdnum = rs.getInt("pdbum");
+					int pdnum = rs.getInt("pdnum");
 					String orname = rs.getString("orname");
 					int orprice = rs.getInt("orprice");
 					String orsize = rs.getString("orsize");
@@ -72,14 +72,14 @@ public class OrderDAO {
 			
 		}
 
-	public void addOrder(int pdnum, String orname, int orpice,String orsize, int orcnt, String orcolor, String oruser, String oraddr ){
+	public void addOrder(int pdnum, String orname, int orprice,String orsize, int orcnt, String orcolor, String oruser, String oraddr ){
 		try {
 			con = ds.getConnection();
-			ps=con.prepareStatement("insert into order_tb values(order_num.nextval,?,?,?,?,?,sysdate,?,?,?)");
+			ps=con.prepareStatement("insert into order_tb values(order_num.nextval,?,?,?,?,?,?,?,sysdate,?)");
 			
 			ps.setInt(1,  pdnum);
 			ps.setString(2, orname);
-			ps.setInt(3, orpice);
+			ps.setInt(3, orprice);
 			ps.setString(4, orsize);
 			ps.setInt(5, orcnt);
 			ps.setString(6, orcolor);
@@ -97,5 +97,9 @@ public class OrderDAO {
 		}
 		
 	}
+	
+	
+	
+	
 }
 

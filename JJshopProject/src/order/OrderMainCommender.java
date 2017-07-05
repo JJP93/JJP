@@ -22,7 +22,7 @@ public class OrderMainCommender implements CommandIf {
 			e.printStackTrace();
 		}
 		
-		return "order/order.jsp";
+		return "order/orderlist.jsp";
 	}
 
 }

@@ -51,6 +51,8 @@ public class AppFrontController extends HttpServlet{
 			nextPage = "pdJoinView.shop";						//servlet페이지로 이동
 		}else if (cmd.equals("/pdJoin.app")){
 			nextPage = "pdJoin.shop";						//servlet페이지로 이동
+		}else if (cmd.equals("/order.app")){
+			nextPage = "orderInsert.order";						//servlet페이지로 이동
 		}
 		
 		

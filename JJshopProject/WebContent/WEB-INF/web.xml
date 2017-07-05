@@ -33,4 +33,13 @@
 	<servlet-name>shop</servlet-name>
 	<url-pattern>*.shop</url-pattern>
 </servlet-mapping>
+
+<servlet>
+	<servlet-name>order</servlet-name>
+	<servlet-class>order.OrderController</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>order</servlet-name>
+	<url-pattern>*.order</url-pattern>
+</servlet-mapping>
 </web-app>

@@ -23,7 +23,7 @@ if(session.getAttribute("userID") != null){
 <jsp:include page="/menu.jsp"></jsp:include>
 		<div class="container">
 			 <div class="row">
-			<b class="navbar-brand" style="text-align: center;">林巩 格 废</b>
+			<b class="navbar-brand" style="text-align: center;">林巩 格废</b>
 			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 				<tr >
 					<%
@@ -45,7 +45,7 @@ if(session.getAttribute("userID") != null){
 					<th style="background-color: #eeeeee; text-align: center;">朝楼</th>					
 				 	<th style="background-color: #eeeeee; text-align: center;">林家</th>
 				</tr>
-<%			ArrayList<OrderDTO>getAllORList = (ArrayList)request.getAttribute("list"); 
+<%			ArrayList<OrderDTO>getAllORList = (ArrayList<OrderDTO>)request.getAttribute("list"); 
 				if (getAllORList == null || getAllORList.size() == 0){%>
 				<tr>
 					<td colspan="7">
