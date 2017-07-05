@@ -113,6 +113,33 @@ public class ShopDAO {
 		
 	}
 	
+	public void addPD(String pdname, int countpd, int category,int price, String img, String info, String color, String pdsize ){
+		try {
+			conn = ds.getConnection();
+			pstmt=conn.prepareStatement("insert into pdinfo values(pdinfo_num.nextval,?,?,?,?,?,?,?,?)");
+			
+			pstmt.setString(1, pdname);
+			pstmt.setInt(2, countpd);
+			pstmt.setInt(3, category);
+			pstmt.setInt(4, price);
+			pstmt.setString(5, img);
+			pstmt.setString(6, info);
+			pstmt.setString(7, color);
+			pstmt.setString(8, pdsize);
+
+			pstmt.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+
+		}
+		
+	}
+	
 	
 	
 }

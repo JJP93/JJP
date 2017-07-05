@@ -120,7 +120,7 @@ if(session.getAttribute("userID") != null){
 				<li><a href="board.app">게시판</a></li>
 				<li><a href="memberManagement.app">회원관리</a></li>
 				<li><a href="shopMain.app">shop</a></li>
-				<li><a href="#">재고관리</a></li>
+				<li><a href="pdJoinView.app">상품 등록</a></li>
 			</ul>
 
 
