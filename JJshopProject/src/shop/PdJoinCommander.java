@@ -17,7 +17,7 @@ public class PdJoinCommander implements CommandIf {
 		String img = req.getParameter("img");
 		String info = req.getParameter("info");
 		String color = req.getParameter("color");
-		String pdsize = req.getParameter("pdsize");
+		String pdsize = req.getParameter("size");
 
 		
 		
