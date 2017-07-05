@@ -5,19 +5,70 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>상세페이지</title>
 </head>
 <body>
+
+<jsp:include page="/menu.jsp"></jsp:include>
 <% ShopDTO dto = (ShopDTO)request.getAttribute("pd"); %>
-샵 메인페이지<br>
-상품 코드 :<%= dto.getPdnum() %><br>
-상품 이름 :<%= dto.getPdname() %><br>
-상품 수량 :<%= dto.getCountpd() %><br>
-상품 카테고리 :<%= dto.getCategory() %><br>
-상품 가격 :<%= dto.getPrice() %><br>
-상품 이미지 :<img src="images/<%=dto.getImg() %>" style="height: 300px; width: 300px;"><br>
-상품 설명 :<%= dto.getInfo() %><br>
-상품 색상 :<%= dto.getColor() %><br>
-상품 사이즈:<%= dto.getPdsize() %><br>
+<center>
+<form action="shop.app">
+<table width="1000">
+<tr height="100">
+<td align="center" colspan="3">
+<font size="6" color="gray"><%=dto.getPdname() %>상품 선택</font>
+</tr>
+<tr>
+	<td rowspan="8" width="1000" align="center">
+	<img src="images/<%=dto.getImg() %>" width= "350"><br>
+	<td width="350" align="center"><b>상품명</b></td>	
+	<td width="1000" align="center"><%=dto.getPdname() %></td>
+	</tr>
+	<tr>
+	<td width="1000" align="center"><b>가격:</b></td>
+	<td width="1000" align="center"><b><%=dto.getPrice() %>원</b></td>
+</tr>
+<tr>
+	<td width="50" align="center"><b>상품수량</b></td>
+	<td align="center">&nbsp;&nbsp;<input type="text" name="qty" size="2" value="1" width="50" ></td>
+</tr>
+<%					if (dto.getCategory()==4){ %>
+<tr>
+	<td width="50" align="center"><b>사이즈:</b></td>
+		<td width="350" align="center"><select name="size">
+			<option>230
+			<option>240
+			<option>250
+		</select>
+		</td>
+</tr>	
+<%					}else if(dto.getCategory()==2||dto.getCategory()==3){ %>
+<tr>
+	<td width="50" align="center"><b>사이즈:</b></td>
+		<td width="350" align="center"><select name="size">
+			<option>S
+			<option>M
+			<option>L
+		</select>
+		</td>
+</tr>	
+<%} %>
+	
+<tr>
+	
+	<td width="1000" align="center"><b>DELIVERY INFO</b></td>
+		<td width="1000" align="center">배송 정보</td>
+</tr>
+<tr>
+	<td width="1000" align="center"><b>-평균 발송일</b></td>
+		<td width="1000" align="center"><b>1.2일(결제완료후 평균발송시간)</b></td>
+</tr>
+<tr>
+<td width="1000" align="center" colspan="1">
+<input type="submit"class="btn btn-primary pull-right" value="주문하기"></td>
+</tr>
+</table>
+</form>
+</center>
 </body>
 </html>
