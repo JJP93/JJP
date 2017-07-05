@@ -128,7 +128,7 @@ public class ShopDAO {
 			pstmt.setString(8, pdsize);
 
 			pstmt.executeUpdate();
-			
+			System.out.println("상품 추가.....");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
