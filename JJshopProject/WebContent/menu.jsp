@@ -40,7 +40,6 @@ if(session.getAttribute("userID") != null){
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="index.jsp">메인</a></li>
 			<li><a href="board.app">게시판</a></li>
-			<li><a href="shopMain.app">shop</a></li>
 
 
 		</ul>
@@ -81,7 +80,6 @@ if(session.getAttribute("userID") != null){
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="index.jsp">메인</a></li>
 				<li><a href="board.app">게시판</a></li>
-				<li><a href="shopMain.app">shop</a></li>
 
 			</ul>
 
@@ -119,7 +117,6 @@ if(session.getAttribute("userID") != null){
 				<li class="active"><a href="index.jsp">메인</a></li>
 				<li><a href="board.app">게시판</a></li>
 				<li><a href="memberManagement.app">회원관리</a></li>
-				<li><a href="shopMain.app">shop</a></li>
 				<li><a href="pdJoinView.app">상품 등록</a></li>
 			</ul>
 
