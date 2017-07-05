@@ -17,7 +17,6 @@
 
 </style>
 <body>
-111
 
 <jsp:include page="/menu.jsp"></jsp:include>
 
@@ -59,7 +58,7 @@
       
       for(int i =0; i<dtos.size(); i++){
    %>
-   <div align ="center" style="border: 1px solid gold;  float:left; width: 33%;">
+   <div align ="center" style=" float:left; width: 33%;">
    &nbsp;<span><a href="shopMain.app?pdnum=<%=dtos.get(i).getPdnum()%>"><img src="images/<%=dtos.get(i).getImg() %>" style="height: 300px; width: 300px;"></a><br>이것은</span> &nbsp;
    
    <%=dtos.get(i).getPdname() %><p>
