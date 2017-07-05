@@ -59,9 +59,13 @@
       for(int i =0; i<dtos.size(); i++){
    %>
    <div align ="center" style=" float:left; width: 33%;">
-   &nbsp;<span><a href="shopMain.app?pdnum=<%=dtos.get(i).getPdnum()%>"><img src="images/<%=dtos.get(i).getImg() %>" style="height: 300px; width: 300px;"></a><br>이것은</span> &nbsp;
+   &nbsp;<span><a href="shopMain.app?pdnum=<%=dtos.get(i).getPdnum()%>"><img src="images/<%=dtos.get(i).getImg() %>" style="height: 300px; width: 300px;"></a><br></span> &nbsp;
    
-   <%=dtos.get(i).getPdname() %><p>
+   <b><%=dtos.get(i).getPdname() %></b><p><br>
+   <%					if (dtos.get(i).getPdnum()%2==0){ %>
+							<img src="hot.gif">
+<%					} %>
+   <b><%=dtos.get(i).getPrice() %>원</b>
       </div>
    <%}%>
 </body>
