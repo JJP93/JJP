@@ -54,14 +54,15 @@ mdto = mdao.memberInfo(userID);
 <%					if (dto.getCategory()==4){ %>
 <tr>
 	<td width="50" align="center"><b>사이즈:</b></td>
-		<td width="350" align="center"><select name="orsize">
+		<td width="350" align="center">
+		<select name="orsize">
 			<option>230
 			<option>240
 			<option>250
 		</select>
 		</td>
 </tr>	
-<%					}else if(dto.getCategory()==2||dto.getCategory()==3){ %>
+<%					}else if(dto.getCategory()==1||dto.getCategory()==2||dto.getCategory()==3){ %>
 <tr>
 	<td width="50" align="center"><b>사이즈:</b></td>
 		<td width="350" align="center"><select name="orsize">

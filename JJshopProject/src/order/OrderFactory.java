@@ -13,10 +13,10 @@ public class OrderFactory {
 	public CommandIf createCommand(String cmd){
 		
 		CommandIf cmdIf = null;
-		if (cmd.equals("/Order.order")){
-			cmdIf = new OrderMainCommender();
-		}else if (cmd.equals("/orderInsert.order")){
+		if (cmd.equals("/orderInsert.order")){
 			cmdIf = new OrderInsertCommander();
+		}else if (cmd.equals("/orderlist.order")){
+			cmdIf = new OrderlistCommander();
 		}
 		
 		return cmdIf;

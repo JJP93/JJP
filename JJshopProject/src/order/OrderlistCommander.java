@@ -5,22 +5,16 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class OrderMainCommender implements CommandIf {
+public class OrderlistCommander implements CommandIf {
 
 	@Override
 	public Object processCommand(HttpServletRequest req, HttpServletResponse resp) {
 		// TODO Auto-generated method stub
-		ArrayList<OrderDTO> dto = new ArrayList<OrderDTO>();
-		OrderDAO dao= new OrderDAO();
+		OrderDAO dao = new OrderDAO();
+		ArrayList<OrderDTO> dtos = new ArrayList<OrderDTO>();
 		
-		
-		try {
-			dto = dao.getAllORList();
-			req.setAttribute("list", dto);
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		dtos = dao.getAllORList();
+		req.setAttribute("orderlist", dtos);
 		
 		return "order/orderlist.jsp";
 	}

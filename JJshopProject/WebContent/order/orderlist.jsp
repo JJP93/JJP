@@ -26,14 +26,8 @@ if(session.getAttribute("userID") != null){
 			 <div class="row">
 			<b class="navbar-brand" style="text-align: center;">주문 목록</b>
 			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
-				<tr >
-					<%
-          if(userID != null){
-         %>
-         
-					<td align="right"colspan="7"><a href="write_form.board"class="btn btn-primary pull-right">글쓰기</a></td>
-				</tr>
-				<%} %>
+				
+				
 				<tr >
 					<th style="background-color: #eeeeee; text-align: center;">번호</th>
 					<th style="background-color: #eeeeee; text-align: center;">주문번호</th>
@@ -46,7 +40,7 @@ if(session.getAttribute("userID") != null){
 					<th style="background-color: #eeeeee; text-align: center;">날짜</th>					
 				 	<th style="background-color: #eeeeee; text-align: center;">주소</th>
 				</tr>
-<%			ArrayList<OrderDTO>getAllORList = (ArrayList<OrderDTO>)request.getAttribute("list"); 
+<%			ArrayList<OrderDTO>getAllORList = (ArrayList<OrderDTO>)request.getAttribute("orderlist"); 
 				if (getAllORList == null || getAllORList.size() == 0){%>
 				<tr>
 					<td colspan="7">

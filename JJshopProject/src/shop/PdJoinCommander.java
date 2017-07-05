@@ -19,21 +19,25 @@ public class PdJoinCommander implements CommandIf {
 		String color = req.getParameter("color");
 		String pdsize = req.getParameter("size");
 		int a = 0;
-		String Npage = null;
-		
+		String msg = null, url = null;
 		try {
 		a = dao.addPD(pdname, countpd, category, price, img, info, color, pdsize);
 		
 		if(a==1){
-			Npage = "index.jsp";
+			msg = "상품등록 성공!!메인페이지로 이동합니다";
+			url = "index.jsp";
+			
 		}else{
-			Npage = "pdJoinView.jsp";
+			msg = " 다시 입력해 주세요";
+			url = "pdJoinView.app";
 		}
+		req.setAttribute("msg",msg);
+		req.setAttribute("url", url);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return Npage;
+		return "message.jsp";
 	}
 
 }

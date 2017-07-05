@@ -1,5 +1,7 @@
 package order;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,7 +12,7 @@ public class OrderInsertCommander implements CommandIf {
 		// TODO Auto-generated method stub
 		
 		OrderDAO dao = new OrderDAO();
-		OrderDTO dto = new OrderDTO();
+		ArrayList<OrderDTO> dto = new ArrayList<OrderDTO>();
 		
 		int pdnum = (Integer.parseInt(req.getParameter("pdnum")));
 		String orname = req.getParameter("orname");
@@ -20,6 +22,7 @@ public class OrderInsertCommander implements CommandIf {
 		String orcolor = req.getParameter("orcolor");
 		String oruser = req.getParameter("oruser");
 		String oraddr = req.getParameter("oraddr");
+		String msg = null, url = null;
 
 
 
@@ -29,15 +32,20 @@ public class OrderInsertCommander implements CommandIf {
 
 		
 		try {
-			
 			dao.addOrder(pdnum, orname, orprice, orsize, orcnt, orcolor, oruser, oraddr);
+		
+			msg = "주문 성공!";
+			url="orderlist.order";
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 			
 		}
-		
-		return "Order.order";
+		req.setAttribute("orderlist", dto);
+		req.setAttribute("msg",msg);
+		req.setAttribute("url", url);
+		return "message.jsp";
 	}
 
 }
