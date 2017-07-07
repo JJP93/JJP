@@ -70,5 +70,8 @@
    <b><%=dtos.get(i).getPrice() %>원</b>
       </div>
    <%}%>
+   <footer>
+   <jsp:include page="/Bottom.jsp"></jsp:include>
+   </footer>
 </body>
 </html>

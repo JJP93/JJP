@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html >
 <html>
 <head>
 
@@ -44,20 +44,18 @@ function searchPW(){
 </script>
 <style>
 table {
-   border: solid;
-   text-align: center;
-   position: relative;
-   left: 100px;
-   top: 100px;
+	
+	text-align: center;
+	position: relative;
+	left: 100px;
+	top: 100px;
 }
 
-tr, td {
-   border: solid;
-}
+
 
 #title {
-   text-align: center;
-   background-color: orange;
+	text-align: center;
+	background-color: orange;
 }
 </style>
 
@@ -65,55 +63,62 @@ tr, td {
 <body>
 
 
-<jsp:include page="/menu.jsp"></jsp:include>
+	<jsp:include page="/menu.jsp"></jsp:include>
 
 
 
 
-   &nbsp;
-   <div class="container">
-      <div class="col-lg-4"></div>
-      <div class="col-lg-4">
-         <div class="jumbotron" style="padding-top: 20px;">
-            <form method="post" action="<%=contextpath %>/login.app"
-               name="lg_frm">
-               <h3 style="text-align: center;">로그인</h3>
-               <div class="form-group">
-                  <input type="text" class="form-control" placeholder="아이디"
-                     name="id" maxlength="20">
-               </div>
-               
-               <div class="form-group">
-                  <input type="password" class="form-control" placeholder="비밀번호"
-                     name="password" maxlength="20">
-               </div>
-               
-               <div>
-                  <input type="button" class="btn btn-primary form-control"
-                     value="로그인" onclick="loginConfirm()">
-               </div><br>
-               
-               <div >
-                  <input type="button" class="btn btn-primary form-control"
-                     value="회원가입" onclick="location.href='joinForm.app';">
-               </div> <br>
-               
-               <div class = "col-sm-6">
-                  <input type="button" class="btn btn-primary form-control"
-                     value="ID찾기" onclick="searchID()" >
-               </div>
-            
-               <div class = "col-sm-6 ">
-                  <input type="button" class="btn btn-primary form-control"
-                     value="PW찾기" onclick="searchPW()">
-               </div>
-               <br><br><br>
+	&nbsp;
+	<div class="container">
+		<div class="col-lg-4"></div>
+		<div class="col-lg-4">
+			<div class="jumbotron" style="padding-top: 20px;">
+				<form method="post" action="<%=contextpath %>/login.app"
+					name="lg_frm">
+					<h3 style="text-align: center;">로그인</h3>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="아이디"
+							name="id" maxlength="20">
+					</div>
 
-            </form>
-         </div>
-         <div class="col-lg-4"></div>
-      </div>
+					<div class="form-group">
+						<input type="password" class="form-control" placeholder="비밀번호"
+							name="password" maxlength="20">
+					</div>
 
-   </div>
+					<div>
+						<input type="button" class="btn btn-primary form-control"
+							value="로그인" onclick="loginConfirm()">
+					</div>
+					<br>
+
+					<div>
+						<input type="button" class="btn btn-primary form-control"
+							value="회원가입" onclick="location.href='joinForm.app';">
+					</div>
+					<br>
+
+					<div class="col-sm-6">
+						<input type="button" class="btn btn-primary form-control"
+							value="ID찾기" onclick="searchID()">
+					</div>
+
+					<div class="col-sm-6 ">
+						<input type="button" class="btn btn-primary form-control"
+							value="PW찾기" onclick="searchPW()">
+					</div>
+					<br>
+					<br>
+					<br>
+
+				</form>
+			</div>
+			<div class="col-lg-4"></div>
+		</div>
+
+		<footer> <jsp:include page="/Bottom.jsp"></jsp:include> </footer>
+
+	</div>
+
 </body>
 </html>

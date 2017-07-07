@@ -34,5 +34,8 @@
 	</div>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
       <script src="js/bootstrap.js"></script>
+      <center>
+ <footer> <jsp:include page="/Bottom.jsp"></jsp:include> </footer>
+ </center>
 </body>
 </html>

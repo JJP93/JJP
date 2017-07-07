@@ -55,6 +55,10 @@ public class AppFrontController extends HttpServlet{
 			nextPage = "orderInsert.order";						//servlet페이지로 이동
 		}else if (cmd.equals("/shop.app")){
 			nextPage = "shop.shop";						//servlet페이지로 이동
+		}else if (cmd.equals("/orderlist.app")){
+			nextPage = "orderlist.order";						//servlet페이지로 이동
+		}else if (cmd.equals("/orderManagement.app")){
+			nextPage = "orderManagement.order";						//servlet페이지로 이동
 		}
 		
 		

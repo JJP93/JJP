@@ -40,17 +40,18 @@ if(session.getAttribute("userID") != null){
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="index.jsp">메인</a></li>
 			<li><a href="board.app">게시판</a></li>
-			<ul class="nav navbar-nav navbar-right">
+			
+			<ul class="nav navbar-nav ">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">SHOP<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 					<li><a href="shop.shop">전체보기</a></li>
-						<li><a href="#">모자</a></li>
-						<li><a href="#">상의</a></li>
-						<li><a href="#">바지</a></li>
-						<li><a href="#">신발</a></li>
-						<li><a href="#">악세사리</a></li>
+						<li><a href="hat.shop">모자</a></li>
+						<li><a href="top.shop">상의</a></li>
+						<li><a href="pants.shop">바지</a></li>
+						<li><a href="shoes.shop">신발</a></li>
+						<li><a href="acc.shop">악세사리</a></li>
 						
 					</ul></li>
 			</ul>
@@ -94,17 +95,17 @@ if(session.getAttribute("userID") != null){
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="index.jsp">메인</a></li>
 				<li><a href="board.app">게시판</a></li>
-							<ul class="nav navbar-nav navbar-right">
+					<ul class="nav navbar-nav ">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">SHOP<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 					<li><a href="shop.shop">전체보기</a></li>
-						<li><a href="#">모자</a></li>
-						<li><a href="#">상의</a></li>
-						<li><a href="#">바지</a></li>
-						<li><a href="#">신발</a></li>
-						<li><a href="#">악세사리</a></li>
+						<li><a href="hat.shop">모자</a></li>
+						<li><a href="top.shop">상의</a></li>
+						<li><a href="pants.shop">바지</a></li>
+						<li><a href="shoes.shop">신발</a></li>
+						<li><a href="acc.shop">악세사리</a></li>
 						
 					</ul></li>
 			</ul>
@@ -149,7 +150,7 @@ if(session.getAttribute("userID") != null){
 				<li><a href="board.app">게시판</a></li>
 				<li><a href="memberManagement.app">회원관리</a></li>
 				
-				<ul class="nav navbar-nav navbar-right">
+				<ul class="nav navbar-nav ">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">SHOP<span class="caret"></span></a>
@@ -164,6 +165,7 @@ if(session.getAttribute("userID") != null){
 					</ul></li>
 			</ul>
 				<li><a href="pdJoinView.app">상품 등록</a></li>
+					<li><a href="orderManagement.app">주문관리</a></li>
 			</ul>
 
 

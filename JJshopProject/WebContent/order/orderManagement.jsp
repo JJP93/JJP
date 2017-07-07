@@ -22,7 +22,16 @@ if(session.getAttribute("userID") != null){
 
 %>
 	<jsp:include page="/menu.jsp"></jsp:include>
+	
 	<div class="container">
+	
+	<div id = "search1">
+	<form action="searchOrder.order">
+	
+	<input type="text" class="form-control"  placeholder="검색" name = "search" style="width: 200px;"/>
+	<input type="submit"  value = "search" class="btn btn-primary "/>
+	
+	
 		<div class="row">
 			<b class="navbar-brand" style="text-align: center;">주문 목록</b>
 			<table class="table table-striped"

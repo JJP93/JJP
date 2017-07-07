@@ -17,6 +17,10 @@ public class OrderFactory {
 			cmdIf = new OrderInsertCommander();
 		}else if (cmd.equals("/orderlist.order")){
 			cmdIf = new OrderlistCommander();
+		}else if (cmd.equals("/orderManagement.order")){
+			cmdIf = new OrderManagementCommander();
+		}else if (cmd.equals("/searchOrder.order")){
+			cmdIf = new SearchOrderCommander();
 		}
 		
 		return cmdIf;

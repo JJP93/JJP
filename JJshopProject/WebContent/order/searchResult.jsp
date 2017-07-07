@@ -22,6 +22,19 @@ if(session.getAttribute("userID") != null){
 
 %>
 	<jsp:include page="/menu.jsp"></jsp:include>
+	&nbsp;
+	<div id = "search1">
+	<form action="searchOrder.order">
+	
+	<input type="text" class="form-control"  placeholder="검색" name = "search" style="width: 200px;"/>
+	<select name = "searchList">
+	<option value="oruser">주문자 이름</option>
+	<option value="orname">주문 상품명</option>
+	<option value="pdnum">상품 번호</option>
+	<option value="ornum">주문 번호</option>
+	</select>
+	<input type="submit"  value = "search" class="btn btn-primary "/>
+	&nbsp;
 	<div class="container">
 		<div class="row">
 			<b class="navbar-brand" style="text-align: center;">주문 목록</b>
@@ -43,29 +56,29 @@ if(session.getAttribute("userID") != null){
 				</tr>
 				<%		
 				OrderDAO dao = new OrderDAO();
+				ArrayList<OrderDTO> dtos = (ArrayList<OrderDTO>)request.getAttribute("vv");
 				
-				ArrayList<OrderDTO> a = dao.getOrder(userID); 
-				if (a == null || a.size() == 0){%>
+				if (dtos == null || dtos.size() == 0){%>
 				<tr>
 					<td colspan="7">주문하신 상품이 없습니다.</td>
 				</tr>
 				<%			}else { 
-					for(int i = 0; i<a.size(); i++){
+					for(int i = 0; i<dtos.size(); i++){
 					
 					System.out.println("i값:"+i);
-					System.out.println("get i 값:"+ a.get(i).getOrnum());
+					System.out.println("get i 값:"+ dtos.get(i).getOrnum());
 					%>
 				<tr>
-					<td><%=a.get(i).getPdnum()%></td>
-					<td><%=a.get(i).getOrnum()%></td>
-					 <td><%=a.get(i).getOrname()%></td>
-					<td><%=a.get(i).getOrprice()%></td>
-					<td><%=a.get(i).getOrsize()%></td>
-					<td><%=a.get(i).getOrcnt()%></td>
-					<td><%=a.get(i).getOrcolor()%></td>
-					<td><%=a.get(i).getOruser()%></td>
-					<td><%=a.get(i).getOrdate()%></td>
-					<td><%=a.get(i).getOraddr()%></td> 
+					<td><%=dtos.get(i).getPdnum()%></td>
+					<td><%=dtos.get(i).getOrnum()%></td>
+					 <td><%=dtos.get(i).getOrname()%></td>
+					<td><%=dtos.get(i).getOrprice()%></td>
+					<td><%=dtos.get(i).getOrsize()%></td>
+					<td><%=dtos.get(i).getOrcnt()%></td>
+					<td><%=dtos.get(i).getOrcolor()%></td>
+					<td><%=dtos.get(i).getOruser()%></td>
+					<td><%=dtos.get(i).getOrdate()%></td>
+					<td><%=dtos.get(i).getOraddr()%></td> 
 				</tr>
 					<%} %>
 					<%} %>
