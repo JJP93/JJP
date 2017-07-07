@@ -4,13 +4,16 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import board.BoardDBBean;
 import jdbc.JdbcUtil;
 import shop.ShopDTO;
 
@@ -95,8 +98,67 @@ public class OrderDAO {
 			JdbcUtil.close(con);
 
 		}
-		
+			
 	}
+	protected List<OrderDTO> makeList(ResultSet rs) throws SQLException{
+		List<OrderDTO> list = new ArrayList<OrderDTO>();
+		while(rs.next()){
+			OrderDTO dto = new OrderDTO();
+			dto.setOrnum(rs.getInt("ornum"));
+			dto.setPdnum(rs.getInt("pdnum"));
+			dto.setOrname(rs.getString("orname"));
+			dto.setOrprice(rs.getInt("orprice"));
+			dto.setOrsize(rs.getString("orsize"));
+			dto.setOrcnt(rs.getInt("orcnt"));
+			dto.setOrcolor(rs.getString("orcolor"));
+			dto.setOruser(rs.getString("oruser"));
+			dto.setOrdate(rs.getDate("ordate"));
+			dto.setOraddr(rs.getString("oraddr"));
+			list.add(dto);
+		}
+		return list;
+	}
+	@SuppressWarnings("null")
+	public ArrayList<OrderDTO> getOrder(String oruser){
+		String sql = "select * from Order_tb where Oruser = ?";
+		OrderDTO dto = new OrderDTO();
+		ArrayList<OrderDTO> list = null;
+		try{
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, oruser);
+			rs = ps.executeQuery();
+			
+			while(rs.next()){
+			
+				dto.setOrnum(rs.getInt("ornum"));
+				dto.setPdnum(rs.getInt("pdnum"));
+				dto.setOrname(rs.getString("orname"));
+				dto.setOrprice(rs.getInt("orprice"));
+				dto.setOrsize(rs.getString("orsize"));
+				dto.setOrcnt(rs.getInt("orcnt"));
+				dto.setOrcolor(rs.getString("orcolor"));
+				dto.setOruser(rs.getString("oruser"));
+				dto.setOrdate(rs.getDate("ordate"));
+				dto.setOraddr(rs.getString("oraddr"));
+				list.add(dto);
+			}
+			
+			
+		}catch(SQLException e){
+			System.err.println("getOrder 메소드 실행 중 오류 발생!!");
+			e.printStackTrace();
+		}finally{
+			try{
+				if (rs != null) rs.close();
+				if (ps != null) ps.close();
+				if (con != null) con.close();
+			}catch(SQLException e){}
+		}
+		return list;
+	}
+	
+	
 	
 	
 	

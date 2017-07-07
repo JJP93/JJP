@@ -36,7 +36,7 @@
 					<div class="form-group">
 						
 				<input type="button" class="btn btn-primary form-control"
-						value="장바구니" onclick="location.href='#';">
+						value="장바구니" onclick="location.href='orderlist.app';">
 					</div>
 				
 					

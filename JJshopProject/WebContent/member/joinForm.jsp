@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -180,102 +180,120 @@ function infoConfirm() {
 </script>
 <style>
 input:focus {
-   outline: 3px;
-   outline-color: #58ACFA;
-   outline-style: solid
+	outline: 3px;
+	outline-color: #58ACFA;
+	outline-style: solid
 }
 
 input {
-   boder: 2px solid #FFF;
-   background-color: transparent;
+	boder: 2px solid #FFF;
+	background-color: transparent;
 }
 
 #title {
-   text-align: center;
-   background-color: orange;
+	text-align: center;
+	background-color: orange;
 }
-table{
-position: relative;
-left: 50px;
-top: 10px;
+
+table {
+	position: relative;
+	left: 50px;
+	top: 10px;
 }
 
 #idcheck {
- width: 100px;
+	width: 100px;
 }
-.container{
 
-left: 500px;
-top: 100px;
+.container {
+	left: 500px;
+	top: 100px;
 }
 </style>
 </head>
-<body >
+<body>
 
-<%
+	<%
       request.setCharacterEncoding("utf-8");
    
    %>
-   
-<jsp:include page="/menu.jsp"></jsp:include>
 
-   &nbsp;
-   
-   &nbsp;
+	<jsp:include page="/menu.jsp"></jsp:include>
 
-   
-    <div class="container" >
-     
-     <div class="center-block" style="width: 600px;padding:15px;">
-         <div class="jumbotron" style=" padding-top: 20px; width: 500px; left: auto;">
-            <form method="post" action="<%=contextpath %>/join.app"  name ="reg_frm">
-               <h3 style="text-align:center;">회원 가입 화면</h3>
-              <div class="form-group">
-                <input type="text" class="form-control"  placeholder="이름 "  name="name"  maxlength="20"  style="ime-mode: active;" style="width: 100px;">
-               </div>
-               
-               <div class="form-group">
-                <input type="text" class="form-control" onkeyup="this.value=this.value.replace(/[^a-z0-9]/g,'')" onkeyup="on()"  placeholder="아이디 (알파벳 소문자,숫자 조합) " name="id" maxlength="20" style="ime-mode: disabled;" style="width: 150px;"> 
-                <input type="button" class="btn btn-primary form-control" id = "idcheck" value="중복확인" onclick="checkID()"  >
-                  <label class = "overlapment"></label><input type="hidden" name="checkuse" value="false" >
-               </div>
-               
-               <div class="form-group">
-                <input type="password" class="form-control" placeholder="비밀번호" name="password" maxlength="20" style="width: 150px;" >
-               </div>
-               
-                <div class="form-group">
-                <input type="text" class="form-control" onkeyup="this.value=this.value.replace(/[^a-z0-9@.]/g,'')" placeholder="이메일" name="Email" maxlength="20" style="ime-mode: disabled;" style="width: 200px;">
-              	<!--크롬에서도 구현하기 위해서 onkeyup 위와 같이 작성 일반 익스플로러에서만 사용할 시에는 onkeyup을 on()로 해주면 된다.  -->
-               </div>
-               
-                   <div class="form-group" style="text-align: center;">
-               <div class="btn-group" data-toggle="buttons">
-               <label class="btn btn-primary active">
-               <input type="radio" name="gender" autocomplete="off" value="남자" checked>남자
-               </label>
-               <label class="btn btn-primary">
-               <input type="radio" name="gender" autocomplete="off" value="여자">여자
-               </label>
-               </div>
-               
-               <div class="form-group">
-                <input type="text" class="form-control"  placeholder="주소 "  name="addr"  maxlength="40"  style="ime-mode: active;" style="width: 100px;">
-               </div>
-               
-               </div>
-             
-               <input type="button" class="btn btn-primary form-control" value="회원가입" onclick="infoConfirm()">
-           
-            </form>
-         </div>
-         <div class="col-lg-4"></div>
-      </div>
-   
-      </div>
-   
-  
-      
-  
+	&nbsp; &nbsp;
+
+
+	<div class="container">
+
+		<div class="center-block" style="width: 600px; padding: 15px;">
+			<div class="jumbotron"
+				style="padding-top: 20px; width: 500px; left: auto;">
+				<form method="post" action="<%=contextpath %>/join.app"
+					name="reg_frm">
+					<h3 style="text-align: center;">회원 가입 화면</h3>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="이름 "
+							name="name" maxlength="20" style="ime-mode: active;"
+							style="width: 100px;">
+					</div>
+
+					<div class="form-group">
+						<input type="text" class="form-control"
+							onkeyup="this.value=this.value.replace(/[^a-z0-9]/g,'')"
+							onkeyup="on()" placeholder="아이디 (알파벳 소문자,숫자 조합) " name="id"
+							maxlength="20" style="ime-mode: disabled;" style="width: 150px;">
+						<input type="button" class="btn btn-primary form-control"
+							id="idcheck" value="중복확인" onclick="checkID()"> <label
+							class="overlapment"></label><input type="hidden" name="checkuse"
+							value="false">
+					</div>
+
+					<div class="form-group">
+						<input type="password" class="form-control" placeholder="비밀번호"
+							name="password" maxlength="20" style="width: 150px;">
+					</div>
+
+					<div class="form-group">
+						<input type="text" class="form-control"
+							onkeyup="this.value=this.value.replace(/[^a-z0-9@.]/g,'')"
+							placeholder="이메일" name="Email" maxlength="20"
+							style="ime-mode: disabled;" style="width: 200px;">
+						<!--크롬에서도 구현하기 위해서 onkeyup 위와 같이 작성 일반 익스플로러에서만 사용할 시에는 onkeyup을 on()로 해주면 된다.  -->
+					</div>
+
+					<div class="form-group" style="text-align: center;">
+						<div class="btn-group" data-toggle="buttons">
+							<label class="btn btn-primary active"> <input
+								type="radio" name="gender" autocomplete="off" value="남자" checked>남자
+							</label> <label class="btn btn-primary"> <input type="radio"
+								name="gender" autocomplete="off" value="여자">여자
+							</label>
+						</div>
+
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="주소 "
+								name="addr" maxlength="40" style="ime-mode: active;"
+								style="width: 100px;">
+						</div>
+
+					</div>
+
+					<input type="button" class="btn btn-primary form-control"
+						value="회원가입" onclick="infoConfirm()">
+
+				</form>
+			</div>
+			<div class="col-lg-4"></div>
+		</div>
+
+	</div>
+
+	<center>
+		<footer>
+			<jsp:include page="/Bottom.jsp"></jsp:include>
+		</footer>
+	</center>
+
+
 </body>
 </html>

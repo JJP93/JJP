@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%@ page import="java.util.*, board.*" %>    
+	pageEncoding="EUC-KR"%>
+<%@ page import="java.util.*, board.*"%>
 <!-- list.jsp -->
 <html>
 <head>
@@ -19,20 +19,22 @@ if(session.getAttribute("userID") != null){
 }
 
 %>
-<jsp:include page="/menu.jsp"></jsp:include>
-		<div class="container">
-			 <div class="row">
+	<jsp:include page="/menu.jsp"></jsp:include>
+	<div class="container">
+		<div class="row">
 			<b class="navbar-brand" style="text-align: center;">글 목 록</b>
-			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
-				<tr >
+			<table class="table table-striped"
+				style="text-align: center; border: 1px solid #dddddd">
+				<tr>
 					<%
           if(userID != null){
          %>
-         
-					<td align="right"colspan="7"><a href="write_form.board"class="btn btn-primary pull-right">글쓰기</a></td>
+
+					<td align="right" colspan="7"><a href="write_form.board"
+						class="btn btn-primary pull-right">글쓰기</a></td>
 				</tr>
 				<%} %>
-				<tr >
+				<tr>
 					<th style="background-color: #eeeeee; text-align: center;">번호</th>
 					<th style="background-color: #eeeeee; text-align: center;">제목</th>
 					<th style="background-color: #eeeeee; text-align: center;">작성자</th>
@@ -41,47 +43,41 @@ if(session.getAttribute("userID") != null){
 					<th style="background-color: #eeeeee; text-align: center;">IP</th>
 					<th style="background-color: #eeeeee; text-align: center;">파일</th>
 				</tr>
-<%			List<BoardDBBean>boardList = (List)request.getAttribute("boardList"); 
+				<%			List<BoardDBBean>boardList = (List)request.getAttribute("boardList"); 
 				if (boardList == null || boardList.size() == 0){%>
 				<tr>
-					<td colspan="7">
-						게시된 글이 없습니다.
-					</td>
-				</tr>								
-<%			}else { 
+					<td colspan="7">게시된 글이 없습니다.</td>
+				</tr>
+				<%			}else { 
 					for(BoardDBBean dto : boardList){%>
 				<tr>
 					<td><%=dto.getNum()%></td>
 					<td>
-<%					if (dto.getRe_level()>0){ %>
-							<img src="level.gif" width="<%=dto.getRe_level()*10%>">
-							<img src="re.gif">
-<%					} %>					
-						<a href="content.board?num=<%=dto.getNum()%>">
-							<%=dto.getSubject()%>
-						</a>
-<%					if (dto.getReadcount()>10){ %>
-							<img src="hot.gif">
-<%					} %>						
+						<%					if (dto.getRe_level()>0){ %> <img src="level.gif"
+						width="<%=dto.getRe_level()*10%>"> <img src="re.gif">
+						<%					} %> <a href="content.board?num=<%=dto.getNum()%>"> <%=dto.getSubject()%>
+					</a> <%					if (dto.getReadcount()>10){ %> <img src="hot.gif"> <%					} %>
 					</td>
 					<td><%=dto.getWriter()%></td>
 					<td><%=dto.getReg_date()%></td>
 					<td><%=dto.getReadcount()%></td>
 					<td><%=dto.getIp()%></td>
 					<td>
-<%					if (dto.getFilesize()>0){ %>
-						<img src="folder.gif">
-<%					}else { %>
-						<img src="level.gif">
-<%					} %>					
+						<%					if (dto.getFilesize()>0){ %> <img src="folder.gif"> <%					}else { %>
+						<img src="level.gif"> <%					} %>
 					</td>
-				</tr>	
-<%				}
-				} %>				
+				</tr>
+				<%				}
+				} %>
 			</table>
-			</div>
 		</div>
-	</body>
+	</div>
+	<center>
+		<footer>
+			<jsp:include page="/Bottom.jsp"></jsp:include>
+		</footer>
+	</center>
+</body>
 </html>
 
 

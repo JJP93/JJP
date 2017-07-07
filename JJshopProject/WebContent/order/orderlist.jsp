@@ -1,7 +1,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-    <%@ page import="java.util.*,order.*" %> 
+	pageEncoding="EUC-KR"%>
+<%@ page import="java.util.*,order.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,14 +21,15 @@ if(session.getAttribute("userID") != null){
 
 
 %>
-<jsp:include page="/menu.jsp"></jsp:include>
-		<div class="container">
-			 <div class="row">
+	<jsp:include page="/menu.jsp"></jsp:include>
+	<div class="container">
+		<div class="row">
 			<b class="navbar-brand" style="text-align: center;">주문 목록</b>
-			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
-				
-				
-				<tr >
+			<table class="table table-striped"
+				style="text-align: center; border: 1px solid #dddddd">
+
+
+				<tr>
 					<th style="background-color: #eeeeee; text-align: center;">번호</th>
 					<th style="background-color: #eeeeee; text-align: center;">주문번호</th>
 					<th style="background-color: #eeeeee; text-align: center;">상품명</th>
@@ -37,17 +38,15 @@ if(session.getAttribute("userID") != null){
 					<th style="background-color: #eeeeee; text-align: center;">수량</th>
 					<th style="background-color: #eeeeee; text-align: center;">색</th>
 					<th style="background-color: #eeeeee; text-align: center;">주문자</th>
-					<th style="background-color: #eeeeee; text-align: center;">날짜</th>					
-				 	<th style="background-color: #eeeeee; text-align: center;">주소</th>
+					<th style="background-color: #eeeeee; text-align: center;">날짜</th>
+					<th style="background-color: #eeeeee; text-align: center;">주소</th>
 				</tr>
-<%			ArrayList<OrderDTO>getAllORList = (ArrayList<OrderDTO>)request.getAttribute("orderlist"); 
+				<%			ArrayList<OrderDTO> getAllORList = (ArrayList<OrderDTO>)request.getAttribute("list"); 
 				if (getAllORList == null || getAllORList.size() == 0){%>
 				<tr>
-					<td colspan="7">
-						주문하신 상품이 없습니다.
-					</td>
-				</tr>								
-<%			}else { 
+					<td colspan="7">주문하신 상품이 없습니다.</td>
+				</tr>
+				<%			}else { 
 					for(OrderDTO dto : getAllORList){%>
 				<tr>
 					<td><%=dto.getOrnum()%></td>
@@ -59,11 +58,16 @@ if(session.getAttribute("userID") != null){
 					<td><%=dto.getOrcolor()%></td>
 					<td><%=dto.getOruser()%></td>
 					<td><%=dto.getOrdate()%></td>
-					<td><%=dto.getOraddr()%></td>				
+					<td><%=dto.getOraddr()%></td>
 					<%} %>
-			<%} %>		
-			</table>
-			</div>
+					<%} %>
+				
+			</table>	
 		</div>
-	</body>
+		
+	</div>
+	<center>
+ <footer> <jsp:include page="/Bottom.jsp"></jsp:include> </footer>
+ </center>
+</body>
 </html>
