@@ -14,15 +14,17 @@ public class OrderEditOkCommander implements CommandIf {
 		int orcnt = (Integer.parseInt(req.getParameter("orcnt")));
 		String orcolor = req.getParameter("orcolor");
 		String oraddr = req.getParameter("oraddr");
+		int ornum = (Integer.parseInt(req.getParameter("ornum")));
+
 		
 		System.out.println(orsize);
 		System.out.println(orcnt);
 		System.out.println(orcolor);
 		System.out.println(oraddr);
+		System.out.println("けけけけけ" + ornum);
 
-		
 		try {
-			dao.orderEdit(orsize, orcnt, orcolor, oraddr);
+			dao.orderEdit(orsize, orcnt, orcolor, oraddr,ornum);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
