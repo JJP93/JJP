@@ -200,16 +200,16 @@ public class OrderDAO {
 		
 		String sql = null;
 		if(searchList.equals("oruser")){
-			 sql = "select * from Order_tb where Oruser = ? order by ornum desc";
+			 sql = "select * from Order_tb where Oruser like ? order by ornum desc";
 		
 			}else if(searchList.equals("orname")){
-				 sql = "select * from Order_tb where orname = ? order by ornum desc";
+				 sql = "select * from Order_tb where orname like ? order by ornum desc";
 			
 				}else if(searchList.equals("pdnum")){
-					 sql = "select * from Order_tb where pdnum = ? order by ornum desc";
+					 sql = "select * from Order_tb where pdnum like ? order by ornum desc";
 			
 					}else if(searchList.equals("ornum")){
-						 sql = "select * from Order_tb where ornum = ? order by ornum desc";
+						 sql = "select * from Order_tb where ornum  like ? order by ornum desc";
 					
 						}
 		
@@ -220,7 +220,7 @@ public class OrderDAO {
 				
 			con = ds.getConnection();
 			ps = con.prepareStatement(sql);
-			ps.setString(1, search);
+			ps.setString(1, "%"+search+"%");
 			rs = ps.executeQuery();
 			
 			while(rs.next()){
@@ -280,8 +280,8 @@ return list;
 		return 0;
 	}
 	
-	public void orderEdit(String orsize, int orcnt, String orcolor, String oraddr) throws Exception{
-		String sql = "update order_tb set orsize = ?, orcnt=?, orcolor = ?, oraddr = ?";
+	public void orderEdit(String orsize, int orcnt, String orcolor, String oraddr ,int ornum) throws Exception{
+		String sql = "update order_tb set orsize = ?, orcnt=?, orcolor = ?, oraddr = ? where ornum = ?";
 		try{
 			con = ds.getConnection();
 			ps = con.prepareStatement(sql);
@@ -290,6 +290,7 @@ return list;
 			ps.setInt(2, orcnt);
 			ps.setString(3, orcolor);
 			ps.setString(4, oraddr);
+			ps.setInt(5, ornum);
 
 			 ps.executeUpdate();
 		}catch(SQLException e){

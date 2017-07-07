@@ -30,7 +30,7 @@ if(session.getAttribute("userID") != null){
 
 
 				<tr>
-					<th style="background-color: #eeeeee; text-align: center;">번호</th>
+					<th style="background-color: #eeeeee; text-align: center;">상품번호</th>
 					<th style="background-color: #eeeeee; text-align: center;">주문번호</th>
 					<th style="background-color: #eeeeee; text-align: center;">상품명</th>
 					<th style="background-color: #eeeeee; text-align: center;">상품가격</th>

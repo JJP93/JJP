@@ -74,6 +74,8 @@
 </tr>
 <tr>
 <td width="1000" align="center" colspan="1">
+		<input type="hidden" name="ornum" value="<%=dto.getOrnum() %>">
+
 		<input type="hidden" name="pdnum" value="<%=dto.getPdnum() %>">
 		<input type="hidden" name="orname" value="<%=dto.getOrname() %>">
 		<input type="hidden" name="orprice" value="<%=dto.getOrprice()%>">
