@@ -19,6 +19,18 @@ public class ShopFactory {
 			cmdIf = new PdJoinViewCommander();
 		}else if (cmd.equals("/pdJoin.shop")){
 			cmdIf = new PdJoinCommander();
+		}else if (cmd.equals("/shop.shop")){
+			cmdIf = new ShopViewCommander();
+		}else if (cmd.equals("/top.shop")){
+			cmdIf = new TopViewCommander();
+		}else if (cmd.equals("/hat.shop")){
+			cmdIf = new HatViewCommander();
+		}else if (cmd.equals("/pants.shop")){
+			cmdIf = new PantsViewCommander();
+		}else if (cmd.equals("/shoes.shop")){
+			cmdIf = new ShoesViewCommander();
+		}else if (cmd.equals("/acc.shop")){
+			cmdIf = new AccViewCommander();
 		}
 		
 		return cmdIf;

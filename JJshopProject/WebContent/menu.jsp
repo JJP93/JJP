@@ -19,7 +19,7 @@ if(session.getAttribute("userID") != null){
 }
 
 %>
-
+<!-- 비로그인모드 -->
 	<%
           if(userID == null){
          %>
@@ -40,6 +40,20 @@ if(session.getAttribute("userID") != null){
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="index.jsp">메인</a></li>
 			<li><a href="board.app">게시판</a></li>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false">SHOP<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+					<li><a href="shop.shop">전체보기</a></li>
+						<li><a href="#">모자</a></li>
+						<li><a href="#">상의</a></li>
+						<li><a href="#">바지</a></li>
+						<li><a href="#">신발</a></li>
+						<li><a href="#">악세사리</a></li>
+						
+					</ul></li>
+			</ul>
 
 
 		</ul>
@@ -55,7 +69,7 @@ if(session.getAttribute("userID") != null){
 		</ul>
 
 		<%}%>
-
+<!-- 일반사용자모드 -->
 		<%
           if(userID != null){
  if(!userID.equals("admin")){
@@ -80,6 +94,21 @@ if(session.getAttribute("userID") != null){
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="index.jsp">메인</a></li>
 				<li><a href="board.app">게시판</a></li>
+							<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false">SHOP<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+					<li><a href="shop.shop">전체보기</a></li>
+						<li><a href="#">모자</a></li>
+						<li><a href="#">상의</a></li>
+						<li><a href="#">바지</a></li>
+						<li><a href="#">신발</a></li>
+						<li><a href="#">악세사리</a></li>
+						
+					</ul></li>
+			</ul>
+				
 
 			</ul>
 
@@ -99,6 +128,8 @@ if(session.getAttribute("userID") != null){
 				<li><a href="mypage.member?id=<%=userID%>"><%=userID %> 님
 						접속중</a></li>
 			</ul>
+			
+		<!-- 관리자모드 -->
 <%}else if(userID.equals("admin")){ %>
 	<nav class="navbar navbar-default">
 
@@ -117,6 +148,21 @@ if(session.getAttribute("userID") != null){
 				<li class="active"><a href="index.jsp">메인</a></li>
 				<li><a href="board.app">게시판</a></li>
 				<li><a href="memberManagement.app">회원관리</a></li>
+				
+				<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false">SHOP<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+					<li><a href="shop.shop">전체보기</a></li>
+						<li><a href="hat.shop">모자</a></li>
+						<li><a href="top.shop">상의</a></li>
+						<li><a href="pants.shop">바지</a></li>
+						<li><a href="shoes.shop">신발</a></li>
+						<li><a href="acc.shop">악세사리</a></li>
+						
+					</ul></li>
+			</ul>
 				<li><a href="pdJoinView.app">상품 등록</a></li>
 			</ul>
 

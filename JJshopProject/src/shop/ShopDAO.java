@@ -147,6 +147,212 @@ public class ShopDAO {
 		return result;
 	}
 	
+	public ArrayList<ShopDTO> getTopList(){
+		  
+		   ShopDTO dtos = new ShopDTO();
+		   ArrayList<ShopDTO> dto = new ArrayList<ShopDTO>();
+		try {
+			conn = ds.getConnection();
+			pstmt=conn.prepareStatement("select * from pdinfo where category = 2 order by pdnum desc");
+		
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				int pdnum = rs.getInt("pdnum");
+				String pdname = rs.getString("pdname");
+				int countpd = rs.getInt("countpd");
+				int category = rs.getInt("category");
+				int price = rs.getInt("price");
+				String img = rs.getString("img");
+				String info = rs.getString("info");
+				String color = rs.getString("color");
+				String pdsize = rs.getString("pdsize");
+				
+				dtos= new ShopDTO(pdnum, pdname, countpd, category, price, img, info, color, pdsize);
+				dto.add(dtos);
+				
+				
+
+
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+
+		}
+		return dto;
+		
+	}
 	
+	
+	public ArrayList<ShopDTO> getHatList(){
+		  
+		   ShopDTO dtos = new ShopDTO();
+		   ArrayList<ShopDTO> dto = new ArrayList<ShopDTO>();
+		try {
+			conn = ds.getConnection();
+			pstmt=conn.prepareStatement("select * from pdinfo where category = 1 order by pdnum desc");
+		
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				int pdnum = rs.getInt("pdnum");
+				String pdname = rs.getString("pdname");
+				int countpd = rs.getInt("countpd");
+				int category = rs.getInt("category");
+				int price = rs.getInt("price");
+				String img = rs.getString("img");
+				String info = rs.getString("info");
+				String color = rs.getString("color");
+				String pdsize = rs.getString("pdsize");
+				
+				dtos= new ShopDTO(pdnum, pdname, countpd, category, price, img, info, color, pdsize);
+				dto.add(dtos);
+				
+				
+
+
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+
+		}
+		return dto;
+		
+	}
+	
+	
+	public ArrayList<ShopDTO> getShoesList(){
+		  
+		   ShopDTO dtos = new ShopDTO();
+		   ArrayList<ShopDTO> dto = new ArrayList<ShopDTO>();
+		try {
+			conn = ds.getConnection();
+			pstmt=conn.prepareStatement("select * from pdinfo where category = 4 order by pdnum desc");
+		
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				int pdnum = rs.getInt("pdnum");
+				String pdname = rs.getString("pdname");
+				int countpd = rs.getInt("countpd");
+				int category = rs.getInt("category");
+				int price = rs.getInt("price");
+				String img = rs.getString("img");
+				String info = rs.getString("info");
+				String color = rs.getString("color");
+				String pdsize = rs.getString("pdsize");
+				
+				dtos= new ShopDTO(pdnum, pdname, countpd, category, price, img, info, color, pdsize);
+				dto.add(dtos);
+				
+				
+
+
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+
+		}
+		return dto;
+		
+	}
+	
+	public ArrayList<ShopDTO> getPantsList(){
+		  
+		   ShopDTO dtos = new ShopDTO();
+		   ArrayList<ShopDTO> dto = new ArrayList<ShopDTO>();
+		try {
+			conn = ds.getConnection();
+			pstmt=conn.prepareStatement("select * from pdinfo where category = 3 order by pdnum desc");
+		
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				int pdnum = rs.getInt("pdnum");
+				String pdname = rs.getString("pdname");
+				int countpd = rs.getInt("countpd");
+				int category = rs.getInt("category");
+				int price = rs.getInt("price");
+				String img = rs.getString("img");
+				String info = rs.getString("info");
+				String color = rs.getString("color");
+				String pdsize = rs.getString("pdsize");
+				
+				dtos= new ShopDTO(pdnum, pdname, countpd, category, price, img, info, color, pdsize);
+				dto.add(dtos);
+				
+				
+
+
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+
+		}
+		return dto;
+		
+	}
+	
+	
+	public ArrayList<ShopDTO> getAccList(){
+		  
+		   ShopDTO dtos = new ShopDTO();
+		   ArrayList<ShopDTO> dto = new ArrayList<ShopDTO>();
+		try {
+			conn = ds.getConnection();
+			pstmt=conn.prepareStatement("select * from pdinfo where category = 5 order by pdnum desc");
+		
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				int pdnum = rs.getInt("pdnum");
+				String pdname = rs.getString("pdname");
+				int countpd = rs.getInt("countpd");
+				int category = rs.getInt("category");
+				int price = rs.getInt("price");
+				String img = rs.getString("img");
+				String info = rs.getString("info");
+				String color = rs.getString("color");
+				String pdsize = rs.getString("pdsize");
+				
+				dtos= new ShopDTO(pdnum, pdname, countpd, category, price, img, info, color, pdsize);
+				dto.add(dtos);
+				
+				
+
+
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+
+		}
+		return dto;
+		
+	}
 	
 }

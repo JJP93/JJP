@@ -30,7 +30,11 @@ function aa(){
 	var imgType = getFileExtension(imgName);
 	var ary = imgName.split('\\');
 	document.getElementById("img").innerText =  ary[ary.length-1].split('.')[0]+"."+imgType;
+	
+	document.pdJoin.myImg.src = imgName
+	document.pdJoin.myImg.style.visibility = 'visible';
 }
+
 
 </script>
 
@@ -43,6 +47,7 @@ function aa(){
 	<jsp:include page="/menu.jsp"></jsp:include>
 
 	&nbsp; &nbsp;
+
 
 
 	<div class="container">
@@ -97,7 +102,7 @@ function aa(){
 						<input type="text"   class="form-control"
 							id="img" name="img" >
 					</div>
-
+이미지 파일 미리보기 : <IMG id="myImg" alt='미리보기 이미지..~!!' Style='VISIBILITY: hidden'> <br><br>
 					<div class="form-group">
 						설명 <input type="text" class="form-control" placeholder="설명 "
 							name="info" maxlength="20">
