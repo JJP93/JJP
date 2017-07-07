@@ -1,18 +1,16 @@
 package order;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-public class OrderlistCommander implements CommandIf {
+
+public class OrderdeleteCommander implements CommandIf {
 
 	@Override
 	public Object processCommand(HttpServletRequest req, HttpServletResponse resp) {
-		// TODO Auto-generated method stub
-		
-
+		String no = req.getParameter("no");
+		OrderDAO dao = new OrderDAO();
+		int res = dao.deleteOrder(Integer.parseInt(no));
 		return "order/orderlist.jsp";
 	}
 

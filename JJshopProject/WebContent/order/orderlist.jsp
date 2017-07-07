@@ -40,8 +40,11 @@ if(session.getAttribute("userID") != null){
 					<th style="background-color: #eeeeee; text-align: center;">주문자</th>
 					<th style="background-color: #eeeeee; text-align: center;">날짜</th>
 					<th style="background-color: #eeeeee; text-align: center;">주소</th>
+					<th style="background-color: #eeeeee; text-align: center;">수정및삭제</th>
 				</tr>
-				<%			ArrayList<OrderDTO> getAllORList = (ArrayList<OrderDTO>)request.getAttribute("list"); 
+				<%			
+				OrderDAO dao =new OrderDAO();
+				ArrayList<OrderDTO>getAllORList = dao.getOrder(userID); 
 				if (getAllORList == null || getAllORList.size() == 0){%>
 				<tr>
 					<td colspan="7">주문하신 상품이 없습니다.</td>
@@ -59,6 +62,8 @@ if(session.getAttribute("userID") != null){
 					<td><%=dto.getOruser()%></td>
 					<td><%=dto.getOrdate()%></td>
 					<td><%=dto.getOraddr()%></td>
+					<td><a href="order_edit.order?no=<%=dto.getOrnum()%>">수정</a> | <a
+					href="order_delete.app?no=<%=dto.getOrnum()%>">삭제</a></td>
 					<%} %>
 					<%} %>
 				

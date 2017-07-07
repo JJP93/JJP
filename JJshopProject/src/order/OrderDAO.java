@@ -118,19 +118,21 @@ public class OrderDAO {
 		}
 		return list;
 	}
-	@SuppressWarnings("null")
-	public ArrayList<OrderDTO> getOrder(String oruser){
+	
+	
+	public ArrayList<OrderDTO> getOrder(String id){
 		String sql = "select * from Order_tb where Oruser = ?";
-		OrderDTO dto = new OrderDTO();
-		ArrayList<OrderDTO> list = null;
+		ArrayList<OrderDTO> list = new ArrayList<OrderDTO>();
 		try{
 			con = ds.getConnection();
 			ps = con.prepareStatement(sql);
-			ps.setString(1, oruser);
+			ps.setString(1, id);
 			rs = ps.executeQuery();
 			
 			while(rs.next()){
 			
+				OrderDTO dto = new OrderDTO();
+				
 				dto.setOrnum(rs.getInt("ornum"));
 				dto.setPdnum(rs.getInt("pdnum"));
 				dto.setOrname(rs.getString("orname"));
@@ -158,8 +160,45 @@ public class OrderDAO {
 		return list;
 	}
 	
+	public OrderDTO getOrder2(int no){
+		String sql = "select * from order_tb where ornum = ?";
+		try{
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, no);
+			rs = ps.executeQuery();
+			return makeList(rs).get(0);
+		}catch(SQLException e){
+			System.err.println("getOrder2 메소드 실행 중 오류발생!!");
+			e.printStackTrace();
+		}finally{
+			try{
+				if (rs != null) rs.close();
+				if (ps != null) ps.close();
+				if (con != null) con.close();
+			}catch(SQLException e){}
+		}
+		return null;
+	}
 	
-	
+	public int deleteOrder(int ornum){
+		String sql = "delete from order_tb where Ornum = ?";
+		try{
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, ornum);
+			return ps.executeUpdate();
+		}catch(SQLException e){
+			System.err.println("deleteorder 메소드 실행 중 오류발생!!");
+			e.printStackTrace();
+		}finally{
+			try{
+				if (ps != null) ps.close();
+				if (con != null) con.close();
+			}catch(SQLException e){}
+		}
+		return 0;
+	}
 	
 	
 	

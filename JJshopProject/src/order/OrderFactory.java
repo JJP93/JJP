@@ -17,6 +17,10 @@ public class OrderFactory {
 			cmdIf = new OrderInsertCommander();
 		}else if (cmd.equals("/orderlist.order")){
 			cmdIf = new OrderlistCommander();
+		}else if (cmd.equals("/order_delete.order")){
+			cmdIf = new OrderdeleteCommander();
+		}else if (cmd.equals("/order_edit.order")){
+			cmdIf = new OrdereditCommander();
 		}
 		
 		return cmdIf;
