@@ -26,11 +26,16 @@
 
 
 	<jsp:include page="/menu.jsp"></jsp:include>
-
+<div class="container">
+	<div class="carousel-inner">
+            <div class="item active" >
+               <img src="images/11.jpg" style="height: 500px; width: 1500px;">
+            </div>
+            </div>
+            <hr color ="black" size="3">
 	&nbsp; &nbsp;
 
 
-	 <div class="container">
    <% ShopDTO dto = new ShopDTO();
       ShopDAO dao = new ShopDAO();
       
@@ -50,5 +55,6 @@
    <b><%=dtos.get(i).getPrice() %>원</b>
       </div>
    <%}%>
+   </div>
 </body>
 </html>

@@ -15,7 +15,9 @@
 	"ORCOLOR" VARCHAR2(20 BYTE), 
 	"ORUSER" VARCHAR2(30 BYTE), 
 	"ORDATE" TIMESTAMP (6) DEFAULT sysdate, 
-	"ORADDR" VARCHAR2(100 BYTE)
+	"ORADDR" VARCHAR2(100 BYTE),
+	"category" Number,
+	"Img" Varchar2(50)
    ) ;
    
    create SEQUENCE order_num;
