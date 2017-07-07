@@ -31,6 +31,7 @@ public class OrderDAO {
 				e.printStackTrace();
 			}
 		}
+		
 		public ArrayList<OrderDTO> getAllORList(){
 			  
 			   OrderDTO dtos = new OrderDTO();
@@ -52,8 +53,10 @@ public class OrderDAO {
 					String oruser = rs.getString("oruser");
 					Date ordate = rs.getDate("ordate");
 					String oraddr = rs.getString("oraddr");
+					int category = rs.getInt("category");
+					String img = rs.getString("img");
 					
-					dtos= new OrderDTO(ornum, pdnum, orname, orprice, orsize, orcnt, orcolor, oruser, ordate,oraddr);
+					dtos= new OrderDTO(ornum, pdnum, orname, orprice, orsize, orcnt, orcolor, oruser, ordate,oraddr,category,img);
 					dto.add(dtos);
 					
 					
@@ -73,10 +76,10 @@ public class OrderDAO {
 			
 		}
 
-	public void addOrder(int pdnum, String orname, int orprice,String orsize, int orcnt, String orcolor, String oruser, String oraddr ){
+	public void addOrder(int pdnum, String orname, int orprice,String orsize, int orcnt, String orcolor, String oruser, String oraddr,int category, String img ){
 		try {
 			con = ds.getConnection();
-			ps=con.prepareStatement("insert into order_tb values(order_num.nextval,?,?,?,?,?,?,?,sysdate,?)");
+			ps=con.prepareStatement("insert into order_tb values(order_num.nextval,?,?,?,?,?,?,?,sysdate,?,?,?)");
 			
 			ps.setInt(1,  pdnum);
 			ps.setString(2, orname);
@@ -86,6 +89,8 @@ public class OrderDAO {
 			ps.setString(6, orcolor);
 			ps.setString(7, oruser);
 			ps.setString(8, oraddr);
+			ps.setInt(9, category);
+			ps.setString(10, img);
 
 			ps.executeUpdate();
 			
@@ -112,22 +117,31 @@ public class OrderDAO {
 			dto.setOruser(rs.getString("oruser"));
 			dto.setOrdate(rs.getDate("ordate"));
 			dto.setOraddr(rs.getString("oraddr"));
+			dto.setCategory(rs.getInt("category"));
+			dto.setImg(rs.getString("img"));
 			list.add(dto);
 		}
 		return list;
 	}
-	public ArrayList<OrderDTO> getOrder(String oruser){
-		String sql = "select * from Order_tb where Oruser = ? order by ornum desc";
-		
+
+	
+	
+	public ArrayList<OrderDTO> getOrder(String id){
+		String sql = "select * from Order_tb where Oruser = ?";
+
 		ArrayList<OrderDTO> list = new ArrayList<OrderDTO>();
 		try{
 			con = ds.getConnection();
 			ps = con.prepareStatement(sql);
-			ps.setString(1, oruser);
+			ps.setString(1, id);
 			rs = ps.executeQuery();
 			
 			while(rs.next()){
+
+			
 				OrderDTO dto = new OrderDTO();
+				
+
 				dto.setOrnum(rs.getInt("ornum"));
 				dto.setPdnum(rs.getInt("pdnum"));
 				dto.setOrname(rs.getString("orname"));
@@ -138,6 +152,8 @@ public class OrderDAO {
 				dto.setOruser(rs.getString("oruser"));
 				dto.setOrdate(rs.getDate("ordate"));
 				dto.setOraddr(rs.getString("oraddr"));
+				dto.setCategory(rs.getInt("category"));
+				dto.setImg(rs.getString("img"));
 				list.add(dto);
 				System.out.println(rs.getInt("ornum")+"리스트 사이즈 : "+list.size());
 			}
@@ -158,7 +174,28 @@ public class OrderDAO {
 		
 	}
 	
+	public OrderDTO getOrder2(int no){
+		String sql = "select * from order_tb where ornum = ?";
+		try{
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, no);
+			rs = ps.executeQuery();
+			return makeList(rs).get(0);
+		}catch(SQLException e){
+			System.err.println("getOrder2 메소드 실행 중 오류발생!!");
+			e.printStackTrace();
+		}finally{
+			try{
+				if (rs != null) rs.close();
+				if (ps != null) ps.close();
+				if (con != null) con.close();
+			}catch(SQLException e){}
+		}
+		return null;
+	}
 	
+
 	public ArrayList<OrderDTO> getOrderSearch(String search, String searchList){
 		
 		String sql = null;
@@ -198,6 +235,8 @@ public class OrderDAO {
 				dto.setOruser(rs.getString("oruser"));
 				dto.setOrdate(rs.getDate("ordate"));
 				dto.setOraddr(rs.getString("oraddr"));
+				dto.setCategory(rs.getInt("category"));
+				dto.setImg(rs.getString("img"));
 				list.add(dto);
 				System.out.println(rs.getInt("ornum")+"리스트 사이즈 : "+list.size());
 			}
@@ -209,17 +248,63 @@ public class OrderDAO {
 		}finally{
 			try{
 				if (rs != null) rs.close();
+if (ps != null) ps.close();
+if (con != null) con.close();
+			}catch(SQLException e){}
+		}
+
+
+System.out.println("사이즈2: "+list.size());
+return list;
+
+}
+
+	public int deleteOrder(int ornum){
+		String sql = "delete from order_tb where Ornum = ?";
+		try{
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, ornum);
+			return ps.executeUpdate();
+		}catch(SQLException e){
+			System.err.println("deleteorder 메소드 실행 중 오류발생!!");
+			e.printStackTrace();
+		}finally{
+			try{
+
 				if (ps != null) ps.close();
 				if (con != null) con.close();
 			}catch(SQLException e){}
 		}
-		System.out.println("사이즈2: "+list.size());
-		return list;
-		
+
+		return 0;
 	}
 	
-	
-	
+	public void orderEdit(String orsize, int orcnt, String orcolor, String oraddr) throws Exception{
+		String sql = "update order_tb set orsize = ?, orcnt=?, orcolor = ?, oraddr = ?";
+		try{
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, orsize);
+			ps.setInt(2, orcnt);
+			ps.setString(3, orcolor);
+			ps.setString(4, oraddr);
+
+			 ps.executeUpdate();
+		}catch(SQLException e){
+			System.err.println("deleteorder 메소드 실행 중 오류발생!!");
+			e.printStackTrace();
+		}finally{
+			try{
+
+				if (ps != null) ps.close();
+				if (con != null) con.close();
+			}catch(SQLException e){}
+		}
+
+		
+	}
 	
 	
 }

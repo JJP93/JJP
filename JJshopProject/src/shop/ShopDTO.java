@@ -11,6 +11,10 @@ public class ShopDTO {
 	private String info;
 	private String color;
 	private String pdsize;
+	
+	
+	
+	
 	public ShopDTO() {
 		// TODO Auto-generated constructor stub
 	}

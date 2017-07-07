@@ -40,12 +40,15 @@ if(session.getAttribute("userID") != null){
 					<th style="background-color: #eeeeee; text-align: center;">주문자</th>
 					<th style="background-color: #eeeeee; text-align: center;">날짜</th>
 					<th style="background-color: #eeeeee; text-align: center;">주소</th>
+					<th style="background-color: #eeeeee; text-align: center;">수정및삭제</th>
 				</tr>
+
 				<%		
 				OrderDAO dao = new OrderDAO();
 				
 				ArrayList<OrderDTO> a = dao.getOrder(userID); 
 				if (a == null || a.size() == 0){%>
+
 				<tr>
 					<td colspan="7">주문하신 상품이 없습니다.</td>
 				</tr>
@@ -56,6 +59,7 @@ if(session.getAttribute("userID") != null){
 					System.out.println("get i 값:"+ a.get(i).getOrnum());
 					%>
 				<tr>
+
 					<td><%=a.get(i).getPdnum()%></td>
 					<td><%=a.get(i).getOrnum()%></td>
 					 <td><%=a.get(i).getOrname()%></td>
@@ -66,7 +70,10 @@ if(session.getAttribute("userID") != null){
 					<td><%=a.get(i).getOruser()%></td>
 					<td><%=a.get(i).getOrdate()%></td>
 					<td><%=a.get(i).getOraddr()%></td> 
+						<td><a href="order_edit.order?no=<%=a.get(i).getOrnum()%>">수정</a> | <a
+					href="order_delete.app?no=<%=a.get(i).getOrnum()%>">삭제</a></td>
 				</tr>
+
 					<%} %>
 					<%} %>
 				

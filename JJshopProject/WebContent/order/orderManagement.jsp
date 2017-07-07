@@ -13,7 +13,8 @@
 </head>
 <body>
 	<%
-	
+	request.setCharacterEncoding("UTF-8");
+	response.setContentType("text/html;charset=UTF-8");
    String userID = null;
 if(session.getAttribute("userID") != null){
    userID = (String)session.getAttribute("userID");
@@ -25,12 +26,19 @@ if(session.getAttribute("userID") != null){
 	
 	<div class="container">
 	
+	&nbsp;
 	<div id = "search1">
 	<form action="searchOrder.order">
 	
 	<input type="text" class="form-control"  placeholder="검색" name = "search" style="width: 200px;"/>
+	<select name = "searchList">
+	<option value="oruser">주문자 이름</option>
+	<option value="orname">주문 상품명</option>
+	<option value="pdnum">상품 번호</option>
+	<option value="ornum">주문 번호</option>
+	</select>
 	<input type="submit"  value = "search" class="btn btn-primary "/>
-	
+	&nbsp;
 	
 		<div class="row">
 			<b class="navbar-brand" style="text-align: center;">주문 목록</b>

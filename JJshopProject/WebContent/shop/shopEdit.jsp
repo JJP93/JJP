@@ -1,53 +1,33 @@
-<%@page import="order.OrderDTO"%>
-<%@page import="MemberDao.MemberDao"%>
-<%@page import="memberDto.MemberDto"%>
-<%@page import="shop.ShopDTO"%>
+<%@ page import="java.util.*,order.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html >
+<%
+		OrderDTO dto = (OrderDTO)request.getAttribute("getOrder");
+%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>상세페이지</title>
+<title>수정페이지</title>
 </head>
 <body>
-<script>
-function order(){
-	
-	document.order_tb.submit();
-}
-</script>
-	<%
-	
-   String userID = null;
-if(session.getAttribute("userID") != null){
-   userID = (String)session.getAttribute("userID");
-}
-System.out.println(userID);
-MemberDto mdto = new MemberDto();
-MemberDao mdao = new MemberDao();
-mdto = mdao.memberInfo(userID);
-%>
 <jsp:include page="/menu.jsp"></jsp:include>
-<% ShopDTO dto = (ShopDTO)request.getAttribute("pd");
-%>
-<center>
-<form action="order.app" method="post" name = "order_tb">
+<form method="post" action="orderEditOk.order" >
 <table width="1000">
 <tr height="100">
 <td align="center" colspan="3">
-<font size="6" color="gray"><%=dto.getPdname() %>상품 선택</font>
+<font size="6" color="gray"><%=dto.getOrname() %>상품 수정</font>
 </tr>
 <tr>
 	<td rowspan="8" width="1000" align="center">
 	<img src="images/<%=dto.getImg() %>" width= "350"><br>
 	<td width="350" align="center"><b>상품명</b></td>	
-	<td width="1000" align="center"><%=dto.getPdname() %>
+	<td width="1000" align="center"><%=dto.getOrname() %>
 	</td>
 	</tr>
 	<tr>
 	<td width="1000" align="center"><b>가격:</b></td>
-	<td width="1000" align="center"><b><%=dto.getPrice() %>원</b></td>
+	<td width="1000" align="center"><b><%=dto.getOrprice() %>원</b></td>
 </tr>
 <tr>
 	<td width="50" align="center"><b>상품수량</b></td>
@@ -76,6 +56,13 @@ mdto = mdao.memberInfo(userID);
 </tr>	
 <%} %>
 	
+
+		<tr>
+	
+	<td width="1000" align="center"><b>주소 </b></td>
+		<td width="1000" align="center"> <input  type="text" name="oraddr" value="<%=dto.getOraddr() %>" ></td>
+</tr>
+		
 <tr>
 	
 	<td width="1000" align="center"><b>DELIVERY INFO</b></td>
@@ -88,18 +75,18 @@ mdto = mdao.memberInfo(userID);
 <tr>
 <td width="1000" align="center" colspan="1">
 		<input type="hidden" name="pdnum" value="<%=dto.getPdnum() %>">
-		<input type="hidden" name="orname" value="<%=dto.getPdname() %>">
-		<input type="hidden" name="orprice" value="<%=dto.getPrice()%>">
-			<input type="hidden" name="orcolor" value="<%=dto.getColor() %>">
-		<input type="hidden" name="oruser" value="<%=userID %>">
-		<input type="hidden" name="oraddr" value="<%=mdto.getAddr() %>">
+		<input type="hidden" name="orname" value="<%=dto.getOrname() %>">
+		<input type="hidden" name="orprice" value="<%=dto.getOrprice()%>">
+			<input type="hidden" name="orcolor" value="<%=dto.getOrcolor() %>">
+		<input type="hidden" name="oruser" value="<%=dto.getOruser() %>">
+	
 		<input type="hidden" name="img" value="<%=dto.getImg() %>">
 		<input type="hidden" name="category" value="<%=dto.getCategory() %>">
-
-<input type="button"class="btn btn-primary pull-right" value="주문하기" onclick="order()"></td>
-</tr>
+	
+<input type="submit"class="btn btn-primary pull-right" value="주문 수정 완료" ></td>
 </table>
 </form>
+<center>
 <footer>
 	<jsp:include page="/Bottom.jsp"></jsp:include>
 </footer>

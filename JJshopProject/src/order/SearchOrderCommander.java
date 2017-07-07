@@ -1,5 +1,6 @@
 package order;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,15 +12,25 @@ public class SearchOrderCommander implements CommandIf {
 	public Object processCommand(HttpServletRequest req, HttpServletResponse resp) {
 		// TODO Auto-generated method stub
 		
-		OrderDAO dao = new OrderDAO();
-		OrderDTO dto = new OrderDTO();
-		ArrayList<OrderDTO> dtos = new ArrayList<OrderDTO>();
-		String search = req.getParameter("search");
-		String searchList = req.getParameter("searchList");
+		try {
+			req.setCharacterEncoding("UTF-8");
+			resp.setContentType("text/html;charset=UTF-8");
+			OrderDAO dao = new OrderDAO();
+			OrderDTO dto = new OrderDTO();
+			ArrayList<OrderDTO> dtos = new ArrayList<OrderDTO>();
+			String search = (String)req.getParameter("search");
+			String searchList = req.getParameter("searchList");
+			
+			System.out.println(search);
+			dtos = dao.getOrderSearch(search, searchList);
+			
+			req.setAttribute("vv", dtos);
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		dtos = dao.getOrderSearch(search, searchList);
 		
-		req.setAttribute("vv", dtos);
 		
 		
 		return "order/searchResult.jsp";
