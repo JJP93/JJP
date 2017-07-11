@@ -32,6 +32,7 @@ if(session.getAttribute("userID") != null){
 				<tr>
 					<th style="background-color: #eeeeee; text-align: center;">상품번호</th>
 					<th style="background-color: #eeeeee; text-align: center;">주문번호</th>
+					<th style="background-color: #eeeeee; text-align: center;">상품</th>
 					<th style="background-color: #eeeeee; text-align: center;">상품명</th>
 					<th style="background-color: #eeeeee; text-align: center;">상품가격</th>
 					<th style="background-color: #eeeeee; text-align: center;">사이즈</th>
@@ -40,13 +41,15 @@ if(session.getAttribute("userID") != null){
 					<th style="background-color: #eeeeee; text-align: center;">주문자</th>
 					<th style="background-color: #eeeeee; text-align: center;">날짜</th>
 					<th style="background-color: #eeeeee; text-align: center;">주소</th>
+					<th style="background-color: #eeeeee; text-align: center;">가격</th>
 					<th style="background-color: #eeeeee; text-align: center;">수정및삭제</th>
 				</tr>
-
+				
 				<%		
 				OrderDAO dao = new OrderDAO();
-				
 				ArrayList<OrderDTO> a = dao.getOrder(userID); 
+				int sum =0;
+				int ssum=0;
 				if (a == null || a.size() == 0){%>
 
 				<tr>
@@ -55,28 +58,35 @@ if(session.getAttribute("userID") != null){
 				<%			}else { 
 					for(int i = 0; i<a.size(); i++){
 					
-					System.out.println("i값:"+i);
-					System.out.println("get i 값:"+ a.get(i).getOrnum());
+					sum +=a.get(i).getOrprice()*a.get(i).getOrcnt();
+					ssum+=sum;
 					%>
 				<tr>
 
 					<td><%=a.get(i).getPdnum()%></td>
 					<td><%=a.get(i).getOrnum()%></td>
+					<td><img src="images/<%=a.get(i).getImg() %>" width= "30"></td>
 					 <td><%=a.get(i).getOrname()%></td>
-					<td><%=a.get(i).getOrprice()%></td>
+					<td><%=a.get(i).getOrprice()%>원</td>
 					<td><%=a.get(i).getOrsize()%></td>
-					<td><%=a.get(i).getOrcnt()%></td>
+					<td><%=a.get(i).getOrcnt()%>개</td>
 					<td><%=a.get(i).getOrcolor()%></td>
 					<td><%=a.get(i).getOruser()%></td>
 					<td><%=a.get(i).getOrdate()%></td>
-					<td><%=a.get(i).getOraddr()%></td> 
+					<td><%=a.get(i).getOraddr()%></td>
+					 <td><%=sum %>원</td>
 						<td><a href="order_edit.order?no=<%=a.get(i).getOrnum()%>">수정</a> | <a
 					href="order_delete.app?no=<%=a.get(i).getOrnum()%>">삭제</a></td>
 				</tr>
 
 					<%} %>
+					
 					<%} %>
-				
+				<tr >
+					<td colspan="11" align="right" ><b>총구매가격 <%=ssum %>원</b></td>
+					<td><input type="button" value="즉시구매하기" class="btn btn-primary pull-right"onclick=""></td>
+					<td><input type="button" value="계속 쇼핑하기" class="btn btn-primary pull-right"onclick="window.location='index.jsp'"></td>
+				</tr>
 			</table>	
 		</div>
 		

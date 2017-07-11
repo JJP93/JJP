@@ -13,9 +13,20 @@
 <link rel="stylesheet" href="css/custom.css">
 <title>J&J Shop</title>
 </head>
-<style>
-
-</style>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script>
+      $( document ).ready( function() {
+        var jbOffset = $( '.jbMenu' ).offset();
+        $( window ).scroll( function() {
+          if ( $( document ).scrollTop() > jbOffset.top ) {
+            $( '.jbMenu' ).addClass( 'jbFixed' );
+          }
+          else {
+            $( '.jbMenu' ).removeClass( 'jbFixed' );
+          }
+        });
+      } );
+    </script>
 <body>
 
 <jsp:include page="/menu.jsp"></jsp:include>
@@ -70,6 +81,9 @@
    <b><%=dtos.get(i).getPrice() %>원</b>
       </div>
    <%}%>
+   <center>
+   <div style="cursor:pointer;" onclick="window.scrollTo(0,0);"><img src="images/top.jpg"width="80"></div>
+   </center>
    <footer>
    <jsp:include page="/Bottom.jsp"></jsp:include>
    </footer>
