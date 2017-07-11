@@ -192,14 +192,15 @@ public class ShopDAO {
 		return result;
 	}
 	
-	public ArrayList<ShopDTO> getTopList(){
+	public ArrayList<ShopDTO> getTopList(int startNum,int perPageNum){
 		  
 		   ShopDTO dtos = new ShopDTO();
 		   ArrayList<ShopDTO> dto = new ArrayList<ShopDTO>();
 		try {
 			conn = ds.getConnection();
-			pstmt=conn.prepareStatement("select * from pdinfo where category = 2 order by pdnum desc");
-		
+			pstmt=conn.prepareStatement("select pdinfo.* from (select rownum as rnum, pdinfo.* from pdinfo where category = 2 order by rnum asc)pdinfo where rnum >=? and rnum <= ? order by pdnum desc");
+			pstmt.setInt(1, startNum+1);
+			pstmt.setInt(2, startNum+perPageNum);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
@@ -234,14 +235,101 @@ public class ShopDAO {
 	}
 	
 	
-	public ArrayList<ShopDTO> getHatList(){
+	public ArrayList<ShopDTO> getHatList(int startNum,int perPageNum){
 		  
 		   ShopDTO dtos = new ShopDTO();
 		   ArrayList<ShopDTO> dto = new ArrayList<ShopDTO>();
 		try {
 			conn = ds.getConnection();
-			pstmt=conn.prepareStatement("select * from pdinfo where category = 1 order by pdnum desc");
+			pstmt=conn.prepareStatement("select pdinfo.* from (select rownum as rnum, pdinfo.* from pdinfo where category = 1 order by rnum asc)pdinfo where rnum >=? and rnum <= ? order by pdnum desc");
+
+			pstmt.setInt(1, startNum+1);
+			pstmt.setInt(2, startNum+perPageNum);
+					rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				int pdnum = rs.getInt("pdnum");
+				String pdname = rs.getString("pdname");
+				int countpd = rs.getInt("countpd");
+				int category = rs.getInt("category");
+				int price = rs.getInt("price");
+				String img = rs.getString("img");
+				String info = rs.getString("info");
+				String color = rs.getString("color");
+				String pdsize = rs.getString("pdsize");
+				
+				dtos= new ShopDTO(pdnum, pdname, countpd, category, price, img, info, color, pdsize);
+				dto.add(dtos);
+				
+				
+
+
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+
+		}
+		return dto;
 		
+	}
+	
+	
+	public ArrayList<ShopDTO> getShoesList(int startNum,int perPageNum){
+		  
+		   ShopDTO dtos = new ShopDTO();
+		   ArrayList<ShopDTO> dto = new ArrayList<ShopDTO>();
+		try {
+			conn = ds.getConnection();
+			pstmt=conn.prepareStatement("select pdinfo.* from (select rownum as rnum, pdinfo.* from pdinfo where category = 4 order by rnum asc)pdinfo where rnum >=? and rnum <= ? order by pdnum desc");
+			pstmt.setInt(1, startNum+1);
+			pstmt.setInt(2, startNum+perPageNum);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				int pdnum = rs.getInt("pdnum");
+				String pdname = rs.getString("pdname");
+				int countpd = rs.getInt("countpd");
+				int category = rs.getInt("category");
+				int price = rs.getInt("price");
+				String img = rs.getString("img");
+				String info = rs.getString("info");
+				String color = rs.getString("color");
+				String pdsize = rs.getString("pdsize");
+				
+				dtos= new ShopDTO(pdnum, pdname, countpd, category, price, img, info, color, pdsize);
+				dto.add(dtos);
+				
+				
+
+
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+
+		}
+		return dto;
+		
+	}
+	
+	public ArrayList<ShopDTO> getPantsList(int startNum,int perPageNum){
+		  
+		   ShopDTO dtos = new ShopDTO();
+		   ArrayList<ShopDTO> dto = new ArrayList<ShopDTO>();
+		try {
+			conn = ds.getConnection();
+			pstmt=conn.prepareStatement("select pdinfo.* from (select rownum as rnum, pdinfo.* from pdinfo where category = 3 order by rnum asc)pdinfo where rnum >=? and rnum <= ? order by pdnum desc");
+			pstmt.setInt(1, startNum+1);
+			pstmt.setInt(2, startNum+perPageNum);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
@@ -276,97 +364,15 @@ public class ShopDAO {
 	}
 	
 	
-	public ArrayList<ShopDTO> getShoesList(){
+	public ArrayList<ShopDTO> getAccList(int startNum,int perPageNum){
 		  
 		   ShopDTO dtos = new ShopDTO();
 		   ArrayList<ShopDTO> dto = new ArrayList<ShopDTO>();
 		try {
 			conn = ds.getConnection();
-			pstmt=conn.prepareStatement("select * from pdinfo where category = 4 order by pdnum desc");
-		
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()){
-				int pdnum = rs.getInt("pdnum");
-				String pdname = rs.getString("pdname");
-				int countpd = rs.getInt("countpd");
-				int category = rs.getInt("category");
-				int price = rs.getInt("price");
-				String img = rs.getString("img");
-				String info = rs.getString("info");
-				String color = rs.getString("color");
-				String pdsize = rs.getString("pdsize");
-				
-				dtos= new ShopDTO(pdnum, pdname, countpd, category, price, img, info, color, pdsize);
-				dto.add(dtos);
-				
-				
-
-
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			JdbcUtil.close(rs);
-			JdbcUtil.close(pstmt);
-			JdbcUtil.close(conn);
-
-		}
-		return dto;
-		
-	}
-	
-	public ArrayList<ShopDTO> getPantsList(){
-		  
-		   ShopDTO dtos = new ShopDTO();
-		   ArrayList<ShopDTO> dto = new ArrayList<ShopDTO>();
-		try {
-			conn = ds.getConnection();
-			pstmt=conn.prepareStatement("select * from pdinfo where category = 3 order by pdnum desc");
-		
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()){
-				int pdnum = rs.getInt("pdnum");
-				String pdname = rs.getString("pdname");
-				int countpd = rs.getInt("countpd");
-				int category = rs.getInt("category");
-				int price = rs.getInt("price");
-				String img = rs.getString("img");
-				String info = rs.getString("info");
-				String color = rs.getString("color");
-				String pdsize = rs.getString("pdsize");
-				
-				dtos= new ShopDTO(pdnum, pdname, countpd, category, price, img, info, color, pdsize);
-				dto.add(dtos);
-				
-				
-
-
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			JdbcUtil.close(rs);
-			JdbcUtil.close(pstmt);
-			JdbcUtil.close(conn);
-
-		}
-		return dto;
-		
-	}
-	
-	
-	public ArrayList<ShopDTO> getAccList(){
-		  
-		   ShopDTO dtos = new ShopDTO();
-		   ArrayList<ShopDTO> dto = new ArrayList<ShopDTO>();
-		try {
-			conn = ds.getConnection();
-			pstmt=conn.prepareStatement("select * from pdinfo where category = 5 order by pdnum desc");
-		
+			pstmt=conn.prepareStatement("select pdinfo.* from (select rownum as rnum, pdinfo.* from pdinfo where category = 5 order by rnum asc)pdinfo where rnum >=? and rnum <= ? order by pdnum desc");
+			pstmt.setInt(1, startNum+1);
+			pstmt.setInt(2, startNum+perPageNum);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
@@ -405,6 +411,131 @@ public class ShopDAO {
 	
 	public int totalShop(){
 		String sql = "select count(*) from pdinfo";
+		int result=0;
+		try{
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+			result = rs.getInt(1);
+			}
+		}catch(SQLException e){
+			System.err.println("listBoard 메소드 실행 중 오류 발생!!");
+			e.printStackTrace();
+		}finally{
+			try{
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			}catch(SQLException e){}
+		}
+		return result;
+	}
+	
+	public int totalHat(){
+		String sql = "select count(*) from pdinfo where category = 1";
+		int result=0;
+		try{
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+			result = rs.getInt(1);
+			}
+		}catch(SQLException e){
+			System.err.println("listBoard 메소드 실행 중 오류 발생!!");
+			e.printStackTrace();
+		}finally{
+			try{
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			}catch(SQLException e){}
+		}
+		return result;
+	}
+	
+	public int totalTop(){
+		String sql = "select count(*) from pdinfo where category = 2";
+		int result=0;
+		try{
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+			result = rs.getInt(1);
+			}
+		}catch(SQLException e){
+			System.err.println("listBoard 메소드 실행 중 오류 발생!!");
+			e.printStackTrace();
+		}finally{
+			try{
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			}catch(SQLException e){}
+		}
+		return result;
+	}
+	
+	public int totalPants(){
+		String sql = "select count(*) from pdinfo where category = 3";
+		int result=0;
+		try{
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+			result = rs.getInt(1);
+			}
+		}catch(SQLException e){
+			System.err.println("listBoard 메소드 실행 중 오류 발생!!");
+			e.printStackTrace();
+		}finally{
+			try{
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			}catch(SQLException e){}
+		}
+		return result;
+	}
+	
+	public int totalShoes(){
+		String sql = "select count(*) from pdinfo where category = 4";
+		int result=0;
+		try{
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+			result = rs.getInt(1);
+			}
+		}catch(SQLException e){
+			System.err.println("listBoard 메소드 실행 중 오류 발생!!");
+			e.printStackTrace();
+		}finally{
+			try{
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			}catch(SQLException e){}
+		}
+		return result;
+	}
+	
+	public int totalAcc(){
+		String sql = "select count(*) from pdinfo where category = 5";
 		int result=0;
 		try{
 			conn = ds.getConnection();

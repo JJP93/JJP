@@ -83,11 +83,11 @@ if(session.getAttribute("userID") != null){
 					aria-expanded="false">SHOP<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 					<li><a href="shop.shop?pageNum=1&perPageNum=9">전체보기</a></li>
-						<li><a href="hat.shop">모자</a></li>
-						<li><a href="top.shop">상의</a></li>
-						<li><a href="pants.shop">바지</a></li>
-						<li><a href="shoes.shop">신발</a></li>
-						<li><a href="acc.shop">악세사리</a></li>
+						<li><a href="hat.shop?pageNum=1&perPageNum=9">모자</a></li>
+						<li><a href="top.shop?pageNum=1&perPageNum=9">상의</a></li>
+						<li><a href="pants.shop?pageNum=1&perPageNum=9">바지</a></li>
+						<li><a href="shoes.shop?pageNum=1&perPageNum=9">신발</a></li>
+						<li><a href="acc.shop?pageNum=1&perPageNum=9">악세사리</a></li>
 						
 					</ul></li>
 			</ul>
@@ -138,11 +138,11 @@ if(session.getAttribute("userID") != null){
 					aria-expanded="false">SHOP<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 					<li><a href="shop.shop?pageNum=1&perPageNum=9">전체보기</a></li>
-						<li><a href="hat.shop">모자</a></li>
-						<li><a href="top.shop">상의</a></li>
-						<li><a href="pants.shop">바지</a></li>
-						<li><a href="shoes.shop">신발</a></li>
-						<li><a href="acc.shop">악세사리</a></li>
+						<li><a href="hat.shop?pageNum=1&perPageNum=9">모자</a></li>
+						<li><a href="top.shop?pageNum=1&perPageNum=9">상의</a></li>
+						<li><a href="pants.shop?pageNum=1&perPageNum=9">바지</a></li>
+						<li><a href="shoes.shop?pageNum=1&perPageNum=9">신발</a></li>
+						<li><a href="acc.shop?pageNum=1&perPageNum=9">악세사리</a></li>
 						
 					</ul></li>
 			</ul>
@@ -193,11 +193,11 @@ if(session.getAttribute("userID") != null){
 					aria-expanded="false">SHOP<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 					<li><a href="shop.shop?pageNum=1&perPageNum=9">전체보기</a></li>
-						<li><a href="hat.shop">모자</a></li>
-						<li><a href="top.shop">상의</a></li>
-						<li><a href="pants.shop">바지</a></li>
-						<li><a href="shoes.shop">신발</a></li>
-						<li><a href="acc.shop">악세사리</a></li>
+					<li><a href="hat.shop?pageNum=1&perPageNum=9">모자</a></li>
+						<li><a href="top.shop?pageNum=1&perPageNum=9">상의</a></li>
+						<li><a href="pants.shop?pageNum=1&perPageNum=9">바지</a></li>
+						<li><a href="shoes.shop?pageNum=1&perPageNum=9">신발</a></li>
+						<li><a href="acc.shop?pageNum=1&perPageNum=9">악세사리</a></li>
 						
 					</ul></li>
 			</ul>

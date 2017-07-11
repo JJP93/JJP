@@ -1,3 +1,5 @@
+<%@page import="util.PagingBtn"%>
+<%@page import="util.Paging"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="shop.ShopDAO"%>
 <%@page import="shop.ShopDTO"%>
@@ -36,25 +38,45 @@
 	&nbsp; &nbsp;
 
 
-   <% ShopDTO dto = new ShopDTO();
-      ShopDAO dao = new ShopDAO();
+    <% 
+    Paging pg = new Paging();
+   	PagingBtn pb = new PagingBtn();
+   	int pageNum = Integer.parseInt(request.getParameter("pageNum"));
+   	
+   	int perPageNum = Integer.parseInt(request.getParameter("perPageNum"));
+   	
+   	pg.setPerPageNum(perPageNum);
       
+      ArrayList<ShopDTO> list = (ArrayList<ShopDTO>)request.getAttribute("pdList");
       
-      ArrayList<ShopDTO> dtos;
-      dtos = dao.getHatList();
-      
-      for(int i =0; i<dtos.size(); i++){
+      for(ShopDTO dtos : list){
    %>
    <div align ="center" style=" float:left; width: 33%;">
-   &nbsp;<span><a href="shopMain.app?pdnum=<%=dtos.get(i).getPdnum()%>"><img src="images/<%=dtos.get(i).getImg() %>" style="height: 300px; width: 300px;"></a><br></span> &nbsp;
+   &nbsp;<span><a href="shopMain.app?pdnum=<%=dtos.getPdnum()%>"><img src="images/<%=dtos.getImg() %>" style="height: 300px; width: 300px;"></a><br></span> &nbsp;
    
-   <b><%=dtos.get(i).getPdname() %></b><p><br>
-   <%					if (dtos.get(i).getPdnum()%2==0){ %>
+   <b><%=dtos.getPdname() %></b><p><br>
+   <%					if (dtos.getPdnum()%2==0){ %>
 							<img src="hot.gif">
 <%					} %>
-   <b><%=dtos.get(i).getPrice() %>원</b>
+   <b><%=dtos.getPrice() %>원</b>
       </div>
    <%}%>
-   </div>
+  
+   	<div align="center">
+		<%
+		ShopDAO dao1 = new ShopDAO();
+		int totalShop = dao1.totalHat();
+		pb.setTempEndPage(totalShop,pg);
+		int tempEndPage = pb.getTempEndPage();
+		for(int i =1;i<=tempEndPage;i++){
+			if(pageNum == i){%>
+		
+		<a href="hat.shop?pageNum=<%=i%>&perPageNum=9">[<%=i %>]</a>
+		<%}else if(pageNum != i){ %>
+		<a href="hat.shop?pageNum=<%=i%>&perPageNum=9"><%=i %></a>
+		<%} %>
+			<%} %>
+			</div>
+	
 </body>
 </html>
