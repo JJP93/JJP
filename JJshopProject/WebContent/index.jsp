@@ -122,7 +122,19 @@
       </div>
    <%}%>
    <center>
-   <div style="cursor:pointer;" onclick="window.scrollTo(0,0);"><img src="images/top.jpg"width="80"></div>
+   <div style="cursor:pointer;" onclick="window.scrollTo(0,0);"><img src="images/top.jpg"width="80">
+   <% Cookie [] ck = request.getCookies();
+   
+   if(ck != null){
+	   for(Cookie c: ck){
+		   if(c.getName().indexOf("pdcook") != -1){
+		   out.println(java.net.URLDecoder.decode(c.getValue(),"UTF-8")+"<br/>"); 
+		   }
+	   }
+	   
+   }
+   %>
+   </div>
    </center>
    <footer>
    <jsp:include page="/Bottom.jsp"></jsp:include>

@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@page import="order.OrderDTO"%>
 <%@page import="MemberDao.MemberDao"%>
 <%@page import="memberDto.MemberDto"%>
@@ -18,7 +19,7 @@ function order(){
 }
 </script>
 	<%
-	
+
    String userID = null;
 if(session.getAttribute("userID") != null){
    userID = (String)session.getAttribute("userID");
@@ -27,9 +28,15 @@ System.out.println(userID);
 MemberDto mdto = new MemberDto();
 MemberDao mdao = new MemberDao();
 mdto = mdao.memberInfo(userID);
+
 %>
 <jsp:include page="/menu.jsp"></jsp:include>
-<% ShopDTO dto = (ShopDTO)request.getAttribute("pd");
+<% 
+
+ShopDTO dto = (ShopDTO)request.getAttribute("pd");
+Cookie c = new Cookie("pdcook"+dto.getPdnum(),URLEncoder.encode(dto.getPdname(),"utf-8"));
+c.setMaxAge(60*60*24);
+response.addCookie(c);
 %>
 <center>
 <form action="order.app" method="post" name = "order_tb">
