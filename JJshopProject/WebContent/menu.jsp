@@ -1,8 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html lang="ko">
 <head>
+	<meta charset="utf-8">
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+      .jbTitle {
+        text-align: center;
+      }
+      .jbMenu {
+        text-align: center;
+        padding: 0px 0px;
+        width: 100%;
+      }
+      .jbContent {
+        height: 2000px;
+      }
+      .jbFixed {
+        position: fixed;
+        top: 0px;
+      }
+    </style>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script>
+      $( document ).ready( function() {
+        var jbOffset = $( '.jbMenu' ).offset();
+        $( window ).scroll( function() {
+          if ( $( document ).scrollTop() > jbOffset.top ) {
+            $( '.jbMenu' ).addClass( 'jbFixed' );
+          }
+          else {
+            $( '.jbMenu' ).removeClass( 'jbFixed' );
+          }
+        });
+      } );
+    </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width initial-scale=1">
 <link rel="stylesheet" href="css/bootstrap.css">
@@ -24,7 +60,7 @@ if(session.getAttribute("userID") != null){
           if(userID == null){
          %>
 
-
+<div class="jbMenu">
 	<nav class="navbar navbar-default">
 
 	<div class="navbar-header">
@@ -70,6 +106,7 @@ if(session.getAttribute("userID") != null){
 		</ul>
 
 		<%}%>
+		</div>
 <!-- 일반사용자모드 -->
 		<%
           if(userID != null){
@@ -78,7 +115,7 @@ if(session.getAttribute("userID") != null){
         	  
          %>
 
-
+	<div class="jbMenu">
 		<nav class="navbar navbar-default">
 
 		<div class="navbar-header">
@@ -129,11 +166,11 @@ if(session.getAttribute("userID") != null){
 				<li><a href="mypage.member?id=<%=userID%>"><%=userID %> 님
 						접속중</a></li>
 			</ul>
-			
+			</div>
 		<!-- 관리자모드 -->
 <%}else if(userID.equals("admin")){ %>
+	<div class="jbMenu">
 	<nav class="navbar navbar-default">
-
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
@@ -187,7 +224,7 @@ if(session.getAttribute("userID") != null){
 			<%}} %>
 		</div>
 		</nav>
-
+</div>
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 		<script src="js/bootstrap.js"></script>
 </body>
