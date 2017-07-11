@@ -55,8 +55,11 @@ if(session.getAttribute("userID") != null){
 }
 
 %>
+<!-- 비로그인모드 -->
+	<%
+          if(userID == null){
+         %>
 
-<!-- 공통 메뉴바 -->
 <div class="jbMenu">
 	<nav class="navbar navbar-default">
 
@@ -90,15 +93,8 @@ if(session.getAttribute("userID") != null){
 			</ul>
 
 
-		
+		</ul>
 
-<!-- 비로그인모드 -->
-	<%
-          if(userID == null){
-         %>
-
-
-	</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li class="dropdown"><a href="#" class="dropdown-toggle"
 				data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -119,8 +115,42 @@ if(session.getAttribute("userID") != null){
         	  
          %>
 
-	
-	
+	<div class="jbMenu">
+		<nav class="navbar navbar-default">
+
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+				aria-expended="false">
+				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="index.jsp">J&J Shop</a>
+		</div>
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="index.jsp">메인</a></li>
+			<li><a href="board.app?pageNum=1&perPageNum=10">게시판</a></li>
+					<ul class="nav navbar-nav ">
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false">SHOP<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+					<li><a href="shop.shop?pageNum=1&perPageNum=9">전체보기</a></li>
+						<li><a href="hat.shop">모자</a></li>
+						<li><a href="top.shop">상의</a></li>
+						<li><a href="pants.shop">바지</a></li>
+						<li><a href="shoes.shop">신발</a></li>
+						<li><a href="acc.shop">악세사리</a></li>
+						
+					</ul></li>
+			</ul>
+				
+
+			</ul>
+
+
 
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -139,11 +169,38 @@ if(session.getAttribute("userID") != null){
 			</div>
 		<!-- 관리자모드 -->
 <%}else if(userID.equals("admin")){ %>
-	
+	<div class="jbMenu">
+	<nav class="navbar navbar-default">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+				aria-expended="false">
+				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="index.jsp">J&J Shop</a>
+		</div>
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="index.jsp">메인</a></li>
+			<li><a href="board.app?pageNum=1&perPageNum=10">게시판</a></li>
 				<li><a href="memberManagement.app">회원관리</a></li>
 				
-		
-		
+				<ul class="nav navbar-nav ">
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false">SHOP<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+					<li><a href="shop.shop?pageNum=1&perPageNum=9">전체보기</a></li>
+						<li><a href="hat.shop">모자</a></li>
+						<li><a href="top.shop">상의</a></li>
+						<li><a href="pants.shop">바지</a></li>
+						<li><a href="shoes.shop">신발</a></li>
+						<li><a href="acc.shop">악세사리</a></li>
+						
+					</ul></li>
+			</ul>
 				<li><a href="pdJoinView.app">상품 등록</a></li>
 					<li><a href="orderManagement.app">주문관리</a></li>
 			</ul>
