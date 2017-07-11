@@ -79,7 +79,7 @@ public class ShopDAO {
 		   ArrayList<ShopDTO> dto = new ArrayList<ShopDTO>();
 		try {
 			conn = ds.getConnection();
-			pstmt=conn.prepareStatement("select pdinfo.* from (select rownum as rnum, pdinfo.* from pdinfo order by rnum asc)pdinfo where rnum >=? and rnum <= ? order by pdnum");
+			pstmt=conn.prepareStatement("select pdinfo.* from (select rownum as rnum, pdinfo.* from pdinfo order by rnum asc)pdinfo where rnum >=? and rnum <= ? order by pdnum desc");
 		
 			pstmt.setInt(1, startNum+1);
 			pstmt.setInt(2, startNum+perPageNum);
