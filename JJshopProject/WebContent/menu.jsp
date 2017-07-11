@@ -39,7 +39,7 @@ if(session.getAttribute("userID") != null){
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="index.jsp">메인</a></li>
-			<li><a href="board.app">게시판</a></li>
+			<li><a href="board.app?pageNum=1&perPageNum=10">게시판</a></li>
 			
 			<ul class="nav navbar-nav ">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -94,7 +94,7 @@ if(session.getAttribute("userID") != null){
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="index.jsp">메인</a></li>
-				<li><a href="board.app">게시판</a></li>
+			<li><a href="board.app?pageNum=1&perPageNum=10">게시판</a></li>
 					<ul class="nav navbar-nav ">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -147,7 +147,7 @@ if(session.getAttribute("userID") != null){
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="index.jsp">메인</a></li>
-				<li><a href="board.app">게시판</a></li>
+			<li><a href="board.app?pageNum=1&perPageNum=10">게시판</a></li>
 				<li><a href="memberManagement.app">회원관리</a></li>
 				
 				<ul class="nav navbar-nav ">
@@ -155,7 +155,7 @@ if(session.getAttribute("userID") != null){
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">SHOP<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-					<li><a href="shop.shop">전체보기</a></li>
+					<li><a href="shop.shop?pageNum=1&perPageNum=9">전체보기</a></li>
 						<li><a href="hat.shop">모자</a></li>
 						<li><a href="top.shop">상의</a></li>
 						<li><a href="pants.shop">바지</a></li>

@@ -56,7 +56,7 @@
       
       
       ArrayList<ShopDTO> dtos;
-      dtos = dao.getAllPDList();
+      dtos = dao.getAllPDList1();
       
       for(int i =0; i<dtos.size(); i++){
    %>

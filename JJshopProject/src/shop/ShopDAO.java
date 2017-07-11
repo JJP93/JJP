@@ -3,6 +3,7 @@ package shop;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.naming.Context;
@@ -72,16 +73,62 @@ public class ShopDAO {
 	}
 	
 	
-	public ArrayList<ShopDTO> getAllPDList(){
+	public ArrayList<ShopDTO> getAllPDList(int startNum,int perPageNum){
 		  
 		   ShopDTO dtos = new ShopDTO();
 		   ArrayList<ShopDTO> dto = new ArrayList<ShopDTO>();
 		try {
 			conn = ds.getConnection();
-			pstmt=conn.prepareStatement("select * from pdinfo order by pdnum desc");
+			pstmt=conn.prepareStatement("select pdinfo.* from (select rownum as rnum, pdinfo.* from pdinfo order by pdnum desc)pdinfo where rnum >=? and rnum <= ?");
+		
+			pstmt.setInt(1, startNum+perPageNum-9);
+			pstmt.setInt(2, startNum+perPageNum-1);
+			System.out.println(startNum);
+			System.out.println(startNum+perPageNum-9);
+			System.out.println(startNum+perPageNum-1);
+
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				int pdnum = rs.getInt("pdnum");
+				String pdname = rs.getString("pdname");
+				int countpd = rs.getInt("countpd");
+				int category = rs.getInt("category");
+				int price = rs.getInt("price");
+				String img = rs.getString("img");
+				String info = rs.getString("info");
+				String color = rs.getString("color");
+				String pdsize = rs.getString("pdsize");
+				
+				dtos= new ShopDTO(pdnum, pdname, countpd, category, price, img, info, color, pdsize);
+				dto.add(dtos);
+				
+				
+
+
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+
+		}
+		return dto;
+		
+	}
+	
+	public ArrayList<ShopDTO> getAllPDList1(){
+		  
+		   ShopDTO dtos = new ShopDTO();
+		   ArrayList<ShopDTO> dto = new ArrayList<ShopDTO>();
+		try {
+			conn = ds.getConnection();
+			pstmt=conn.prepareStatement("select * from pdinfo");
+		
 		
 			rs = pstmt.executeQuery();
-			
 			while(rs.next()){
 				int pdnum = rs.getInt("pdnum");
 				String pdname = rs.getString("pdname");
@@ -353,6 +400,35 @@ public class ShopDAO {
 		}
 		return dto;
 		
+	}
+	
+	
+	
+	
+	public int totalShop(){
+		String sql = "select count(*) from pdinfo";
+		int result=0;
+		try{
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+			result = rs.getInt(1);
+			System.out.println(result);
+			}
+		}catch(SQLException e){
+			System.err.println("listBoard 메소드 실행 중 오류 발생!!");
+			e.printStackTrace();
+		}finally{
+			try{
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			}catch(SQLException e){}
+		}
+		return result;
 	}
 	
 }

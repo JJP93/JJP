@@ -1,3 +1,5 @@
+<%@page import="util.PagingBtn"%>
+<%@page import="util.Paging"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ page import="java.util.*, board.*"%>
@@ -5,13 +7,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width" initial-scale="1">
+<meta name="viewport" content="width=device-width initial-scale=1">
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
 <title>JSP 게시판 웹 사이트</title>
 </head>
 <body>
 	<%
+	Paging pg = new Paging();
+	PagingBtn pb = new PagingBtn();
+	int pageNum = Integer.parseInt(request.getParameter("pageNum"));
+	
+	int perPageNum = Integer.parseInt(request.getParameter("perPageNum"));
+	
+	pg.setPerPageNum(perPageNum);
 	
    String userID = null;
 if(session.getAttribute("userID") != null){
@@ -71,6 +80,22 @@ if(session.getAttribute("userID") != null){
 				} %>
 			</table>
 		</div>
+		<div align="center">
+		<%
+		BoardDataBean dao1 = new BoardDataBean();
+		int totalBBS = dao1.totalBoard();
+		pb.setTempEndPage(totalBBS,pg);
+		int tempEndPage = pb.getTempEndPage();
+		
+		for(int i =1;i<tempEndPage;i++){
+			if(pageNum == i){%>
+		
+		<a href="board.app?pageNum=<%=i%>&perPageNum=10">[<%=i %>]</a>
+		<%}else if(pageNum != i){ %>
+		<a href="board.app?pageNum=<%=i%>&perPageNum=10"><%=i %></a>
+		<%} %>
+			<%} %>
+			</div>
 	</div>
 	<center>
 		<footer>

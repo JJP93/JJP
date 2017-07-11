@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="util.PagingBtn"%>
+<%@page import="util.Paging"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="shop.ShopDAO"%>
 <%@page import="shop.ShopDTO"%>
@@ -7,7 +10,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title></title>
+<title>전체 상품</title>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
 </head>
@@ -26,25 +29,48 @@
 	&nbsp; &nbsp;
 
 
-   <% ShopDTO dto = new ShopDTO();
-      ShopDAO dao = new ShopDAO();
+   <% 
+   Paging pg = new Paging();
+	PagingBtn pb = new PagingBtn();
+	int pageNum = Integer.parseInt(request.getParameter("pageNum"));
+	
+	int perPageNum = Integer.parseInt(request.getParameter("perPageNum"));
+	
+	pg.setPerPageNum(perPageNum);
       
+	List<ShopDTO> list = (List)request.getAttribute("pdList");
+  
+ 
+     
       
-      ArrayList<ShopDTO> dtos;
-      dtos = dao.getAllPDList();
-      
-      for(int i =0; i<dtos.size(); i++){
+      for(ShopDTO pdlist : list){
    %>
    <div align ="center" style=" float:left; width: 33%;">
-   &nbsp;<span><a href="shopMain.app?pdnum=<%=dtos.get(i).getPdnum()%>"><img src="images/<%=dtos.get(i).getImg() %>" style="height: 300px; width: 300px;"></a><br></span> &nbsp;
+   &nbsp;<span><a href="shopMain.app?pdnum=<%=pdlist.getPdnum()%>"><img src="images/<%=pdlist.getImg() %>" style="height: 300px; width: 300px;"></a><br></span> &nbsp;
    
-   <b><%=dtos.get(i).getPdname() %></b><p><br>
-   <%					if (dtos.get(i).getPdnum()%2==0){ %>
+   <b><%=pdlist.getPdname() %></b><p><br>
+   <%					if (pdlist.getPdnum()%2==0){ %>
 							<img src="hot.gif">
 <%					} %>
-   <b><%=dtos.get(i).getPrice() %>원</b>
+   <b><%=pdlist.getPrice() %>원</b>
       </div>
    <%}%>
    </div>
+   	<div align="center">
+		<%
+		ShopDAO dao1 = new ShopDAO();
+		int totalShop = dao1.totalShop();
+		pb.setTempEndPage(totalShop,pg);
+		int tempEndPage = pb.getTempEndPage();
+		System.out.println(tempEndPage);
+		for(int i =1;i<=tempEndPage;i++){
+			if(pageNum == i){%>
+		
+		<a href="shop.shop?pageNum=<%=i%>&perPageNum=9">[<%=i %>]</a>
+		<%}else if(pageNum != i){ %>
+		<a href="shop.shop?pageNum=<%=i%>&perPageNum=9"><%=i %></a>
+		<%} %>
+			<%} %>
+			</div>
 </body>
 </html>
