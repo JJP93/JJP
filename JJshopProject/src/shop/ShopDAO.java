@@ -414,7 +414,6 @@ public class ShopDAO {
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 			result = rs.getInt(1);
-			System.out.println(result);
 			}
 		}catch(SQLException e){
 			System.err.println("listBoard 메소드 실행 중 오류 발생!!");

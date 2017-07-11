@@ -21,7 +21,6 @@ public class SearchOrderCommander implements CommandIf {
 			String search = (String)req.getParameter("search");
 			String searchList = req.getParameter("searchList");
 			
-			System.out.println(search);
 			dtos = dao.getOrderSearch(search, searchList);
 			
 			req.setAttribute("vv", dtos);

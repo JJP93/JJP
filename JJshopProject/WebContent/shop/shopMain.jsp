@@ -12,19 +12,36 @@
 <title>상세페이지</title>
 </head>
 <body>
+<%
+String userID = null;
+if(session.getAttribute("userID") != null){
+  userID = (String)session.getAttribute("userID");
+}
+%>
 <script>
 function order(){
 	
+var id = <%=userID%>;
+
+
+if(id==null){
+	 
+	 alert("주문을 하시려면 로그인 먼저 해주세요.");
+		location.href = "loginForm.member";
+}
+if(id!=null){
+	
 	document.order_tb.submit();
+		
+}
+
+
+	
+	
 }
 </script>
+	
 	<%
-
-   String userID = null;
-if(session.getAttribute("userID") != null){
-   userID = (String)session.getAttribute("userID");
-}
-System.out.println(userID);
 MemberDto mdto = new MemberDto();
 MemberDao mdao = new MemberDao();
 mdto = mdao.memberInfo(userID);
