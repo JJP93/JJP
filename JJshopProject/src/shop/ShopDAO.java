@@ -123,7 +123,7 @@ public class ShopDAO {
 		   ArrayList<ShopDTO> dto = new ArrayList<ShopDTO>();
 		try {
 			conn = ds.getConnection();
-			pstmt=conn.prepareStatement("select * from pdinfo");
+			pstmt=conn.prepareStatement("select * from pdinfo order by pdnum desc");
 		
 		
 			rs = pstmt.executeQuery();
