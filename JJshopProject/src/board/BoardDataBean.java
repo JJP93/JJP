@@ -23,12 +23,17 @@ public class BoardDataBean {
 		}
 	}
 	
-	public List<BoardDBBean> listBoard(){
-		String sql = "select * from board order by re_step asc";
+	public List<BoardDBBean> listBoard(int startData, int perPageNum){
+		String sql = "select board.* from (select rownum as rnum, board.* from board order by num desc)board where rnum >=? and rnum <= ?";
 		List<BoardDBBean> list = null;
 		try{
 			con = ds.getConnection();
 			ps = con.prepareStatement(sql);
+			ps.setInt(1, startData+perPageNum-9);
+			ps.setInt(2,startData+perPageNum);
+			System.out.println(startData+perPageNum-9);
+			System.out.println(startData+perPageNum);
+
 			rs = ps.executeQuery();
 			list = makeList(rs);
 		}catch(SQLException e){
@@ -206,6 +211,34 @@ public class BoardDataBean {
 		}
 		return -1;
 	}
+	
+	
+	public int totalBoard(){
+		String sql = "select count(*) from board";
+		int result=0;
+		try{
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			
+
+			rs = ps.executeQuery();
+			if(rs.next()){
+			result = rs.getInt(1);
+			System.out.println(result);
+			}
+		}catch(SQLException e){
+			System.err.println("listBoard 메소드 실행 중 오류 발생!!");
+			e.printStackTrace();
+		}finally{
+			try{
+				if (rs != null) rs.close();
+				if (ps != null) ps.close();
+				if (con != null) con.close();
+			}catch(SQLException e){}
+		}
+		return result;
+	}
+	
 }
 
 

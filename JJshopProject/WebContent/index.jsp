@@ -100,9 +100,9 @@
       
       
       ArrayList<ShopDTO> dtos;
-      dtos = dao.getAllPDList();
+      dtos = dao.getAllPDList1();
       
-      for(int i =0; i<dtos.size(); i++){
+      for(int i =0; i<9; i++){
    %>
    <div align ="center" style=" float:left; width: 33%;">
    &nbsp;<span><a href="shopMain.app?pdnum=<%=dtos.get(i).getPdnum()%>"><img src="images/<%=dtos.get(i).getImg() %>" style="height: 300px; width: 300px;"></a><br></span> &nbsp;
