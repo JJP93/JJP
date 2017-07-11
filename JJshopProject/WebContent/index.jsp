@@ -69,6 +69,31 @@
 		<tr>
 		<td><img src="images/ll.gif"width="150"></td>
 		</tr>
+		<% Cookie [] ck = request.getCookies();
+   int z=150;
+   if(ck != null){
+	   out.println("<tr>");
+	   out.println("<td align="+"center"+" >");
+	   out.println("<b>");
+	   out.println("최근본상품");
+	   out.println("</b >");
+	   out.println("</td>");
+	   out.println("</tr>");
+	   for(Cookie c: ck){
+		   if(c.getName().indexOf("pdcook") != -1){
+		
+			   out.println("<tr>");
+			   out.println("<td >");
+			 
+		   out.println("<img src=images/"+java.net.URLDecoder.decode(c.getValue(),"UTF-8")+"width="+z+">");
+		 
+		   out.println("</td>");
+		   out.println("</tr>");
+		   }
+	   }
+	   
+   }
+   %>
 		</table>
 	</div>
    <div class="container">
@@ -123,17 +148,7 @@
    <%}%>
    <center>
    <div style="cursor:pointer;" onclick="window.scrollTo(0,0);"><img src="images/top.jpg"width="80">
-   <% Cookie [] ck = request.getCookies();
    
-   if(ck != null){
-	   for(Cookie c: ck){
-		   if(c.getName().indexOf("pdcook") != -1){
-		   out.println(java.net.URLDecoder.decode(c.getValue(),"UTF-8")+"<br/>"); 
-		   }
-	   }
-	   
-   }
-   %>
    </div>
    </center>
    <footer>

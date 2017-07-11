@@ -34,7 +34,7 @@ mdto = mdao.memberInfo(userID);
 <% 
 
 ShopDTO dto = (ShopDTO)request.getAttribute("pd");
-Cookie c = new Cookie("pdcook"+dto.getPdnum(),URLEncoder.encode(dto.getPdname(),"utf-8"));
+Cookie c = new Cookie("pdcook"+dto.getPdnum(),URLEncoder.encode(dto.getImg(),"utf-8"));
 c.setMaxAge(60*60*24);
 response.addCookie(c);
 %>
