@@ -40,7 +40,7 @@
 </script>
 
 <style type="text/css">
-#STATICMENU { margin: 50pt; padding: 0pt;  position: absolute; right: 0px; top: 0px;}
+#STATICMENU { margin: 20pt; padding: 0pt;  position: absolute; right: 0px; top: 0px;}
 </style>
 
 <title>J&J Shop</title>
@@ -62,7 +62,7 @@
 <body onload="InitializeStaticMenu();">
 <jsp:include page="/menu.jsp"></jsp:include>
 	<div id="STATICMENU">
-		
+		<img src="images/kk.gif" width="150">
 	</div>
    <div class="container">
       <div id="myCarousel" class="carousel" data-ride="carousel">
