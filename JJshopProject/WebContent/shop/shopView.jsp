@@ -62,7 +62,6 @@
 		int totalShop = dao1.totalShop();
 		pb.setTempEndPage(totalShop,pg);
 		int tempEndPage = pb.getTempEndPage();
-		System.out.println(tempEndPage);
 		for(int i =1;i<=tempEndPage;i++){
 			if(pageNum == i){%>
 		

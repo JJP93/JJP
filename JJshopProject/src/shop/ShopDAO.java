@@ -83,9 +83,6 @@ public class ShopDAO {
 		
 			pstmt.setInt(1, startNum+perPageNum-9);
 			pstmt.setInt(2, startNum+perPageNum-1);
-			System.out.println(startNum);
-			System.out.println(startNum+perPageNum-9);
-			System.out.println(startNum+perPageNum-1);
 
 			rs = pstmt.executeQuery();
 			while(rs.next()){
