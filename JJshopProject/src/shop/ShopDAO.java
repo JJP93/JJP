@@ -12,6 +12,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import jdbc.JdbcUtil;
+import util.Criteria;
 
 public class ShopDAO {
 	
@@ -73,7 +74,7 @@ public class ShopDAO {
 	}
 	
 	
-	public ArrayList<ShopDTO> getAllPDList(int startNum,int perPageNum){
+	public ArrayList<ShopDTO> getAllPDList(Criteria cri){
 		  
 		   ShopDTO dtos = new ShopDTO();
 		   ArrayList<ShopDTO> dto = new ArrayList<ShopDTO>();
@@ -81,8 +82,8 @@ public class ShopDAO {
 			conn = ds.getConnection();
 			pstmt=conn.prepareStatement("select pdinfo.* from (select rownum as rnum, pdinfo.* from pdinfo order by rnum asc)pdinfo where rnum >=? and rnum <= ? order by pdnum desc");
 		
-			pstmt.setInt(1, startNum+1);
-			pstmt.setInt(2, startNum+perPageNum);
+			pstmt.setInt(1,cri.getPageStart()+cri.getPerPageNum()-9);
+			pstmt.setInt(2,cri.getPageStart()+cri.getPerPageNum());
 			
 		
 			rs = pstmt.executeQuery();
@@ -192,15 +193,15 @@ public class ShopDAO {
 		return result;
 	}
 	
-	public ArrayList<ShopDTO> getTopList(int startNum,int perPageNum){
+	public ArrayList<ShopDTO> getTopList(Criteria cri){
 		  
 		   ShopDTO dtos = new ShopDTO();
 		   ArrayList<ShopDTO> dto = new ArrayList<ShopDTO>();
 		try {
 			conn = ds.getConnection();
 			pstmt=conn.prepareStatement("select pdinfo.* from (select rownum as rnum, pdinfo.* from pdinfo where category = 2 order by rnum asc)pdinfo where rnum >=? and rnum <= ? order by pdnum desc");
-			pstmt.setInt(1, startNum+1);
-			pstmt.setInt(2, startNum+perPageNum);
+			pstmt.setInt(1,cri.getPageStart()+cri.getPerPageNum()-9);
+			pstmt.setInt(2,cri.getPageStart()+cri.getPerPageNum());
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
@@ -235,7 +236,7 @@ public class ShopDAO {
 	}
 	
 	
-	public ArrayList<ShopDTO> getHatList(int startNum,int perPageNum){
+	public ArrayList<ShopDTO> getHatList(Criteria cri){
 		  
 		   ShopDTO dtos = new ShopDTO();
 		   ArrayList<ShopDTO> dto = new ArrayList<ShopDTO>();
@@ -243,8 +244,8 @@ public class ShopDAO {
 			conn = ds.getConnection();
 			pstmt=conn.prepareStatement("select pdinfo.* from (select rownum as rnum, pdinfo.* from pdinfo where category = 1 order by rnum asc)pdinfo where rnum >=? and rnum <= ? order by pdnum desc");
 
-			pstmt.setInt(1, startNum+1);
-			pstmt.setInt(2, startNum+perPageNum);
+			pstmt.setInt(1,cri.getPageStart()+cri.getPerPageNum()-9);
+			pstmt.setInt(2,cri.getPageStart()+cri.getPerPageNum());
 					rs = pstmt.executeQuery();
 			
 			while(rs.next()){
@@ -279,15 +280,15 @@ public class ShopDAO {
 	}
 	
 	
-	public ArrayList<ShopDTO> getShoesList(int startNum,int perPageNum){
+	public ArrayList<ShopDTO> getShoesList(Criteria cri){
 		  
 		   ShopDTO dtos = new ShopDTO();
 		   ArrayList<ShopDTO> dto = new ArrayList<ShopDTO>();
 		try {
 			conn = ds.getConnection();
 			pstmt=conn.prepareStatement("select pdinfo.* from (select rownum as rnum, pdinfo.* from pdinfo where category = 4 order by rnum asc)pdinfo where rnum >=? and rnum <= ? order by pdnum desc");
-			pstmt.setInt(1, startNum+1);
-			pstmt.setInt(2, startNum+perPageNum);
+			pstmt.setInt(1,cri.getPageStart()+cri.getPerPageNum()-9);
+			pstmt.setInt(2,cri.getPageStart()+cri.getPerPageNum());
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
@@ -321,15 +322,15 @@ public class ShopDAO {
 		
 	}
 	
-	public ArrayList<ShopDTO> getPantsList(int startNum,int perPageNum){
+	public ArrayList<ShopDTO> getPantsList(Criteria cri){
 		  
 		   ShopDTO dtos = new ShopDTO();
 		   ArrayList<ShopDTO> dto = new ArrayList<ShopDTO>();
 		try {
 			conn = ds.getConnection();
 			pstmt=conn.prepareStatement("select pdinfo.* from (select rownum as rnum, pdinfo.* from pdinfo where category = 3 order by rnum asc)pdinfo where rnum >=? and rnum <= ? order by pdnum desc");
-			pstmt.setInt(1, startNum+1);
-			pstmt.setInt(2, startNum+perPageNum);
+			pstmt.setInt(1,cri.getPageStart()+cri.getPerPageNum()-9);
+			pstmt.setInt(2,cri.getPageStart()+cri.getPerPageNum());
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
@@ -364,15 +365,15 @@ public class ShopDAO {
 	}
 	
 	
-	public ArrayList<ShopDTO> getAccList(int startNum,int perPageNum){
+	public ArrayList<ShopDTO> getAccList(Criteria cri){
 		  
 		   ShopDTO dtos = new ShopDTO();
 		   ArrayList<ShopDTO> dto = new ArrayList<ShopDTO>();
 		try {
 			conn = ds.getConnection();
 			pstmt=conn.prepareStatement("select pdinfo.* from (select rownum as rnum, pdinfo.* from pdinfo where category = 5 order by rnum asc)pdinfo where rnum >=? and rnum <= ? order by pdnum desc");
-			pstmt.setInt(1, startNum+1);
-			pstmt.setInt(2, startNum+perPageNum);
+			pstmt.setInt(1,cri.getPageStart()+cri.getPerPageNum()-9);
+			pstmt.setInt(2,cri.getPageStart()+cri.getPerPageNum());
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){

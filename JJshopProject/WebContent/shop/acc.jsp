@@ -5,6 +5,8 @@
 <%@page import="shop.ShopDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,14 +36,7 @@
 
 	 <div class="container">
    <% 
-   Paging pg = new Paging();
-  	PagingBtn pb = new PagingBtn();
-  	int pageNum = Integer.parseInt(request.getParameter("pageNum"));
-  	
-  	int perPageNum = Integer.parseInt(request.getParameter("perPageNum"));
-  	
-  	pg.setPerPageNum(perPageNum);
-        
+  
       
       ArrayList<ShopDTO> list = (ArrayList<ShopDTO>)request.getAttribute("pdList");
       
@@ -57,20 +52,23 @@
    <b><%=dtos.getPrice() %>원</b>
       </div>
    <%}%>
+ 
    	<div align="center">
-		<%
-		ShopDAO dao1 = new ShopDAO();
-		int totalShop = dao1.totalAcc();
-		pb.setTempEndPage(totalShop,pg);
-		int tempEndPage = pb.getTempEndPage();
-		for(int i =1;i<=tempEndPage;i++){
-			if(pageNum == i){%>
-		
-		<a href="acc.shop?pageNum=<%=i%>&perPageNum=9">[<%=i %>]</a>
-		<%}else if(pageNum != i){ %>
-		<a href="acc.shop?pageNum=<%=i%>&perPageNum=9"><%=i %></a>
-		<%} %>
-			<%} %>
+		<c:if test="${pageMaker.prev }">
+			<a href="acc.shop?pageNum=${pageMaker.startPage-1 }&perPageNum=9">&laquo;</a>
+				</c:if>
+				
+				<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">	
+						<c:if test="${pageMaker.cri.page == idx }" >
+		<a href="acc.shop?pageNum=${idx }&perPageNum=9">[${idx }]</a>
+		</c:if>
+		<c:if test="${pageMaker.cri.page != idx }" >
+		<a href="acc.shop?pageNum=${idx }&perPageNum=9">${idx }</a>
+			</c:if>
+					</c:forEach>
+								<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
+			<a href="acc.shop?pageNum=${pageMaker.endPage+1 }&perPageNum=9">&raquo;</a>
+				</c:if>
 			</div>
 </body>
 </html>
