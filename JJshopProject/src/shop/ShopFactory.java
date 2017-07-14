@@ -33,6 +33,8 @@ public class ShopFactory {
 			cmdIf = new AccViewCommander();
 		}else if (cmd.equals("/cookieIni.shop")){
 			cmdIf = new CookieIniCommander();
+		}else if (cmd.equals("/cookieInit.shop")){
+			cmdIf = new CookieIniCommander();
 		}
 		
 		return cmdIf;

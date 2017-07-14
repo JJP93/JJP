@@ -69,7 +69,7 @@
       } );
       
       function ini() {
-		location.href = "cookieIni.shop"
+		location.href = "cookieInit.shop"
 	}
    
     </script>
@@ -88,60 +88,59 @@
 				</td>
 			</tr>
 			<tr>
+				<td><input type="button" value="임시 쿠키 삭제 버튼" onclick="ini()"></td>
+			</tr>
+			<tr>
 				<td><img src="images/kk.gif" width="150"></td>
 			</tr>
 			<tr>
 				<td><img src="images/ll.gif" width="150"></td>
 			</tr>
-			<% Cookie [] ck = request.getCookies();
+			<% 
+			
+			Cookie [] ck = request.getCookies();
   	int z=150;
 
-   if(ck != null){
-	   out.println("<tr>");
+  	
+  	 out.println("<tr>");
 	   out.println("<td align='center"+"'>");
 	   out.println("<b>");
 	   out.println("최근본상품");
 	   out.println("</b >");
 	   out.println("</td>");
 	   out.println("</tr>");
-	   
-	   
-
- }
    
+	   if(ck != null){
+		   int ii=0;
+		   String url = "";
+		   String imageName = "";
    for(Cookie c: ck){
-	   out.println("<tr>");
-	   out.println("<td >");
-	   
-	   
-	    
+	 
 	   if(c.getName().indexOf("pdcook") != -1){
-		
-	   out.println("<img src=\"images/"+java.net.URLDecoder.decode(c.getValue(),"UTF-8")+"\" width=\""+z+"\">");
+		   String cookieValue = java.net.URLDecoder.decode(c.getValue(),"UTF-8");
+		   
+				  ii =  cookieValue.indexOf("!");
+		    url = cookieValue.substring(cookieValue.indexOf("!")+1);
+		    imageName = cookieValue.substring(0, ii);
+		   
+		   out.println("<tr>");
+		   out.println("<td >");
+		   out.println("<a href ="+url+">");
+	   out.println("<img src=\"images/"+imageName+"\" width=\""+z+"\">");
 	   out.println("</a>");
 	   out.println("</td>");
 	   out.println("</tr>");
 	   }
    }
+   }else if(ck==null) {
+	   out.println("<br><tr>");
+	   out.println("<td>");
+	   out.println("최근 본 항목이 없습니다.");
+	   out.println("</td>");
+	   out.println("</tr>");
+   }
    
-	  /*   for(Cookie c: ck){
-	    	
-	    
-		   if(c.getName().indexOf("pdcook") != -1){
-			
-			   out.println("<tr>");
-			   out.println("<td >");
-<<<<<<< HEAD
-			
-		   out.println("<img src=\"images/"+java.net.URLDecoder.decode(c.getValue(),"UTF-8")+"\" width=\""+z+"\">");
-		   out.println("</a>");
-=======
-		   out.println("<img width="+"'"+"150'"+"src=images/"+java.net.URLDecoder.decode(c.getValue(),"UTF-8")+">"); 
->>>>>>> 298f30de4ebe5e38cd37705dd8f0ff6ea813878f
-		   out.println("</td>");
-		   out.println("</tr>");
-		   }
-	   }   */
+	 
 	   
    
    %>

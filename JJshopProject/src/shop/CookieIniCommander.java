@@ -10,10 +10,20 @@ public class CookieIniCommander implements CommandIf {
 	public Object processCommand(HttpServletRequest req, HttpServletResponse resp) {
 		// TODO Auto-generated method stub
 		
-
+		Cookie[] c = req.getCookies();
+		
+		if(c != null){
+			for(int i = 0; i < c.length; i++){
+				c[i].setMaxAge(0);
+				resp.addCookie(c[i]);
+			}
+			
+		}
+		
+		
 
 		
-		return null;
+		return "index.jsp";
 	}
 
 }
