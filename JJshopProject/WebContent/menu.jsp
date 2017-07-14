@@ -3,7 +3,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
 <head>
-	<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width initial-scale=1">
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/custom.css">
     <style>
       body {
         margin: 0px;
@@ -74,7 +77,7 @@ if(session.getAttribute("userID") != null){
 	</div>
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav">
-			<li class="active"><a href="index.jsp">메인</a></li>
+			<li ><a href="index.jsp">메인</a></li>
 			<li><a href="board.app?pageNum=1&perPageNum=10">게시판</a></li>
 			
 			<ul class="nav navbar-nav ">
@@ -102,7 +105,8 @@ if(session.getAttribute("userID") != null){
 				<ul class="dropdown-menu">
 					<li><a href="loginForm.app">로그인</a></li>
 					<li><a href="joinForm.app">회원가입</a></li>
-				</ul></li>
+				</ul>
+				</li>
 		</ul>
 
 		<%}%>
@@ -164,7 +168,9 @@ if(session.getAttribute("userID") != null){
 
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="mypage.member?id=<%=userID%>"><%=userID %> 님
-						접속중</a></li>
+						접속중</a>
+						<li><a href="orderlist.app">장바구니</a></li>
+						</li>
 			</ul>
 			</div>
 		<!-- 관리자모드 -->
