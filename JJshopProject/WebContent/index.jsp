@@ -40,7 +40,7 @@
 </script>
 
 <style type="text/css">
-#STATICMENU { margin: 10pt; padding: 0pt;  position: absolute; right: 0px; top: 0px;}
+#STATICMENU { margin: 10pt; padding: 0pt;  position: absolute; right: 0px; top: 0px; ;}
 </style>
 
 <title>J&J Shop</title>
@@ -70,10 +70,10 @@
 		<td><img src="images/ll.gif"width="150"></td>
 		</tr>
 		<% Cookie [] ck = request.getCookies();
-   int z=150;
+  	int z=150;
    if(ck != null){
 	   out.println("<tr>");
-	   out.println("<td align="+"center"+" >");
+	   out.println("<td align='center"+"'>");
 	   out.println("<b>");
 	   out.println("최근본상품");
 	   out.println("</b >");
@@ -85,7 +85,7 @@
 			   out.println("<tr>");
 			   out.println("<td >");
 			 
-		   out.println("<img src=images/"+java.net.URLDecoder.decode(c.getValue(),"UTF-8")+"width="+z+">");
+		   out.println("<img width="+"'"+"150'"+"src=images/"+java.net.URLDecoder.decode(c.getValue(),"UTF-8")+">");
 		 
 		   out.println("</td>");
 		   out.println("</tr>");
