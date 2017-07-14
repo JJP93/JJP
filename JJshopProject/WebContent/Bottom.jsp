@@ -3,27 +3,31 @@
 <!DOCTYPE html >
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width initial-scale=1">
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/custom.css">
 
 </head>
 <body>
-	<table	width="1000">
-	<tr height="200">
-		<td align ="center">
-		<hr  size="2">
-		이용약관
-		이메일 무단수집거부
-		개인정보 취급(처리)방침
-		윤리경영
-		보안신고
-		Contact Us
-		사업장소개
-		사이트맵
-		웹접근성 도움말<br>
-		우장식&김종철 Project
-		COPYRIGHTⓒ2017 CHOUNGWOON COMPUTER,ALL rights reserved.
-		</td>
-	</tr>
-	</table>	
+
+<footer >
+	<div  style="background-color: black; color:#ffffff">
+		<br>
+		<div class="row">
+		<div class ="col-sm-2" style="text-align:center;"><h3>Copyright&copy;2017</h3><h3>우장식&김종철</h3></div>
+		<div class ="col-sm-4" ><h4>대표자 소개</h4><p>안녕하십니까 <p>저희는 웹개발자를 목표로 하고있는 청운대학생들입니다.<p>JSP MVC패턴을 활용하여 개발한 홈페이지입니다.</p></div>
+		<div class ="col-sm-2" align="center"><h4 style="text-align:center;">SNS</h4>
+			<div class="list-group" align="center" style="width: 100px;" >
+				<a href="http://www.facebook.com" class="list-group-item" ><img src="images/facebook.png"width="70" ></a>
+				<a href="http://www.instagram.com" class="list-group-item" ><img src="images/insta.jpeg"width="80" ></a>
+				<a href="http://www.naver.com" class="list-group-item" ><img src="images/naver.jpg"width="60" ></a>
+			</div>
+			</div>
+			<div class="col-sm-2"><h4 style="text-align:center;">
+			<span class="glyphicon glyphicon-ok"></span>&nbsp;by 우장식&김종철</h4></div>
+	</div>
+	</div>
+	</footer>
 </body>
 </html>
