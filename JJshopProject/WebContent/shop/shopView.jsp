@@ -1,6 +1,5 @@
 <%@page import="java.util.List"%>
-<%@page import="util.PagingBtn"%>
-<%@page import="util.Paging"%>
+
 <%@page import="java.util.ArrayList"%>
 <%@page import="shop.ShopDAO"%>
 <%@page import="shop.ShopDTO"%>

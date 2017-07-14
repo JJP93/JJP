@@ -4,6 +4,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ page import="java.io.PrintWriter"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,11 +61,19 @@
           }
         });
       } );
+      
+      function ini() {
+		location.href = "cookieIni.shop"
+	}
+   
     </script>
 <body onload="InitializeStaticMenu();">
 <jsp:include page="/menu.jsp"></jsp:include>
+
+
 	<div id="STATICMENU">
 		<table >
+		<tr><td><input type="button" value="쿠키 초기화" onclick="ini()"></td></tr>
 		<tr>
 		<td><img src="images/kk.gif" width="150"></td>
 		</tr>
@@ -71,7 +81,10 @@
 		<td><img src="images/ll.gif" width="150"></td>
 		</tr>
 		<% Cookie [] ck = request.getCookies();
+		
    int z=150;
+   int cookieFind = -1;
+   String url = "";
    if(ck != null){
 	   out.println("<tr>");
 	   out.println("<td align="+"center"+" >");
@@ -80,21 +93,44 @@
 	   out.println("</b >");
 	   out.println("</td>");
 	   out.println("</tr>");
-	   for(Cookie c: ck){
-		   if(c.getName().indexOf("pdcook") != -1){
+	   
+	   
+
+ }
+   
+   for(Cookie c: ck){
+	   out.println("<tr>");
+	   out.println("<td >");
+	   
+	   
+	    
+	   if(c.getName().indexOf("pdcook") != -1){
 		
+	   out.println("<img src=\"images/"+java.net.URLDecoder.decode(c.getValue(),"UTF-8")+"\" width=\""+z+"\">");
+	   out.println("</a>");
+	   out.println("</td>");
+	   out.println("</tr>");
+	   }
+   }
+   
+	  /*   for(Cookie c: ck){
+	    	
+	    
+		   if(c.getName().indexOf("pdcook") != -1){
+			
 			   out.println("<tr>");
 			   out.println("<td >");
-			 
+			
 		   out.println("<img src=\"images/"+java.net.URLDecoder.decode(c.getValue(),"UTF-8")+"\" width=\""+z+"\">");
-		 
+		   out.println("</a>");
 		   out.println("</td>");
 		   out.println("</tr>");
 		   }
-	   }
+	   }   */
 	   
-   }
+   
    %>
+
 		</table>
 	</div>
    <div class="container">

@@ -31,6 +31,8 @@ public class ShopFactory {
 			cmdIf = new ShoesViewCommander();
 		}else if (cmd.equals("/acc.shop")){
 			cmdIf = new AccViewCommander();
+		}else if (cmd.equals("/cookieIni.shop")){
+			cmdIf = new CookieIniCommander();
 		}
 		
 		return cmdIf;
