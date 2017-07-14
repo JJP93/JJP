@@ -24,12 +24,9 @@ public class JoinCommander implements CommandIf {
 				String addr = req.getParameter("addr");
 				
 				String ck = req.getParameter("checkuse");
-				System.out.println(ck);
 				MemberDao dao = new MemberDao();
 				
 				String a = dao.idCheck(id);
-				System.out.println(a);
-				System.out.println(id);
 				if(a.equals("1")){
 					dao.join(name, id, password,Email,gender,addr);
 					

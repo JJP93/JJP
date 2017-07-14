@@ -77,7 +77,6 @@ public class MemberDao {
 
 			if(rs.next()){
 				String id2 = rs.getString("userID");
-				System.out.println("중복!db에 있는 값"+id2);
 				if(id.equals(id2)){
 					result = "2";
 				}

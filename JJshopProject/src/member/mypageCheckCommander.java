@@ -34,7 +34,6 @@ public class mypageCheckCommander implements CommandIf {
 				
 			}
 			
-			System.out.println(id+" and " + password+" and "+Inpw);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

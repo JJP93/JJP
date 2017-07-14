@@ -32,6 +32,7 @@
    }
   stmnTimer = setTimeout("RefreshStaticMenu();", stmnActivateSpeed); 
   } 
+ 
  function InitializeStaticMenu() {
   document.getElementById('STATICMENU').style.right = stmnLEFT + 'px';  //처음에 오른쪽에 위치. left로 바꿔도.
   document.getElementById('STATICMENU').style.top = document.body.scrollTop + stmnBASE + 'px'; 
@@ -67,7 +68,7 @@
 		<td><img src="images/kk.gif" width="150"></td>
 		</tr>
 		<tr>
-		<td><img src="images/ll.gif"width="150"></td>
+		<td><img src="images/ll.gif" width="150"></td>
 		</tr>
 		<% Cookie [] ck = request.getCookies();
   	int z=150;
@@ -84,9 +85,7 @@
 		
 			   out.println("<tr>");
 			   out.println("<td >");
-			 
-		   out.println("<img width="+"'"+"150'"+"src=images/"+java.net.URLDecoder.decode(c.getValue(),"UTF-8")+">");
-		 
+		   out.println("<img width="+"'"+"150'"+"src=images/"+java.net.URLDecoder.decode(c.getValue(),"UTF-8")+">"); 
 		   out.println("</td>");
 		   out.println("</tr>");
 		   }

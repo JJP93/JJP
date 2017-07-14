@@ -6,7 +6,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import util.Paging;
+import util.Criteria;
+import util.PageMaker;
 
 public class ListCommand implements CommandIf{
 
@@ -16,14 +17,19 @@ public class ListCommand implements CommandIf{
 			req.setCharacterEncoding("UTF-8");
 			int pageNum = Integer.parseInt(req.getParameter("pageNum"));
 			int perPageNum = Integer.parseInt(req.getParameter("perPageNum"));
-			Paging pg = new Paging();
-			pg.setStartRow(pageNum, perPageNum);
-			int startData = pg.getStartRow();
+			Criteria cri = new Criteria();
 			BoardDataBean dao = new BoardDataBean();
-			List<BoardDBBean> list = dao.listBoard(startData, perPageNum);
+			cri.setPage(pageNum);
+			cri.setPerPageNum(perPageNum);
+			List<BoardDBBean> list = dao.listBoard(cri);
 			req.setAttribute("boardList", list);
-	
-
+			
+			int totalCount = dao.totalBoard();
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(cri);
+			pageMaker.setTotalCount(totalCount);
+			req.setAttribute("pageMaker", pageMaker);
+			
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}

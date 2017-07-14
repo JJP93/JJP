@@ -12,7 +12,6 @@ public class ShopMainCommender implements CommandIf {
 		ShopDAO dao = new ShopDAO();
 		
 		String id = req.getParameter("pdnum");
-		System.out.println("id : " + id);
 		try {
 			dto = dao.getPDList(id);
 			req.setAttribute("pd", dto);

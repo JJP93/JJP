@@ -17,11 +17,6 @@ public class OrderEditOkCommander implements CommandIf {
 		int ornum = (Integer.parseInt(req.getParameter("ornum")));
 
 		
-		System.out.println(orsize);
-		System.out.println(orcnt);
-		System.out.println(orcolor);
-		System.out.println(oraddr);
-		System.out.println("けけけけけ" + ornum);
 
 		try {
 			dao.orderEdit(orsize, orcnt, orcolor, oraddr,ornum);

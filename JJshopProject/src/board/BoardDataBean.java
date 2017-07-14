@@ -7,6 +7,8 @@ import java.util.List;
 import javax.naming.*;
 import javax.sql.DataSource;
 
+import util.Criteria;
+
 public class BoardDataBean {
 	private Connection con;
 	private PreparedStatement ps;
@@ -23,16 +25,16 @@ public class BoardDataBean {
 		}
 	}
 	
-	public List<BoardDBBean> listBoard(int startData, int perPageNum){
+	public List<BoardDBBean> listBoard(Criteria cri){
 		String sql = "select board.* from (select rownum as rnum, board.* from board order by num desc)board where rnum >=? and rnum <= ?";
 		List<BoardDBBean> list = null;
 		try{
 			con = ds.getConnection();
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, startData+perPageNum-9);
-			ps.setInt(2,startData+perPageNum);
-			System.out.println(startData+perPageNum-9);
-			System.out.println(startData+perPageNum);
+			ps.setInt(1,cri.getPageStart()+cri.getPerPageNum()-9);
+			ps.setInt(2,cri.getPageStart()+cri.getPerPageNum());
+			
+		
 
 			rs = ps.executeQuery();
 			list = makeList(rs);

@@ -155,7 +155,6 @@ public class OrderDAO {
 				dto.setCategory(rs.getInt("category"));
 				dto.setImg(rs.getString("img"));
 				list.add(dto);
-				System.out.println(rs.getInt("ornum")+"리스트 사이즈 : "+list.size());
 			}
 			
 			
@@ -169,7 +168,6 @@ public class OrderDAO {
 				if (con != null) con.close();
 			}catch(SQLException e){}
 		}
-		System.out.println("사이즈2: "+list.size());
 		return list;
 		
 	}
@@ -238,7 +236,6 @@ public class OrderDAO {
 				dto.setCategory(rs.getInt("category"));
 				dto.setImg(rs.getString("img"));
 				list.add(dto);
-				System.out.println(rs.getInt("ornum")+"리스트 사이즈 : "+list.size());
 			}
 			
 			
@@ -254,7 +251,6 @@ if (con != null) con.close();
 		}
 
 
-System.out.println("사이즈2: "+list.size());
 return list;
 
 }

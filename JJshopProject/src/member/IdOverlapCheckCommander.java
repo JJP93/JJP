@@ -27,8 +27,6 @@ public class IdOverlapCheckCommander implements CommandIf {
 			
 			MemberDao dao = new MemberDao();
 			String a = dao.idCheck(id);
-			System.out.println(id);
-			System.out.println(a);
 			
 			if(a.equals("1")){
 				viewpage = "member/canuseid.jsp?num=1";

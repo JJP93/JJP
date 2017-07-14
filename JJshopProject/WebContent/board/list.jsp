@@ -1,8 +1,8 @@
-<%@page import="util.PagingBtn"%>
-<%@page import="util.Paging"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*, board.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!-- list.jsp -->
 <html>
 <head>
@@ -10,17 +10,11 @@
 <meta name="viewport" content="width=device-width initial-scale=1">
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
-<title>JSP °Ô½ÃÆÇ À¥ »çÀÌÆ®</title>
+<title>JSP ê²Œì‹œíŒ ì›¹ ì‚¬ì´íŠ¸</title>
 </head>
 <body>
 	<%
-	Paging pg = new Paging();
-	PagingBtn pb = new PagingBtn();
-	int pageNum = Integer.parseInt(request.getParameter("pageNum"));
 	
-	int perPageNum = Integer.parseInt(request.getParameter("perPageNum"));
-	
-	pg.setPerPageNum(perPageNum);
 	
    String userID = null;
 if(session.getAttribute("userID") != null){
@@ -31,7 +25,7 @@ if(session.getAttribute("userID") != null){
 	<jsp:include page="/menu.jsp"></jsp:include>
 	<div class="container">
 		<div class="row">
-			<b class="navbar-brand" style="text-align: center;">±Û ¸ñ ·Ï</b>
+			<b class="navbar-brand" style="text-align: center;">ê¸€ ëª© ë¡</b>
 			<table class="table table-striped"
 				style="text-align: center; border: 1px solid #dddddd">
 				<tr>
@@ -40,22 +34,23 @@ if(session.getAttribute("userID") != null){
          %>
 
 					<td align="right" colspan="7"><a href="write_form.board"
-						class="btn btn-primary pull-right">±Û¾²±â</a></td>
+						class="btn btn-primary pull-right">ê¸€ì“°ê¸°</a></td>
 				</tr>
 				<%} %>
 				<tr>
-					<th style="background-color: #eeeeee; text-align: center;">¹øÈ£</th>
-					<th style="background-color: #eeeeee; text-align: center;">Á¦¸ñ</th>
-					<th style="background-color: #eeeeee; text-align: center;">ÀÛ¼ºÀÚ</th>
-					<th style="background-color: #eeeeee; text-align: center;">ÀÛ¼ºÀÏ</th>
-					<th style="background-color: #eeeeee; text-align: center;">Á¶È¸</th>
+					<th style="background-color: #eeeeee; text-align: center;">ë²ˆí˜¸</th>
+					<th style="background-color: #eeeeee; text-align: center;">ì œëª©</th>
+					<th style="background-color: #eeeeee; text-align: center;">ìž‘ì„±ìž</th>
+					<th style="background-color: #eeeeee; text-align: center;">ìž‘ì„±ì¼</th>
+					<th style="background-color: #eeeeee; text-align: center;">ì¡°íšŒ</th>
 					<th style="background-color: #eeeeee; text-align: center;">IP</th>
-					<th style="background-color: #eeeeee; text-align: center;">ÆÄÀÏ</th>
+					<th style="background-color: #eeeeee; text-align: center;">íŒŒì¼</th>
 				</tr>
-				<%			List<BoardDBBean>boardList = (List)request.getAttribute("boardList"); 
+				
+				<%			List<BoardDBBean> boardList = (List)request.getAttribute("boardList"); 
 				if (boardList == null || boardList.size() == 0){%>
 				<tr>
-					<td colspan="7">°Ô½ÃµÈ ±ÛÀÌ ¾ø½À´Ï´Ù.</td>
+					<td colspan="7">ê²Œì‹œëœ ê¸€ì´ ì—†ìŠµë‹ˆë‹¤.</td>
 				</tr>
 				<%			}else { 
 					for(BoardDBBean dto : boardList){%>
@@ -80,24 +75,38 @@ if(session.getAttribute("userID") != null){
 				} %>
 			</table>
 		</div>
+
+
+
+
+
 		<div align="center">
-		<%
-		BoardDataBean dao1 = new BoardDataBean();
-		int totalBBS = dao1.totalBoard();
-		pb.setTempEndPage(totalBBS,pg);
-		int tempEndPage = pb.getTempEndPage();
 		
-		for(int i =1;i<tempEndPage;i++){
-			if(pageNum == i){%>
 		
-		<a href="board.app?pageNum=<%=i%>&perPageNum=10">[<%=i %>]</a>
-		<%}else if(pageNum != i){ %>
-		<a href="board.app?pageNum=<%=i%>&perPageNum=10"><%=i %></a>
-		<%} %>
-			<%} %>
-			</div>
+		<c:if test="${pageMaker.prev }">
+		<a href="board.app?pageNum=${pageMaker.startPage-1 }">&laquo;</a>
+		</c:if>
+			
+		
+		
+<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">	
+		
+		<c:if test="${pageMaker.cri.page == idx }" >
+		<a href="board.app?pageNum=${idx }&perPageNum=10">[${idx }]
+			</a>
+</c:if>
+<c:if test="${pageMaker.cri.page != idx }" >
+			<a href="board.app?pageNum=${idx }&perPageNum=10">${idx }</a>
+			</c:if>
+			</c:forEach>
+		
+				<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
+			<a href="board.app?pageNum=${pageMaker.endPage+1 }&perPageNum=10">&raquo;</a>
+	</c:if>
+		</div>
 	</div>
 	<center>
+	
 		<footer>
 			<jsp:include page="/Bottom.jsp"></jsp:include>
 		</footer>

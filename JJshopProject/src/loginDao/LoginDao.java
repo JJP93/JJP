@@ -50,10 +50,6 @@ public LoginDao() {
 			JdbcUtil.close(conn);
 
 					}
-		System.out.println("id1:"+id1);
-		System.out.println("pw:"+pw);
-		System.out.println("dbid:"+dbid);
-		System.out.println("dbpw:"+dbpw);
 
 		System.out.println("로그인할때 비밀번호 일치 확인:"+result);
 		return result;

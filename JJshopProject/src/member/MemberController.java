@@ -29,9 +29,6 @@ public class MemberController extends HttpServlet {
 		CommandIf cmdIf = factory.createCommand(cmd);
 		String nextPage = (String)cmdIf.processCommand(req, resp);
 		
-		System.out.println("factory : "+factory);
-		System.out.println("cmdIf : "+cmdIf);
-		System.out.println("nextPage : "+nextPage);
 
 		RequestDispatcher view = req.getRequestDispatcher(nextPage);
 		view.forward(req, resp);

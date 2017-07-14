@@ -3,6 +3,8 @@
 <%@page import="shop.ShopDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,26 +37,39 @@
             <hr color ="black" size="3">
 	&nbsp; &nbsp;
 
-
-   <% ShopDTO dto = new ShopDTO();
-      ShopDAO dao = new ShopDAO();
+  <% 
+  
       
+      ArrayList<ShopDTO> list = (ArrayList<ShopDTO>)request.getAttribute("pdList");
       
-      ArrayList<ShopDTO> dtos;
-      dtos = dao.getShoesList();
-      
-      for(int i =0; i<dtos.size(); i++){
+      for(ShopDTO dtos : list){
    %>
    <div align ="center" style=" float:left; width: 33%;">
-   &nbsp;<span><a href="shopMain.app?pdnum=<%=dtos.get(i).getPdnum()%>"><img src="images/<%=dtos.get(i).getImg() %>" style="height: 300px; width: 300px;"></a><br></span> &nbsp;
+   &nbsp;<span><a href="shopMain.app?pdnum=<%=dtos.getPdnum()%>"><img src="images/<%=dtos.getImg() %>" style="height: 300px; width: 300px;"></a><br></span> &nbsp;
    
-   <b><%=dtos.get(i).getPdname() %></b><p><br>
-   <%					if (dtos.get(i).getPdnum()%2==0){ %>
+   <b><%=dtos.getPdname() %></b><p><br>
+   <%					if (dtos.getPdnum()%2==0){ %>
 							<img src="hot.gif">
 <%					} %>
-   <b><%=dtos.get(i).getPrice() %>원</b>
+   <b><%=dtos.getPrice() %>원</b>
       </div>
    <%}%>
-   </div>
+        	<div align="center">
+		<c:if test="${pageMaker.prev }">
+			<a href="shoes.shop?pageNum=${pageMaker.startPage-1 }&perPageNum=9">&laquo;</a>
+				</c:if>
+				
+				<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">	
+						<c:if test="${pageMaker.cri.page == idx }" >
+		<a href="shoes.shop?pageNum=${idx }&perPageNum=9">[${idx }]</a>
+		</c:if>
+		<c:if test="${pageMaker.cri.page != idx }" >
+		<a href="shoes.shop?pageNum=${idx }&perPageNum=9">${idx }</a>
+			</c:if>
+					</c:forEach>
+								<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
+			<a href="shoes.shop?pageNum=${pageMaker.endPage+1 }&perPageNum=9">&raquo;</a>
+				</c:if>
+			</div>
 </body>
 </html>
