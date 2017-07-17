@@ -67,6 +67,9 @@ public class AppFrontController extends HttpServlet{
 			nextPage = "addMovie.movie";						//servlet페이지로 이동
 		}else if (cmd.equals("/addMovieView.app")){
 			nextPage = "addMovieView.movie";						//servlet페이지로 이동
+
+		}else if (cmd.equals("/movieMain.app")){
+			nextPage = "main.movie";						//servlet페이지로 이동
 		}
 		
 		

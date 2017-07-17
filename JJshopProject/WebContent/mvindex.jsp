@@ -1,6 +1,6 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="shop.ShopDAO"%>
-<%@page import="shop.ShopDTO"%>
+<%@page import="movie.MovieInfoDao"%>
+<%@page import="movie.MovieInfoDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.io.PrintWriter"%>
@@ -21,12 +21,14 @@
 	right: 0px;
 	top: 0px;;
 }
+
 </style>
 <title>J&J Main</title>
 </head>
 
-<body onload="InitializeStaticMenu();">
+<body onload="InitializeStaticMenu();" style="background-color:#F6D8CE;">
 	<jsp:include page="/menu2.jsp"></jsp:include>
+	
 	<div class="container">
 		<div id="myCarousel" class="carousel" data-ride="carousel">
 			<ol class="carousel-indicators">
@@ -54,9 +56,31 @@
 		</div>
 	</div>
 	
-	
-	
-	
+	<div class="container" style="padding-top: 100px;">
+		<% MovieInfoDto dto = new MovieInfoDto();
+      MovieInfoDao dao = new MovieInfoDao();
+      
+      
+      ArrayList<MovieInfoDto> dtos;
+      dtos = dao.getmoveListAll();
+      
+      for(int i =0; i<3; i++){
+   %>
+   	<div align="center" style="float: left; width: 33%;">
+			&nbsp;<span><a
+				href="movieMain.app?mvnum=<%=dtos.get(i).getMvNum()%>"><img
+					src="images/<%=dtos.get(i).getMvImg() %>"
+					style="height: 300px; width: 300px;"></a><br></span> &nbsp;<b>영화제목:<%=dtos.get(i).getMvName() %></b>
+			<p>
+				<br>
+				<b>장르:<%=dtos.get(i).getMvG()%></b><br>
+				<b>감독:<%=dtos.get(i).getMvDir() %></b><br>
+				<b>주연:<%=dtos.get(i).getMvAc() %></b><br>
+			</p>
+		</div>
+   
+	<%} %>
+	</div>
 	
 	
 	

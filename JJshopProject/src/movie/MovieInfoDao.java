@@ -14,6 +14,7 @@ import javax.sql.DataSource;
 
 import jdbc.JdbcUtil;
 import jdk.nashorn.internal.ir.RuntimeNode.Request;
+import shop.ShopDTO;
 
 public class MovieInfoDao {
 	
@@ -75,6 +76,91 @@ public class MovieInfoDao {
 
 		}
 		return dtos;
+		
+		
+	}
+	public ArrayList<MovieInfoDto> getmoveListAll(){
+		  
+		MovieInfoDto dtos = new MovieInfoDto();
+		   ArrayList<MovieInfoDto> dto = new ArrayList<MovieInfoDto>();
+		try {
+			conn = ds.getConnection();
+			pstmt=conn.prepareStatement("select * from mvinfo order by mvnum desc");
+		
+		
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				int mvNum =rs.getInt("mvNum");
+				String mvName = rs.getString("mvName");
+				String mvArea = rs.getString("mvArea");
+				String mvTime = rs.getString("mvTime");
+				String mvDir = rs.getString("mvDir");
+				String mvG = rs.getString("mvG");
+				String mvAc = rs.getString("mvAc");
+				String mvImg = rs.getString("mvImg");
+				String mvDate = rs.getString("mvDate");
+				String mvSeat= rs.getString("mvSeat");
+				
+		
+				dtos= new MovieInfoDto( mvNum,mvName, mvArea, mvTime, mvDir,mvG, mvAc,mvImg,mvDate,mvSeat);
+				dto.add(dtos);
+				
+				
+
+
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+
+		}
+		return dto;
+		
+	}
+	public MovieInfoDto getMVList(String id){
+		  
+		MovieInfoDto dtos = new MovieInfoDto();
+		try {
+			conn = ds.getConnection();
+			pstmt=conn.prepareStatement("select * from mvinfo where mvnum = ?");
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				String mvName = rs.getString("mvName");
+				String mvArea = rs.getString("mvArea");
+				String mvTime = rs.getString("mvTime");
+				String mvDir = rs.getString("mvDir");
+				String mvG = rs.getString("mvG");
+				String mvAc = rs.getString("mvAc");
+				String mvImg = rs.getString("mvImg");
+				String mvDate = rs.getString("mvDate");
+				String mvSeat= rs.getString("mvSeat");
+				
+		
+				dtos= new MovieInfoDto( mvName, mvArea, mvTime, mvDir,mvG, mvAc,mvImg,mvDate,mvSeat);
+				
+			
+				return dtos;
+				
+
+
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+
+		}
+		return dtos;
+		
 	}
 	
 	

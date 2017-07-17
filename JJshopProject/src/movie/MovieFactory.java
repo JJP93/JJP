@@ -18,6 +18,8 @@ public class MovieFactory {
 			cmdIf = new AddMovieCommander();
 		}else if (cmd.equals("/addMovieView.movie")){
 			cmdIf = new AddMovieViewCommander();
+		}else if (cmd.equals("/main.movie")){
+			cmdIf = new MovieMainCommender();
 		}
 		return cmdIf;
 	}
