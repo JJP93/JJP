@@ -218,7 +218,7 @@ table {
    
    %>
 
-	<jsp:include page="/menu.jsp"></jsp:include>
+	<jsp:include page="/menu3.jsp"></jsp:include>
 
 	&nbsp; &nbsp;
 
@@ -288,12 +288,8 @@ table {
 
 	</div>
 
-	<center>
-		<footer>
 			<jsp:include page="/Bottom.jsp"></jsp:include>
-		</footer>
-	</center>
-
+	
 
 </body>
 </html>

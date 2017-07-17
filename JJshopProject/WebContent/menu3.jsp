@@ -73,31 +73,13 @@ if(session.getAttribute("userID") != null){
 			<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 				class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="index.jsp">J&J Shop</a>
 	</div>
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav">
 			<li ><a href="main.jsp">메인</a></li>
-			<li><a href="board.app?pageNum=1&perPageNum=10">게시판</a></li>
 			
-			<ul class="nav navbar-nav ">
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false">SHOP<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-					<li><a href="shop.shop?pageNum=1&perPageNum=9">전체보기</a></li>
-						<li><a href="hat.shop?pageNum=1&perPageNum=9">모자</a></li>
-						<li><a href="top.shop?pageNum=1&perPageNum=9">상의</a></li>
-						<li><a href="pants.shop?pageNum=1&perPageNum=9">바지</a></li>
-						<li><a href="shoes.shop?pageNum=1&perPageNum=9">신발</a></li>
-						<li><a href="acc.shop?pageNum=1&perPageNum=9">악세사리</a></li>
-						
-					</ul></li>
+			
 			</ul>
-
-
-		</ul>
-
 		<ul class="nav navbar-nav navbar-right">
 			<li class="dropdown"><a href="#" class="dropdown-toggle"
 				data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -129,29 +111,13 @@ if(session.getAttribute("userID") != null){
 				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index.jsp">J&J Shop</a>
+			
 		</div>
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">메인</a></li>
-			<li><a href="board.app?pageNum=1&perPageNum=10">게시판</a></li>
-					<ul class="nav navbar-nav ">
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false">SHOP<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-					<li><a href="shop.shop?pageNum=1&perPageNum=9">전체보기</a></li>
-						<li><a href="hat.shop?pageNum=1&perPageNum=9">모자</a></li>
-						<li><a href="top.shop?pageNum=1&perPageNum=9">상의</a></li>
-						<li><a href="pants.shop?pageNum=1&perPageNum=9">바지</a></li>
-						<li><a href="shoes.shop?pageNum=1&perPageNum=9">신발</a></li>
-						<li><a href="acc.shop?pageNum=1&perPageNum=9">악세사리</a></li>
-						
-					</ul></li>
-			</ul>
-				
-
+	
 			</ul>
 
 
@@ -165,13 +131,6 @@ if(session.getAttribute("userID") != null){
 						<li><a href="mypage.member?id=<%=userID%>">마이페이지</a></li>
 					</ul></li>
 			</ul>
-
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="mypage.member?id=<%=userID%>"><%=userID %> 님
-						접속중</a></li>
-						<li><a href="orderlist.app">장바구니</a></li>
-						
-			</ul>
 			</div>
 		<!-- 관리자모드 -->
 <%}else if(userID.equals("admin")){ %>
@@ -184,34 +143,12 @@ if(session.getAttribute("userID") != null){
 				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index.jsp">J&J Shop</a>
 		</div>
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li ><a href="main.jsp">메인</a></li>
-			<li><a href="board.app?pageNum=1&perPageNum=10">게시판</a></li>
+				<li><a href="main.jsp">메인</a></li>
 				<li><a href="memberManagement.app">회원관리</a></li>
-				
-				<ul class="nav navbar-nav ">
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false">SHOP<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-					<li><a href="shop.shop?pageNum=1&perPageNum=9">전체보기</a></li>
-					<li><a href="hat.shop?pageNum=1&perPageNum=9">모자</a></li>
-						<li><a href="top.shop?pageNum=1&perPageNum=9">상의</a></li>
-						<li><a href="pants.shop?pageNum=1&perPageNum=9">바지</a></li>
-						<li><a href="shoes.shop?pageNum=1&perPageNum=9">신발</a></li>
-						<li><a href="acc.shop?pageNum=1&perPageNum=9">악세사리</a></li>
-						
-					</ul></li>
-			</ul>
-				<li><a href="pdJoinView.app">상품 등록</a></li>
-					<li><a href="orderManagement.app">주문관리</a></li>
-			</ul>
-
-
 
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"

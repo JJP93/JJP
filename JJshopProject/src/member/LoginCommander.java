@@ -29,7 +29,7 @@ public class LoginCommander implements CommandIf {
 				if (a=="1"){
 					session.setAttribute("userID", id);
 					msg = "로그인 성공!!메인페이지로 이동합니다";
-					url = "index.jsp";
+					url = "main.jsp";
 				}else if (a!="1"){
 					msg = "비밀번호가 틀렸습니다. 다시 입력해 주세요";
 					url = "loginForm.app";
