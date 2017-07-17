@@ -35,8 +35,8 @@
 	</div>
 	<div align="center" style="float: left; width:50% ">
 		&nbsp;
-		<img src="images/movie.jpg" style="height: 300px; width: 300px;">
-		<br><h1>영화관</h1>	
+		<a href="mvindex.jsp"><img src="images/movie.jpg" style="height: 300px; width: 300px;">
+		<br><h1>영화관</h1></a>	
 	</div>
 	</div>	
 	<footer>

@@ -34,7 +34,7 @@ function on(){
 </script>
 
 
-<jsp:include page="/menu.jsp"></jsp:include>
+<jsp:include page="/menu3.jsp"></jsp:include>
 
 <%String id = request.getParameter("id"); %>
 <%String contextpath = request.getContextPath(); %>

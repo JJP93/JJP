@@ -63,7 +63,7 @@ table {
 <body>
 
 
-	<jsp:include page="/menu.jsp"></jsp:include>
+	<jsp:include page="/menu3.jsp"></jsp:include>
 
 
 
@@ -115,10 +115,10 @@ table {
 			</div>
 			<div class="col-lg-4"></div>
 		</div>
+		</div>
+<jsp:include page="/Bottom.jsp"></jsp:include>
 
-		<footer> <jsp:include page="/Bottom.jsp"></jsp:include> </footer>
-
-	</div>
+	
 
 </body>
 </html>
