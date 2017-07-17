@@ -119,7 +119,7 @@
 	   if(c.getName().indexOf("pdcook") != -1){
 		   String cookieValue = java.net.URLDecoder.decode(c.getValue(),"UTF-8");
 		   
-				  ii =  cookieValue.indexOf("!");
+		    ii =  cookieValue.indexOf("!");
 		    url = cookieValue.substring(cookieValue.indexOf("!")+1);
 		    imageName = cookieValue.substring(0, ii);
 		   
@@ -202,8 +202,9 @@
 		<%}%>
 		</div>
 	
+	
 		<jsp:include page="/Bottom.jsp"></jsp:include>
-		
+	
 </body>
 	
 </html>
