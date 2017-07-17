@@ -14,6 +14,8 @@ public class MovieFactory {
 		CommandIf cmdIf = null;
 		if (cmd.equals("/list.movie")){
 			cmdIf = new MovieListCommander();
+		}else if (cmd.equals("/main.movie")){
+			cmdIf = new MovieMainCommender();
 		}
 		return cmdIf;
 	}

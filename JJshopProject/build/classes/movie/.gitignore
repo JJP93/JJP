@@ -1,2 +1,7 @@
 /MovieInfoDao.class
 /MovieInfoDto.class
+/CommandIf.class
+/MovieController.class
+/MovieFactory.class
+/MovieListCommander.class
+/MovieMainCommender.class
