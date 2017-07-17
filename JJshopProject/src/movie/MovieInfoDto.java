@@ -10,6 +10,7 @@ String mvG;
 String mvAc;
 String mvImg;
 String mvDate;
+String mvSeat;
 
 
 public MovieInfoDto() {
@@ -18,7 +19,7 @@ public MovieInfoDto() {
 
 
 public MovieInfoDto(int mvNum, String mvName, String mvArea, String mvTime, String mvDir, String mvG, String mvAc,
-		String mvImg, String mvDate) {
+		String mvImg, String mvDate, String mvSeat) {
 	super();
 	this.mvNum = mvNum;
 	this.mvName = mvName;
@@ -29,6 +30,9 @@ public MovieInfoDto(int mvNum, String mvName, String mvArea, String mvTime, Stri
 	this.mvAc = mvAc;
 	this.mvImg = mvImg;
 	this.mvDate = mvDate;
+	this.mvSeat = mvSeat;
+	
+	
 }
 
 
@@ -120,6 +124,17 @@ public String getMvDate() {
 public void setMvDate(String mvDate) {
 	this.mvDate = mvDate;
 }
+
+
+public String getMvSeat() {
+	return mvSeat;
+}
+
+
+public void setMvSeat(String mvSeat) {
+	this.mvSeat = mvSeat;
+}
+
 
 
 }

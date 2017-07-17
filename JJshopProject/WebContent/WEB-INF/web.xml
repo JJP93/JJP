@@ -43,4 +43,13 @@
 	<servlet-name>order</servlet-name>
 	<url-pattern>*.order</url-pattern>
 </servlet-mapping>
+
+<servlet>
+	<servlet-name>movie</servlet-name>
+	<servlet-class>movie.MovieController</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>movie</servlet-name>
+	<url-pattern>*.movie</url-pattern>
+</servlet-mapping>
 </web-app>
