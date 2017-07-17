@@ -79,6 +79,8 @@ public class MovieInfoDao {
 		
 		
 	}
+	
+	
 	public ArrayList<MovieInfoDto> getmoveListAll(){
 		  
 		MovieInfoDto dtos = new MovieInfoDto();
