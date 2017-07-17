@@ -13,10 +13,10 @@ public class MovieListCommander implements CommandIf {
 	public Object processCommand(HttpServletRequest req, HttpServletResponse resp) {
 		// TODO Auto-generated method stub
 		MovieInfoDao dao = new MovieInfoDao();
-	List<MovieInfoDto> dto;
+	
 		try {
-			dto = dao.moveListAll();
-			System.out.println("ss");
+			ArrayList<MovieInfoDto> dto = (ArrayList<MovieInfoDto>) dao.moveListAll();
+			System.out.println("µÎ¹øÂ° : " +dto.get(2).getMvNum());
 			req.setAttribute("mvlist", dto);
 		} catch (SQLException e) {
 			e.printStackTrace();

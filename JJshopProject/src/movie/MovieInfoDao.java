@@ -39,9 +39,9 @@ public class MovieInfoDao {
 
 	
 	
-	public List<MovieInfoDto> moveListAll() throws SQLException{
-		ArrayList<MovieInfoDto> dtos = new ArrayList<>();
-		MovieInfoDto dto = new MovieInfoDto();
+	public ArrayList<MovieInfoDto> moveListAll() throws SQLException{
+		ArrayList<MovieInfoDto> dtos = new ArrayList<MovieInfoDto>();
+		
 		
 		try {
 			conn = ds.getConnection();
@@ -50,6 +50,7 @@ public class MovieInfoDao {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
+				MovieInfoDto dto = new MovieInfoDto();
 				dto.setMvNum(rs.getInt("mvNum"));
 				dto.setMvArea(rs.getString("mvArea"));
 				dto.setMvDate(rs.getString("mvDate"));
@@ -60,7 +61,7 @@ public class MovieInfoDao {
 				dto.setMvTime(rs.getString("mvTime"));
 				dto.setMvAc(rs.getString("mvAc"));
 				dto.setMvSeat(rs.getString("mvSeat"));
-				System.out.println(rs.getString("mvArea"));
+				
 				dtos.add(dto);
 			}
 		
@@ -77,6 +78,33 @@ public class MovieInfoDao {
 	}
 	
 	
+	public void addMovie(MovieInfoDto dto)throws SQLException{
+		
+		try {
+			conn = ds.getConnection();
+			pstmt=conn.prepareStatement("insert into mvinfo values(mv_num.nextval,?,?,?,?,?,?,?,?,?)");
+			pstmt.setString(1, dto.getMvName());
+			pstmt.setString(2, dto.getMvArea());
+			pstmt.setString(3, dto.getMvTime());
+			pstmt.setString(4, dto.getMvDir());
+			pstmt.setString(5, dto.getMvG());
+			pstmt.setString(6, dto.getMvAc());
+			pstmt.setString(7, dto.getMvImg());
+			pstmt.setString(8, dto.getMvDate());
+			pstmt.setString(9, dto.getMvSeat());
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+
+		}
+	
+	}
 	
 	
 	

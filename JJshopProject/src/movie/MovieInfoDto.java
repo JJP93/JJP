@@ -17,6 +17,21 @@ public MovieInfoDto() {
 	// TODO Auto-generated constructor stub
 }
 
+public MovieInfoDto( String mvName, String mvArea, String mvTime, String mvDir, String mvG, String mvAc,
+		String mvImg, String mvDate, String mvSeat) {
+	super();
+	this.mvName = mvName;
+	this.mvArea = mvArea;
+	this.mvTime = mvTime;
+	this.mvDir = mvDir;
+	this.mvG = mvG;
+	this.mvAc = mvAc;
+	this.mvImg = mvImg;
+	this.mvDate = mvDate;
+	this.mvSeat = mvSeat;
+	
+	
+}
 
 public MovieInfoDto(int mvNum, String mvName, String mvArea, String mvTime, String mvDir, String mvG, String mvAc,
 		String mvImg, String mvDate, String mvSeat) {

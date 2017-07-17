@@ -120,6 +120,7 @@ if(session.getAttribute("userID") != null){
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">메인</a></li>
 				<li><a href="#">예매하기</a></li>
+				
 			</ul>
 			</ul>
 			
@@ -159,7 +160,7 @@ if(session.getAttribute("userID") != null){
 				<li><a href="memberManagement.app">회원관리</a></li>
 			</ul>	
 				<ul class="nav navbar-nav ">
-				<li><a href="#">영화 등록</a></li>
+			<li><a href="addMovieView.movie">영화 등록</a></li>
 				<li><a href="#">예약관리</a></li>
 			</ul>
 

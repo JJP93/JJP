@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="movie.MovieInfoDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -11,10 +12,17 @@
 </head>
 <body>
 영화 목록 페이지
-<% List<MovieInfoDto> a = (List)request.getAttribute("mvlist"); 
-for(int i = 0; i<a.size(); i++){
+<% ArrayList<MovieInfoDto> a = (ArrayList<MovieInfoDto>)request.getAttribute("mvlist"); 
+
+
 %>
-<%=a.get(i).getMvAc() %>
+
+
+<% 
+System.out.println(a.size());
+for(int j=0; j < a.size(); j++){ %>
+<%=a.get(j).getMvNum() %><br>
+
 
 <%} %>
 
