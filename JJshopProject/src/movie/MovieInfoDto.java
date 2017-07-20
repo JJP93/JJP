@@ -13,6 +13,9 @@ String mvDate;
 String mvSeat;
 
 
+
+
+
 public MovieInfoDto() {
 	// TODO Auto-generated constructor stub
 }

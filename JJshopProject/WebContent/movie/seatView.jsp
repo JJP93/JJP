@@ -29,7 +29,7 @@ $(document).ready(function(){
 </head>
 <body>
 <table align="center"  >
-<tr align="center"><td colspan="4">SCREEN</td></tr>
+<tr align="center"><td colspan="5">SCREEN</td></tr>
 <tr align="center"><td></td>
 <% for(int j =0; j < 5; j++){ %>
 <td><%=j+1 %></td>
@@ -46,11 +46,11 @@ for(int i =0; i < 4; i++){ %>
 </td>
 <%} %>
 </tr>
-<br>
 <%} %>
 </table>
 
-<p id = "view">목록 페이지</p>
+
+<p id = "view">선택하신 자리가 없습니다.</p>
 
 </body>
 </html>
