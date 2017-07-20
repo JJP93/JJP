@@ -68,6 +68,25 @@ public class MvReDAO {
 		
 	}
 	
+	public void init(){
+		
+		try {
+			conn = ds.getConnection();
+			pstmt=conn.prepareStatement("update seat set ck = 0");
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+
+		}
+		
+		
+	}
+	
 	
 	
 	

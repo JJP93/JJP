@@ -12,7 +12,7 @@ import mvSeat.SeatDAO;
 
 
 
-@WebServlet("/movie/ReserveCommander")
+@WebServlet("/mvReserve/ReserveCommander")
 public class ReserveCommander extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

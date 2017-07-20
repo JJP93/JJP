@@ -24,7 +24,7 @@ $(document).ready(function(){
 					if(str == 'x'){
 						alert("이미 예약된 자리입니다.");
 					}else if(str != "x"){
-						hap += str+"|";
+						hap += str;
 						
 						$("#view").text(hap);
 						$("#seat").val($("#view").text());
@@ -38,7 +38,11 @@ $(document).ready(function(){
 		
 	}
 
-	
+$("#init").click(function(){
+		
+
+		location.href="/JJshopProject/mvReserve/InitCommander";
+	});
 	
 	$("#cancle").click(function(){
 		
@@ -55,7 +59,7 @@ $(document).ready(function(){
 $("#add").click(function add(){
 	alert('실행 확인');
 	
-	registerRequset.open("Post", "./ReserveCommander?seat="+encodeURIComponent(document.getElementById("seat").value)+
+	registerRequset.open("Post", "/JJshopProject/mvReserve/ReserveCommander?seat="+encodeURIComponent(document.getElementById("seat").value)+
 			"&mvarea="+encodeURIComponent(document.getElementById("mvarea").value)+
 			"&mvname="+encodeURIComponent(document.getElementById("mvname").value)+
 			"&mvtime="+encodeURIComponent(document.getElementById("mvtime").value)+
@@ -106,11 +110,11 @@ ArrayList<SeatDTO> a = dao.listSeat();
 
 
 <table align="center" cellpadding="10px" >
-<tr><td><input type="text" id="mvarea" name="mvarea" value="인천"></td>
-<td><input type="text" id="mvname" name="mvname" value="영화이름"></td>
-<td><input type="text" id="mvtime" name="mvtime" value="영화시간"></td>
-<td><input type="text" id="mvdate" name="mvdate" value="영화날짜"></td>
-<td><input type="text" id="mvprice" name="mvprice" value="영화가격"></td>
+<tr><td><input type="text" id="mvarea" name="mvarea" value="인천 극장"></td>
+<td><input type="text" id="mvname" name="mvname" value="실미도 "></td>
+<td><input type="text" id="mvtime" name="mvtime" value="12시"></td>
+<td><input type="text" id="mvdate" name="mvdate" value="1일"></td>
+<td><input type="text" id="mvprice" name="mvprice" value="2만원"></td>
 
 </tr>
 <tr align="center"><td colspan="5">SCREEN</td></tr>
@@ -170,6 +174,7 @@ if(a.get(k).getCk() == 1){ %>
 
 <button id = "add" >예약하기</button>
 <button id = "cancle">다시 선택</button>
+<button id = "init">초기화</button>
 </div>
 </body>
 </html>
