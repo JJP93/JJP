@@ -26,7 +26,7 @@
 <title>J&J Main</title>
 </head>
 
-<body onload="InitializeStaticMenu();" style="background-color:#F6D8CE;">
+<body onload="InitializeStaticMenu();">
 	<jsp:include page="/menu2.jsp"></jsp:include>
 	
 	<div class="container">
