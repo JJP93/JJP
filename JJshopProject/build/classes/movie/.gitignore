@@ -5,3 +5,5 @@
 /MovieFactory.class
 /MovieListCommander.class
 /MovieMainCommender.class
+/AddMovieCommander.class
+/AddMovieViewCommander.class
