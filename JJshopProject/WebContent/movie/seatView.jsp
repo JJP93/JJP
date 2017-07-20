@@ -14,28 +14,20 @@
 $(document).ready(function(){
 	var hap = "";
 	for(var i =0; i<4;i++){
-		for(var j=0; j<5; j++){
-			
+		for(var j=0; j<5; j++){			
 			$("#btn"+i+j).click(function(){
 				var str = $(this).val();
-					hap += str;
-					
+					hap += str;					
 					$("#view").text(hap);
-				});
-			
-		}
-		
+				});			
+		}		
 	}
-
-
 });	
 	
 
 </script>
 </head>
 <body>
-
-
 <table align="center"  >
 <tr align="center"><td colspan="5">SCREEN</td></tr>
 <tr align="center"><td></td>
@@ -49,19 +41,15 @@ for(int i =0; i < 4; i++){ %>
 <tr align="center"><td ><%=i+1 %></td>
 
 	<% for(int j =0; j < 5; j++){ %>
-<td>
-<input  id = "btn<%=i %><%=j %>" type="button" value="[<%=i %>,<%=j %>]" class="btn btn-primary">
+<td class="btn btn-primary">
+<input  id = "btn<%=i %><%=j %>" type="button" value="[<%=i %>,<%=j %>]" >
 </td>
-
 <%} %>
 </tr>
-<br>
 <%} %>
 </table>
-<ol>
 
 
-</ol>
 <p id = "view">선택하신 자리가 없습니다.</p>
 
 </body>
