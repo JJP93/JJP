@@ -7,18 +7,7 @@
 <meta name="viewport" content="width=device-width initial-scale=1">
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
-    <style> 
-#panel {
-    text-align: center;
-    background-color: #FBF8EF;
-    border: solid 1px #c3c3c3;
-}
-
-#panel {
-    padding:250px;
-    display: none;
-}
-</style>
+  
     
     <style>
       body {
@@ -64,7 +53,7 @@
 <body>
 	<%String contextpath = request.getContextPath(); %>
 	<%
-	
+
    String userID = null;
 if(session.getAttribute("userID") != null){
    userID = (String)session.getAttribute("userID");
@@ -107,8 +96,7 @@ if(session.getAttribute("userID") != null){
 		</ul>
 		</div>
 		
-		<div id="panel">
-		</div>
+		
 		</nav>
 		<%}%>
 		</div>
@@ -159,8 +147,7 @@ if(session.getAttribute("userID") != null){
 						</ul>
 			
 			</div>
-		<div id="panel">
-		</div>
+		
 		</nav>
 		
 		</div>
@@ -207,8 +194,7 @@ if(session.getAttribute("userID") != null){
 				</div>
 		
 		
-				<div id="panel">
-		</div>
+			
 		
 			<%}} %>			
 	</nav>
@@ -216,8 +202,7 @@ if(session.getAttribute("userID") != null){
 
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 		<script src="js/bootstrap.js"></script>
-		<div id="panel">
-		</div>
+		
 		</div>
 </body>
 </html>
