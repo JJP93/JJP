@@ -138,12 +138,13 @@ MemberDao mdao = new MemberDao();
 mdto = mdao.memberInfo(userID);
 
 %>
-<jsp:include page="/menu2.jsp"></jsp:include>
-
-<div id="panel">
 <%SeatDAO dao = new SeatDAO();
 ArrayList<SeatDTO> a = dao.listSeat();
 %>
+<jsp:include page="/menu2.jsp"></jsp:include>
+
+<div id="panel">
+
 <table align="center" cellpadding="10px" >
 <tr><td><input type="text" id="mvarea" name="mvarea" value="인천"></td>
 <td><input type="text" id="mvname" name="mvname" value="영화이름"></td>
