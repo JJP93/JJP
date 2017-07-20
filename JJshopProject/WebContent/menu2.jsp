@@ -7,6 +7,19 @@
 <meta name="viewport" content="width=device-width initial-scale=1">
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
+    <style> 
+#panel {
+    text-align: center;
+    background-color: #FBF8EF;
+    border: solid 1px #c3c3c3;
+}
+
+#panel {
+    padding:250px;
+    display: none;
+}
+</style>
+    
     <style>
       body {
         margin: 0px;
@@ -92,9 +105,14 @@ if(session.getAttribute("userID") != null){
 				</li>
 				
 		</ul>
-
+		</div>
+		
+		<div id="panel">
+		</div>
+		</nav>
 		<%}%>
 		</div>
+		
 <!-- 일반사용자모드 -->
 		<%
           if(userID != null){
@@ -139,7 +157,15 @@ if(session.getAttribute("userID") != null){
 				<li><a href="mypage.member?id=<%=userID%>"><%=userID %> 님
 						접속중</a></li>
 						</ul>
+			
 			</div>
+		<div id="panel">
+		</div>
+		</nav>
+		
+		</div>
+		</nav>
+	
 		<!-- 관리자모드 -->
 <%}else if(userID.equals("admin")){ %>
 	<div class="jbMenu">
@@ -178,11 +204,20 @@ if(session.getAttribute("userID") != null){
 				<li><a href="mypage.member?id=<%=userID%>"><%=userID %> (관리자) 님
 						접속중</a></li>
 			</ul>
-			<%}} %>
+				</div>
+		
+		
+				<div id="panel">
 		</div>
-		</nav>
-</div>
+		
+			<%}} %>			
+	</nav>
+
+
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 		<script src="js/bootstrap.js"></script>
+		<div id="panel">
+		</div>
+		</div>
 </body>
 </html>

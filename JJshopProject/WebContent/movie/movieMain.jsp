@@ -9,8 +9,18 @@
 <!DOCTYPE html >
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>상세페이지</title>
+<script> 
+$(document).ready(function(){
+    $("#btn").click(function(){
+        $("#panel").toggle("slow");
+    });
+});
+</script>
+ 
+
 </head>
 <body>
 <%
@@ -20,28 +30,17 @@ if(session.getAttribute("userID") != null){
 }
 %>
 <script>
-function order(){
-	
+function order(){	
 var id = <%=userID%>;
-
-
 if(id==null){
 	 
 	 alert("예매를 하시려면 로그인 먼저 해주세요.");
 		location.href = "loginForm.member";
 }
-if(id!=null){
-	
-	
-		
+if(id!=null){		
 }
-
-
-	
-	
 }
-</script>
-	
+</script>	
 	<%
 MemberDto mdto = new MemberDto();
 MemberDao mdao = new MemberDao();
@@ -49,12 +48,15 @@ mdto = mdao.memberInfo(userID);
 
 %>
 <jsp:include page="/menu2.jsp"></jsp:include>
+
+
+
 <% 
 
 MovieInfoDto dto = (MovieInfoDto)request.getAttribute("mv");
 
 %>
-<center>
+<div class="container">
 <form action="#" method="post" name = "#">
 <table width="1000">
 <tr height="100">
@@ -62,40 +64,39 @@ MovieInfoDto dto = (MovieInfoDto)request.getAttribute("mv");
 <font size="6" color="gray"><%=dto.getMvName() %></font>
 </tr>
 <tr>
-	<td rowspan="8" width="1000" align="center">
+	<td rowspan="4" width="1000" align="center">
 	<img src="images/<%=dto.getMvImg() %>" width= "350"><br>
-	<td width="350" align="center"><b>영화명</b></td>	
-	<td width="1000" align="center"><%=dto.getMvName() %>
-	</td>
+	<td width="150" align="center"><b>영화명:</b></td>	
+	<td width="1000" align="center"><b><%=dto.getMvName() %></b></td>
+	
 	</tr>
 	<tr>
-	<td width="1000" align="center"><b>감독:</b></td>
+	<td width="150" align="center"><b>감독:</b></td>
 	<td width="1000" align="center"><b><%=dto.getMvDir() %></b></td>
+</tr>	
+<tr>	
+	<td width="150" align="center"><b>주연:</b></td>
+	<td align="center"><b><%=dto.getMvAc() %></b></td>
 </tr>
-
-
-	
 <tr>
-	
+	<td width="150" align="center"><b></b></td>
+	<td  align="center"><b></b></td>
+</tr>
+<tr>
+	<td width="150" align="center"><b></b></td>
 	<td width="1000" align="center"><b></b></td>
-		<td width="1000" align="center"></td>
-</tr>
-<tr>
-	<td width="1000" align="center"><b></b></td>
-		<td width="1000" align="center"><b></b></td>
-</tr>
-<tr>
-<td width="1000" align="center" >
-<input type="button"class="btn btn-primary pull-right" value="메인으로" onclick="location.href='mvindex.jsp'"></td>
-<td width="1000" align="center" >
-<input type="button"class="btn btn-primary pull-right" value="예매하기" onclick="#"></td>
 </tr>
 </table>
+<div style="padding-top: 30px;" align ="center">
+<input type="button" value="메인으로" class="btn btn-primary"onclick="location.href='mvindex.jsp'">
+
+<input type="button" value="즉시예매하기" class="btn btn-primary" id="btn">
+</div>
 </form>
+</div>
 <footer>
 	<jsp:include page="/Bottom.jsp"></jsp:include>
 </footer>
-</center>
 
 </body>
 </html>
