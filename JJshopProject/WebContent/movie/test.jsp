@@ -13,10 +13,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
 var registerRequset = new XMLHttpRequest();
-
-
-
-
 $(document).ready(function(){
 	var hap = "";
 	for(var i =0; i<4;i++){
@@ -94,6 +90,7 @@ function registerProcess(){
 <title>Insert title here</title>
 </head>
 <body>
+<div class="container">
 <%SeatDAO dao = new SeatDAO();
 ArrayList<SeatDTO> a = dao.listSeat();
 
@@ -172,5 +169,6 @@ if(a.get(k).getCk() == 1){ %>
 
 <button id = "add" >예약하기</button>
 <button id = "cancle">다시 선택</button>
+</div>
 </body>
 </html>
