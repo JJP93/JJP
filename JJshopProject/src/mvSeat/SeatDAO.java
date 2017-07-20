@@ -48,7 +48,7 @@ public ArrayList<SeatDTO> listSeat() throws SQLException{
 				dto.setCk(rs.getInt("ck"));
 				dto.setRnum(rs.getInt("rnum"));
 				dto.setCnum(rs.getInt("cnum"));
-				dto.setSeatnum(rs.getInt("seatnum"));
+				dto.setSeatnum(rs.getString("seatnum"));
 				dtos.add(dto);
 			}
 			
@@ -62,6 +62,29 @@ public ArrayList<SeatDTO> listSeat() throws SQLException{
 
 		}
 		return dtos;
+		
+	}
+
+
+public void	updateSeat(String seatid) throws SQLException{
+	
+		try {
+			System.out.println(seatid);
+			conn = ds.getConnection();
+			pstmt=conn.prepareStatement("update seat set ck = 1 where seatnum = ? ");
+			pstmt.setString(1, seatid);
+			pstmt.executeUpdate();
+		
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+
+		}
 		
 	}
 	

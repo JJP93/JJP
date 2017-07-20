@@ -40,29 +40,31 @@ public class MvReDAO {
 		
 		
 		try {
+			
 			conn = ds.getConnection();
-			pstmt=conn.prepareStatement("insert into mvre values(re_num.nextval,?,?,?,?,?,?)");
+			pstmt=conn.prepareStatement("insert into mvre values(res_num.nextval,?,?,?,?,?,?)");
 			pstmt.setString(1,dto.getSeatID() );
 			pstmt.setString(2,dto.getMvArea() );
 			pstmt.setString(3,dto.getMvName() );
 			pstmt.setString(4,dto.getMvTime());
 			pstmt.setString(5,dto.getMvdate());
 			pstmt.setString(6,dto.getMvprice() );
-		 pstmt.executeUpdate();
+			System.out.println(dto.getSeatID());
 			
 		return  pstmt.executeUpdate();
 			
 		} catch (Exception e) {
 			// TODO: handle exception
+			System.out.println("dfjndsf");
 			e.printStackTrace();
-			return 0;
 		}finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
 			JdbcUtil.close(conn);
 
 		}
-		
+		return -1;
+	
 		
 	}
 	

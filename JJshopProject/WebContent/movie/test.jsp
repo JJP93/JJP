@@ -24,10 +24,16 @@ $(document).ready(function(){
 			
 			$("#btn"+i+j).click(function(){
 				var str = $(this).val();
-					hap += str+",";
-					
-					$("#view").text(hap);
-					$("#seat").val($("#view").text());
+					if(str == 'x'){
+						alert("이미 예약된 자리입니다.");
+					}else if(str != "x"){
+						hap += str+",";
+						
+						$("#view").text(hap);
+						$("#seat").val($("#view").text());
+						
+					}
+				
 					
 				});
 			
@@ -51,6 +57,7 @@ $(document).ready(function(){
 
 $("#add").click(function add(){
 	alert('실행 확인');
+	
 	registerRequset.open("Post", "./ReserveCommander?seat="+encodeURIComponent(document.getElementById("seat").value)+
 			"&mvarea="+encodeURIComponent(document.getElementById("mvarea").value)+
 			"&mvname="+encodeURIComponent(document.getElementById("mvname").value)+
@@ -64,7 +71,7 @@ $("#add").click(function add(){
 function registerProcess(){
 	if(registerRequset.readyState == 4 && registerRequset.status == 200){
 		var result = registerRequset.responseText;
-	
+		alert(registerRequset.responseText);
 		if(result !=1){
 			alert("등록 실패");
 		}else{
@@ -101,11 +108,11 @@ ArrayList<SeatDTO> a = dao.listSeat();
 
 
 <table align="center" cellpadding="10px" >
-<tr><td><input type="text" name="mvarea" value="인천"></td>
-<td><input type="text" name="mvname" value="영화이름"></td>
-<td><input type="text" name="mvtime" value="영화시간"></td>
-<td><input type="text" name="mvdate" value="영화날짜"></td>
-<td><input type="text" name="mvprice" value="영화가격"></td>
+<tr><td><input type="text" id="mvarea" name="mvarea" value="인천"></td>
+<td><input type="text" id="mvname" name="mvname" value="영화이름"></td>
+<td><input type="text" id="mvtime" name="mvtime" value="영화시간"></td>
+<td><input type="text" id="mvdate" name="mvdate" value="영화날짜"></td>
+<td><input type="text" id="mvprice" name="mvprice" value="영화가격"></td>
 
 </tr>
 <tr align="center"><td colspan="5">SCREEN</td></tr>
@@ -142,16 +149,18 @@ for(int i =0; i < 4; i++){ %>
 
 <%
 
-if(a.get(k).getCk() == 0){ %>
+if(a.get(k).getCk() == 1){ %>
 <td>
-<input  id = "btn<%=i %><%=j %>" type="button"  value="x"  class="btn btn-primary"> 
+
+<input  id = "btn<%=i %><%=j %>" type="button"  value="x"  class="btn btn-primary" > 
 </td>
 <% }%>
-<% if(a.get(k).getCk() == 1){ %>
+<% if(a.get(k).getCk() == 0){ %>
 <td>
-<input  id = "btn<%=i %><%=j %>" type="button"  value="<%=c %><%=j %>"  class="btn btn-primary"> 
+<input  id = "btn<%=i %><%=j %>" type="button"  value="<%=c %><%=j+1 %>"  class="btn btn-primary" > 
 </td>
 <% }%>
+
 <%  k += 1; } %>
 </tr>
 <br>
@@ -161,7 +170,7 @@ if(a.get(k).getCk() == 0){ %>
 <p id = "view" >선택하신 자리가 없습니다.</p>
 <input type="text" name = "seat" id="seat"> 
 
-<button id = "add" onclick="add()">예약하기</button>
+<button id = "add" >예약하기</button>
 <button id = "cancle">다시 선택</button>
 </body>
 </html>

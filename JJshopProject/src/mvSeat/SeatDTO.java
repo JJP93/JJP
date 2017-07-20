@@ -4,13 +4,13 @@ public class SeatDTO {
 int rnum;
 int cnum;
 int ck;
-int seatnum;
+String seatnum;
 
 public SeatDTO() {
 	// TODO Auto-generated constructor stub
 }
 
-public SeatDTO(int rnum, int cnum, int ck, int seatnum) {
+public SeatDTO(int rnum, int cnum, int ck, String seatnum) {
 	super();
 	this.rnum = rnum;
 	this.cnum = cnum;
@@ -42,11 +42,11 @@ public void setCk(int ck) {
 	this.ck = ck;
 }
 
-public int getSeatnum() {
+public String getSeatnum() {
 	return seatnum;
 }
 
-public void setSeatnum(int seatnum) {
+public void setSeatnum(String seatnum) {
 	this.seatnum = seatnum;
 }
 

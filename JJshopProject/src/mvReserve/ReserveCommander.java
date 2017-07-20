@@ -1,7 +1,6 @@
 package mvReserve;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,8 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import mvSeat.SeatDAO;
 
-@WebServlet("/ReserveCommander")
+
+
+@WebServlet("/movie/ReserveCommander")
 public class ReserveCommander extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -24,20 +26,9 @@ public class ReserveCommander extends HttpServlet {
 		String mvdate = request.getParameter("mvdate");
 		String mvprice = request.getParameter("mvprice");
 
-		MvReDTO dto = new MvReDTO();
-		dto.setSeatID(seatID);
-		dto.setMvArea(mvarea);
-		dto.setMvdate(mvdate);
-		dto.setMvName(mvname);
-		dto.setMvprice(mvprice);
-		dto.setMvTime(mvtime);
 		
-		try {
-			response.getWriter().write(register(dto)+"");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			response.getWriter().write(register(seatID,mvarea,mvname,mvtime,mvdate,mvprice)+"");
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -45,21 +36,28 @@ public class ReserveCommander extends HttpServlet {
 	}
 
 	
-public int register(MvReDTO dto) throws SQLException{
+public int register(String seatID,String mvarea,String mvname,String mvtime,String mvdate,String mvprice ){
 		
-		MvReDAO dao = new MvReDAO();
+	MvReDTO dto = new MvReDTO();
+	MvReDAO dao = new MvReDAO();
+	SeatDAO dao1 = new SeatDAO();
 		try {
 		
-			dao.addReMv(dto);
-			
-		
-
+			dto.setSeatID(seatID);
+			dto.setMvArea(mvarea);
+			dto.setMvdate(mvdate);
+			dto.setMvName(mvname);
+			dto.setMvprice(mvprice);
+			dto.setMvTime(mvtime);
+			System.out.println("aa");
+		dao.addReMv(dto);
+		dao1.updateSeat(seatID);
+			return 1;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return 0;
 		}
-	
-		return dao.addReMv(dto);
+		
 	}
 	
 
