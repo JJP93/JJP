@@ -49,8 +49,12 @@ public int register(String seatID,String mvarea,String mvname,String mvtime,Stri
 			dto.setMvName(mvname);
 			dto.setMvprice(mvprice);
 			dto.setMvTime(mvtime);
-			System.out.println("aa");
+			
+			
+		
 		dao.addReMv(dto);
+		
+		
 		dao1.updateSeat(seatID);
 			return 1;
 		} catch (Exception e) {

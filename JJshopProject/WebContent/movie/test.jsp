@@ -19,6 +19,7 @@ var registerRequset = new XMLHttpRequest();
 
 $(document).ready(function(){
 	var hap = "";
+	
 	for(var i =0; i<4;i++){
 		for(var j=0; j<5; j++){
 			
@@ -27,7 +28,7 @@ $(document).ready(function(){
 					if(str == 'x'){
 						alert("이미 예약된 자리입니다.");
 					}else if(str != "x"){
-						hap += str+",";
+						hap += str+"|";
 						
 						$("#view").text(hap);
 						$("#seat").val($("#view").text());
