@@ -42,20 +42,27 @@ public int register(String seatID,String mvarea,String mvname,String mvtime,Stri
 	MvReDAO dao = new MvReDAO();
 	SeatDAO dao1 = new SeatDAO();
 		try {
-		
-			dto.setSeatID(seatID);
-			dto.setMvArea(mvarea);
-			dto.setMvdate(mvdate);
-			dto.setMvName(mvname);
-			dto.setMvprice(mvprice);
-			dto.setMvTime(mvtime);
+			String r="";
+			int start = 0;
+			int end = 2;
+			int cnt = seatID.length()/2;
+			for(int i =0; i<cnt; i++){
+				
+				r = seatID.substring(start,end);
+				dto.setSeatID(r);
+				dto.setMvArea(mvarea);
+				dto.setMvdate(mvdate);
+				dto.setMvName(mvname);
+				dto.setMvprice(mvprice);
+				dto.setMvTime(mvtime);
+				
 			
+			dao.addReMv(dto);
+			dao1.updateSeat(r);
+			start =end;
+			end += 2;
+			}
 			
-		
-		dao.addReMv(dto);
-		
-		
-		dao1.updateSeat(seatID);
 			return 1;
 		} catch (Exception e) {
 			e.printStackTrace();
