@@ -9,13 +9,16 @@ public class MvReDTO {
 	String mvdate;
 	String mvprice;
 	String seatck;
+	String mvuser;
 	
+
+
 	public MvReDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public MvReDTO(int resnum, String seatID, String mvName, String mvArea, String mvTime, String mvdate,
-			String mvprice) {
+			String mvprice ,String mvuser) {
 		super();
 		this.resnum = resnum;
 		this.seatID = seatID;
@@ -24,6 +27,7 @@ public class MvReDTO {
 		this.mvTime = mvTime;
 		this.mvdate = mvdate;
 		this.mvprice = mvprice;
+		this.mvuser= mvuser;
 
 	}
 
@@ -83,7 +87,13 @@ public class MvReDTO {
 		this.mvprice = mvprice;
 	}
 
-	
+	public String getMvuser() {
+		return mvuser;
+	}
+
+	public void setMvuser(String mvuser) {
+		this.mvuser = mvuser;
+	}
 	
 	
 }

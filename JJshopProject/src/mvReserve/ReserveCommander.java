@@ -25,9 +25,10 @@ public class ReserveCommander extends HttpServlet {
 		String mvtime = request.getParameter("mvtime");
 		String mvdate = request.getParameter("mvdate");
 		String mvprice = request.getParameter("mvprice");
+		String mvuser = request.getParameter("mvuser");
 
 		
-			response.getWriter().write(register(seatID,mvarea,mvname,mvtime,mvdate,mvprice)+"");
+			response.getWriter().write(register(seatID,mvarea,mvname,mvtime,mvdate,mvprice,mvuser)+"");
 		
 	}
 
@@ -36,7 +37,7 @@ public class ReserveCommander extends HttpServlet {
 	}
 
 	
-public int register(String seatID,String mvarea,String mvname,String mvtime,String mvdate,String mvprice ){
+public int register(String seatID,String mvarea,String mvname,String mvtime,String mvdate,String mvprice ,String mvuser){
 		
 	MvReDTO dto = new MvReDTO();
 	MvReDAO dao = new MvReDAO();
@@ -55,6 +56,7 @@ public int register(String seatID,String mvarea,String mvname,String mvtime,Stri
 				dto.setMvName(mvname);
 				dto.setMvprice(mvprice);
 				dto.setMvTime(mvtime);
+				dto.setMvuser(mvuser);
 				
 			
 			dao.addReMv(dto);

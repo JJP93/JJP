@@ -13,6 +13,7 @@ import javax.sql.DataSource;
 
 import jdbc.JdbcUtil;
 import movie.MovieInfoDto;
+import order.OrderDTO;
 
 public class MvReDAO {
 
@@ -42,13 +43,14 @@ public class MvReDAO {
 		try {
 			
 			conn = ds.getConnection();
-			pstmt=conn.prepareStatement("insert into mvre values(res_num.nextval,?,?,?,?,?,?)");
+			pstmt=conn.prepareStatement("insert into mvre values(res_num.nextval,?,?,?,?,?,?,?)");
 			pstmt.setString(1,dto.getSeatID() );
 			pstmt.setString(2,dto.getMvArea() );
 			pstmt.setString(3,dto.getMvName() );
 			pstmt.setString(4,dto.getMvTime());
 			pstmt.setString(5,dto.getMvdate());
 			pstmt.setString(6,dto.getMvprice() );
+			pstmt.setString(7,dto.getMvuser() );
 			System.out.println(dto.getSeatID());
 			
 		return  pstmt.executeUpdate();
@@ -86,7 +88,46 @@ public class MvReDAO {
 		
 		
 	}
-	
+	public ArrayList<MvReDTO> getMvrelist(String id){
+		String sql = "select * from mvre where mvuser = ?";
+
+		ArrayList<MvReDTO> list = new ArrayList<MvReDTO>();
+		try{
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+
+			
+				MvReDTO dto = new MvReDTO();
+				
+
+				dto.setMvArea(rs.getString("mvArea"));
+				dto.setMvdate(rs.getString("Mvdate"));
+				dto.setMvName(rs.getString("MvName"));
+				dto.setMvprice(rs.getString("Mvprice"));
+				dto.setMvTime(rs.getString("MvTime"));
+				dto.setMvuser(rs.getString("Mvuser"));
+				dto.setSeatID(rs.getString("SeatID"));
+				list.add(dto);
+			}
+			
+			
+		}catch(SQLException e){
+			System.err.println("getOrder 메소드 실행 중 오류 발생!!");
+			e.printStackTrace();
+		}finally{
+			try{
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			}catch(SQLException e){}
+		}
+		return list;
+		
+	}
 	
 	
 	

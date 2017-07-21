@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 public class MvReserveController extends HttpServlet{
 
 	/**
@@ -25,13 +26,13 @@ public class MvReserveController extends HttpServlet{
 		String uri = req.getRequestURI();			//전체경로
 		String path = req.getContextPath();		//시작경로
 		String cmd = uri.substring(path.length()); //구하고자 하는 이름
-		/*
-		BoardFactory factory = BoardFactory.getInstance();
+		
+		MvReFactory factory = MvReFactory.getInstance();
 		CommandIf cmdIf = factory.createCommand(cmd);
 		String nextPage = (String)cmdIf.processCommand(req, resp);
 		
 		RequestDispatcher view = req.getRequestDispatcher(nextPage);
-		view.forward(req, resp); */
+		view.forward(req, resp);
 	}
 	
 }
