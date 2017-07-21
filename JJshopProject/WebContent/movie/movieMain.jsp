@@ -28,6 +28,9 @@
 	padding-bottom:300px;
 	display: none;
 }
+
+ 
+
 </style>
 
 <script> 
@@ -40,13 +43,20 @@ $(document).ready(function(){
 </script>
 <script>
 
+function change1(obj){
+    obj.style.background = '#08298A';
+    obj.style.color = 'white';
+}
+
+
 
 var registerRequset = new XMLHttpRequest();
 $(document).ready(function(){
 	var cnt = 1;
 	$("#count").keyup(function(){
 		 cnt =  document.getElementById("count").value;
-
+		
+		 $("#mvprice").val(cnt*10000);
 	});
 	
 	var hap = "";
@@ -55,13 +65,14 @@ $(document).ready(function(){
 		for(var j=0; j<5; j++){
 			
 			$("#btn"+i+j).click(function(){
+				
 				var str = $(this).val();
 					if(str == 'x'){
 						alert("이미 예약된 자리입니다.");
 					}else if(str != "x"){
-						
+						$("#btn"+i+j).css("background","red");
 						if(cnt>0){
-							
+							change1(this);
 							hap += str;
 							
 							$("#view").text(hap);
@@ -183,7 +194,7 @@ function registerProcess(){
 		<div align="center" style="float: left; width: 44%;" >
 		<table>
 		<tr align="center">
-						<td colspan="6" style="background-color: #fff;"><b>SCREEN</b></td>
+						<td colspan="6" style="background-color: gray; color: white"><b>SCREEN</b></td>
 					</tr>
 					<tr align="center">
 						<td></td>
@@ -225,16 +236,19 @@ function registerProcess(){
 						%>
 						<td style="padding-right: 10px; padding-bottom: 10px;"><input
 							id="btn<%=i%><%=j%>" type="button" value="x"
-							class="btn btn-primary"></td>
+							class="btn btn-primary" style="background: red"></td>
 						<%
 							}
 						%>
 						<%
 							if (a.get(k).getCk() == 0) {
 						%>
+						
 						<td style="padding-right: 10px; padding-bottom: 10px;"><input
 							id="btn<%=i%><%=j%>" type="button" value="<%=c%><%=j + 1%>"
 							class="btn btn-primary"></td>
+							
+							
 						<%
 							}
 						%>
@@ -250,6 +264,16 @@ function registerProcess(){
 					%>
 			</table>
 			</div>
+			
+			<div style="float: left; width: 12%;">
+<table>
+<tr><td><button class="btn btn-primary" style="background: red" disabled="disabled" ></button> 예약 불가</td></tr>
+<tr><td><button class="btn btn-primary" style="background: #08298A" disabled="disabled"></button> 선택 좌석</td></tr>
+<tr><td><button class="btn btn-primary"  disabled="disabled"></button> 예약 가능</td></tr>
+</table>
+</div>
+			
+			
 			<br>
 			<div align="center" style="float: left; width: 44%;">
 				<table  >
@@ -271,7 +295,7 @@ function registerProcess(){
 			</tr>
 			<tr>
 				<td style="padding-right: 10px;">인원수</td>
-				<td><input type="text" name="count" id="count"></td>
+				<td><input type="text" name="count" id="count" placeholder="인원수를 선택해주세요"></td>
 				</tr>
 				
 				<tr>
