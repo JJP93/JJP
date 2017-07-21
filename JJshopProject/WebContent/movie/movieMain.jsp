@@ -195,17 +195,7 @@ function registerProcess(){
 	%>
 	<jsp:include page="/menu2.jsp"></jsp:include>
 
-<<<<<<< HEAD
-	<div id="panel">
-		<div align="center" style="float: left; width: 44%;">
-			<table>
-				<tr align="center">
-					<td colspan="6" style="background-color: #fff;"><b>SCREEN</b></td>
-				</tr>
-				<tr align="center">
-					<td></td>
-					<%
-=======
+
 	<div id="panel" >
 		<div align="center" style="float: left; width: 44%;" >
 		<table>
@@ -215,7 +205,6 @@ function registerProcess(){
 					<tr align="center">
 						<td></td>
 						<%
->>>>>>> 61d747984a3508c07a9e048d0451679f372d62a0
 							int k = 0;
 							for (int j = 0; j < 5; j++) {
 						%>
@@ -251,28 +240,17 @@ function registerProcess(){
 					<%
 							if (a.get(k).getCk() == 1) {
 						%>
-<<<<<<< HEAD
-					<td style="padding-right: 10px; padding-bottom: 10px;"><input
-						id="btn<%=i%><%=j%>" type="button" value="x"
-						class="btn btn-primary"></td>
-					<%
-=======
+
 						<td style="padding-right: 10px; padding-bottom: 10px;"><input
 							id="btn<%=i%><%=j%>" type="button" value="x"
 							class="btn btn-primary" style="background: red"></td>
 						<%
->>>>>>> 61d747984a3508c07a9e048d0451679f372d62a0
 							}
 						%>
 					<%
 							if (a.get(k).getCk() == 0) {
 						%>
-<<<<<<< HEAD
-					<td style="padding-right: 10px; padding-bottom: 10px;"><input
-						id="btn<%=i%><%=j%>" type="button" value="<%=c%><%=j + 1%>"
-						class="btn btn-primary"></td>
-					<%
-=======
+
 						
 						<td style="padding-right: 10px; padding-bottom: 10px;"><input
 							id="btn<%=i%><%=j%>" type="button" value="<%=c%><%=j + 1%>"
@@ -280,7 +258,6 @@ function registerProcess(){
 							
 							
 						<%
->>>>>>> 61d747984a3508c07a9e048d0451679f372d62a0
 							}
 						%>
 
@@ -294,16 +271,7 @@ function registerProcess(){
 						}
 					%>
 			</table>
-<<<<<<< HEAD
-		</div>
-		<br>
-		<div align="center" style="float: left; width: 44%;">
-			<table>
-				<tr>
-					<td style="padding-right: 10px;">상영지역</td>
-					<td><input type="text" id="mvarea" name="mvarea"
-						value="<%=dto.getMvArea() %>" readonly></td>
-=======
+
 			</div>
 			
 			<div style="float: left; width: 12%;">
@@ -337,27 +305,9 @@ function registerProcess(){
 			<tr>
 				<td style="padding-right: 10px;">인원수</td>
 				<td><input type="text" name="count" id="count" placeholder="인원수를 선택해주세요"></td>
->>>>>>> 61d747984a3508c07a9e048d0451679f372d62a0
+
 				</tr>
-				<tr>
-					<td style="padding-right: 10px;">예매영화</td>
-					<td><input type="text" id="mvname" name="mvname"
-						value="<%=dto.getMvName() %>" readonly></td>
-				</tr>
-				<tr>
-					<td style="padding-right: 10px;">상영시간</td>
-					<td><input type="text" id="mvtime" name="mvtime"
-						value="<%=dto.getMvTime() %>" readonly></td>
-				</tr>
-				<tr>
-					<td style="padding-right: 10px;">상영날짜</td>
-					<td><input type="text" id="mvdate" name="mvdate"
-						value="<%=dto.getMvDate() %>" readonly></td>
-				</tr>
-				<tr>
-					<td style="padding-right: 10px;">인원수</td>
-					<td><input type="text" name="count" id="count"></td>
-				</tr>
+				
 
 				<tr>
 					<td style="padding-right: 10px;">좌석</td>
