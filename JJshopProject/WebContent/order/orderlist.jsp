@@ -91,8 +91,7 @@ if(session.getAttribute("userID") != null){
 		</div>
 		
 	</div>
-	<center>
  <footer> <jsp:include page="/Bottom.jsp"></jsp:include> </footer>
- </center>
+
 </body>
 </html>

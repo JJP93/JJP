@@ -44,9 +44,9 @@ $(document).ready(function(){
 var registerRequset = new XMLHttpRequest();
 $(document).ready(function(){
 	var cnt = 1;
+	var pr = 0;
 	$("#count").keyup(function(){
 		 cnt =  document.getElementById("count").value;
-
 	});
 	
 	var hap = "";
@@ -112,7 +112,8 @@ $("#add").click(function add(){
 			"&mvname="+encodeURIComponent(document.getElementById("mvname").value)+
 			"&mvtime="+encodeURIComponent(document.getElementById("mvtime").value)+
 			"&mvdate="+encodeURIComponent(document.getElementById("mvdate").value)+
-			"&mvprice="+encodeURIComponent(document.getElementById("mvprice").value),true);
+			"&mvprice="+encodeURIComponent(document.getElementById("mvprice").value)+
+			"&mvuser="+encodeURIComponent(document.getElementById("mvuser").value),true);
 	registerRequset.onreadystatechange = registerProcess;
 	registerRequset.send(null);
 });
@@ -285,7 +286,7 @@ function registerProcess(){
 			</tr>	
 				</table><br>
 				<p id="view">선택하신 자리가 없습니다.</p>
-
+				<input type="hidden" id="mvuser"name="mvuser" value="<%=userID %>">
 				<button id="add" class="btn btn-primary" style="padding-left: 10px;" >예약하기</button>
 				<button id="cancle" class="btn btn-primary">다시 선택</button>
 				<button id="init" class="btn btn-primary">초기화</button>
@@ -332,8 +333,8 @@ function registerProcess(){
 			</table>
 			<div style="padding-top: 30px;" align="center">
 				<input type="button" value="메인으로" class="btn btn-primary"
-					onclick="location.href='mvindex.jsp'"> <input type="button"
-					value="즉시예매하기" class="btn btn-primary" id="btn">
+					onclick="location.href='mvindex.jsp'"> 
+					<input type="button" value="즉시예매하기" onclick="order()" class="btn btn-primary" id="btn">
 				<hr size="3">
 
 			</div>

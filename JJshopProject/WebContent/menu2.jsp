@@ -144,6 +144,7 @@ if(session.getAttribute("userID") != null){
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="mypage.member?id=<%=userID%>"><%=userID %> 님
 						접속중</a></li>
+						<li><a href="mvrelist.app">예약현황</a></li>
 						</ul>
 			
 			</div>
