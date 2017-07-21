@@ -29,8 +29,9 @@ function aa(){
 	var imgName = document.pdJoin.imgFile.value;
 	var imgType = getFileExtension(imgName);
 	var ary = imgName.split('\\');
+	var nn = ary[ary.length-1].split('.')[0]+"."+imgType;
 	document.getElementById("img").innerText =  ary[ary.length-1].split('.')[0]+"."+imgType;
-	
+	$("#img").text(nn);
 	document.pdJoin.myImg.src = imgName
 	document.pdJoin.myImg.style.visibility = 'visible';
 }

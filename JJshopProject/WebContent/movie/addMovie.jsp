@@ -32,10 +32,14 @@ function aa(){
 	var imgName = document.reg_frm.imgFile.value;
 	var imgType = getFileExtension(imgName);
 	var ary = imgName.split('\\');
+	var nn = ary[ary.length-1].split('.')[0]+"."+imgType;
 	document.getElementById("mvImg").innerText =  ary[ary.length-1].split('.')[0]+"."+imgType;
+	$("#mvImg").text(nn);
 	
+
 	document.reg_frm.myImg.src = imgName
 	document.reg_frm.myImg.style.visibility = 'visible';
+	
 }
 
 function addMovie(){
@@ -102,12 +106,12 @@ function addMovie(){
 					
 					
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="포스터 이미지 "
+						<input type="text" class="form-control" 
 							name="mvImg" id = "mvImg" maxlength="20" style="ime-mode: active;"
 							style="width: 100px;">
 					</div>
 					
-					이미지 파일 미리보기 : <IMG id="myImg" alt='미리보기 이미지..~!!' Style='VISIBILITY: hidden'> <br><br>
+					이미지 파일 미리보기 : <IMG id="myImg"  alt='미리보기 이미지..~!!' Style='VISIBILITY: hidden'> <br><br>
 					
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="상영 날짜 "

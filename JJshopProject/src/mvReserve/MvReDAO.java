@@ -51,7 +51,6 @@ public class MvReDAO {
 			pstmt.setString(5,dto.getMvdate());
 			pstmt.setString(6,dto.getMvprice() );
 			pstmt.setString(7,dto.getMvuser() );
-			System.out.println(dto.getSeatID());
 			
 		return  pstmt.executeUpdate();
 			

@@ -56,11 +56,10 @@ $(document).ready(function(){
 	var pr = 0;
 	$("#count").keyup(function(){
 		 cnt =  document.getElementById("count").value;
-<<<<<<< HEAD
+
 		
 		 $("#mvprice").val(cnt*10000);
-=======
->>>>>>> 095509b250045b6be0321289bc1a2c397ad31fb3
+
 	});
 	
 	var hap = "";

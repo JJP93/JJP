@@ -29,7 +29,7 @@ public class AddMovieCommander implements CommandIf {
 			
 			
 			MovieInfoDto dto = new MovieInfoDto(mvName, mvArea, mvTime, mvDir, mvG, mvAc, mvImg, mvDate, mvSeat);
-			System.out.println(dto.getMvName());
+			System.out.println(dto.getMvImg());
 		dao.addMovie(dto);
 		
 		} catch (Exception e) {
@@ -37,7 +37,7 @@ public class AddMovieCommander implements CommandIf {
 			e.printStackTrace();
 		}
 		
-		return "/list.movie";
+		return "mvindex.jsp";
 	}
 
 }
