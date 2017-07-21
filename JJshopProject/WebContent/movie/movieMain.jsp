@@ -24,8 +24,8 @@
 }
 
 #panel {
-	padding-top:50px;
-	padding-bottom:300px;
+	padding-top: 50px;
+	padding-bottom: 300px;
 	display: none;
 }
 
@@ -194,6 +194,7 @@ function registerProcess(){
 	%>
 	<jsp:include page="/menu2.jsp"></jsp:include>
 
+
 	<div id="panel" >
 		<div align="center" style="float: left; width: 44%;" >
 		<table>
@@ -206,19 +207,19 @@ function registerProcess(){
 							int k = 0;
 							for (int j = 0; j < 5; j++) {
 						%>
-						<td><%=j + 1%></td>
-						<%
+					<td><%=j + 1%></td>
+					<%
 							}
 						%>
-					</tr>
-					<%
+				</tr>
+				<%
 						int[][] seat = new int[4][5];
 						String c = null;
 						for (int i = 0; i < 4; i++) {
 					%>
-					<tr align="center">
-						<td style="padding-right: 10px;">
-							<%
+				<tr align="center">
+					<td style="padding-right: 10px;">
+						<%
 								if (i == 0) {
 										c = "A";
 									} else if (i == 1) {
@@ -232,21 +233,23 @@ function registerProcess(){
 									}
 							%> <%=c%></td>
 
-						<%
+					<%
 							for (int j = 0; j < 5; j++) {
 						%>
-						<%
+					<%
 							if (a.get(k).getCk() == 1) {
 						%>
+
 						<td style="padding-right: 10px; padding-bottom: 10px;"><input
 							id="btn<%=i%><%=j%>" type="button" value="x"
 							class="btn btn-primary" style="background: red"></td>
 						<%
 							}
 						%>
-						<%
+					<%
 							if (a.get(k).getCk() == 0) {
 						%>
+
 						
 						<td style="padding-right: 10px; padding-bottom: 10px;"><input
 							id="btn<%=i%><%=j%>" type="button" value="<%=c%><%=j + 1%>"
@@ -257,16 +260,17 @@ function registerProcess(){
 							}
 						%>
 
-						<%
+					<%
 							k += 1;
 								}
 						%>
-					</tr>
+				</tr>
 
-					<%
+				<%
 						}
 					%>
 			</table>
+
 			</div>
 			
 			<div style="float: left; width: 12%;">
@@ -300,49 +304,53 @@ function registerProcess(){
 			<tr>
 				<td style="padding-right: 10px;">인원수</td>
 				<td><input type="text" name="count" id="count" placeholder="인원수를 선택해주세요"></td>
+
 				</tr>
 				
+
 				<tr>
-				<td style="padding-right: 10px;">좌석</td>
-				<td><input type="text" name="seat" id="seat"></td>
-				</tr>	
-							
+					<td style="padding-right: 10px;">좌석</td>
+					<td><input type="text" name="seat" id="seat"></td>
+				</tr>
+
 				<tr>
-				<td style="padding-right: 10px;">총가격</td>
-				<td><input type="text" id="mvprice" name="mvprice" value="영화가격" readonly></td>
-			</tr>	
-				</table><br>
-				<p id="view">선택하신 자리가 없습니다.</p>
-				<input type="hidden" id="mvuser"name="mvuser" value="<%=userID %>">
-				<button id="add" class="btn btn-primary" style="padding-left: 10px;" >예약하기</button>
-				<button id="cancle" class="btn btn-primary">다시 선택</button>
-				<button id="init" class="btn btn-primary">초기화</button>
-				</div>
+					<td style="padding-right: 10px;">총가격</td>
+					<td><input type="text" id="mvprice" name="mvprice"
+						value="영화가격" readonly></td>
+				</tr>
+			</table>
 			<br>
-			
-				
-			
-			</div>
+			<p id="view">선택하신 자리가 없습니다.</p>
+			<input type="hidden" id="mvuser" name="mvuser" value="<%=userID %>">
+			<button id="add" class="btn btn-primary" style="padding-left: 10px;">예약하기</button>
+			<button id="cancle" class="btn btn-primary">다시 선택</button>
+			<button id="init" class="btn btn-primary">초기화</button>
+		</div>
+		<br>
 
 
-	
+
+	</div>
+
+
+
 
 	<div class="container">
 
 		<form action="#" method="post" name="#">
-			<table width="1000">
+			<table>
 				<tr height="100">
 					<td align="center" colspan="3"><font size="6" color="gray"><%=dto.getMvName()%></font>
 				</tr>
 				<tr>
-					<td rowspan="4" width="1000" align="center"><img
+					<td rowspan="6" width="1000px" align="center"><img
 						src="images/<%=dto.getMvImg()%>" width="350"><br>
-					<td width="150" align="center"><b>영화명:</b></td>
+					<td width="100" align="center"><b>영화명:</b></td>
 					<td width="1000" align="center"><b><%=dto.getMvName()%></b></td>
 
 				</tr>
 				<tr>
-					<td width="150" align="center"><b>감독:</b></td>
+					<td width="100" align="center"><b>감독:</b></td>
 					<td width="1000" align="center"><b><%=dto.getMvDir()%></b></td>
 				</tr>
 				<tr>
@@ -350,18 +358,18 @@ function registerProcess(){
 					<td align="center"><b><%=dto.getMvAc()%></b></td>
 				</tr>
 				<tr>
-					<td width="150" align="center"><b></b></td>
-					<td align="center"><b></b></td>
+					<td width="100" align="center"><b>상영장소:</b></td>
+					<td align="center"><b><%=dto.getMvArea() %></b></td>
 				</tr>
 				<tr>
-					<td width="150" align="center"><b></b></td>
-					<td width="1000" align="center"><b></b></td>
+					<td width="100" align="center"><b>상영시간:</b></td>
+					<td width="1000" align="center"><b><%=dto.getMvTime()%></b></td>
 				</tr>
 			</table>
 			<div style="padding-top: 30px;" align="center">
 				<input type="button" value="메인으로" class="btn btn-primary"
-					onclick="location.href='mvindex.jsp'"> 
-					<input type="button" value="즉시예매하기" onclick="order()" class="btn btn-primary" id="btn">
+					onclick="location.href='mvindex.jsp'"> <input type="button"
+					value="즉시예매하기" onclick="order()" class="btn btn-primary" id="btn">
 				<hr size="3">
 
 			</div>
