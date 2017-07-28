@@ -14,7 +14,36 @@ public class BoardDBBean {
 	private int re_level;
 	private String filename;
 	private int filesize;
+	private int re_renum;
 	
+	public BoardDBBean() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
+	public BoardDBBean(int num, String writer, String email, String subject, String passwd, String reg_date,
+			int readcount, String content, String ip, int re_step, int re_level, String filename, int filesize,
+			int re_renum) {
+		super();
+		this.num = num;
+		this.writer = writer;
+		this.email = email;
+		this.subject = subject;
+		this.passwd = passwd;
+		this.reg_date = reg_date;
+		this.readcount = readcount;
+		this.content = content;
+		this.ip = ip;
+		this.re_step = re_step;
+		this.re_level = re_level;
+		this.filename = filename;
+		this.filesize = filesize;
+		this.re_renum = re_renum;
+	}
+
+
+
 	public int getNum() {
 		return num;
 	}
@@ -93,4 +122,12 @@ public class BoardDBBean {
 	public void setFilesize(int filesize) {
 		this.filesize = filesize;
 	}
+	public int getRe_renum() {
+		return re_renum;
+	}
+	public void setRe_renum(int re_renum) {
+		this.re_renum = re_renum;
+	}
+	
+	
 }	

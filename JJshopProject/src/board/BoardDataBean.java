@@ -26,7 +26,7 @@ public class BoardDataBean {
 	}
 	
 	public List<BoardDBBean> listBoard(Criteria cri){
-		String sql = "select board.* from (select rownum as rnum, board.* from board order by num desc)board where rnum >=? and rnum <= ?";
+		String sql = "select board.* from (select rownum as rnum, board.* from board order by re_level desc,re_renum asc)board where rnum >=? and rnum <= ?";
 		List<BoardDBBean> list = null;
 		try{
 			con = ds.getConnection();
@@ -68,6 +68,7 @@ public class BoardDataBean {
 			dto.setRe_level(rs.getInt("re_level"));
 			dto.setFilename(rs.getString("filename"));
 			dto.setFilesize(rs.getInt("filesize"));
+			dto.setRe_renum(rs.getInt("re_renum"));
 			list.add(dto);
 		}
 		return list;
@@ -75,20 +76,13 @@ public class BoardDataBean {
 	
 	public int insertBoard(BoardDBBean dto) {
 		String sql = null;
-		if (dto.getNum()==0){	//새글이냐?
-			sql = "update board set re_step = re_step + 1";
-		}else {						//답글이냐?
-			sql = "update board set re_step = re_step + 1 where re_step > " + dto.getRe_step();
-			dto.setRe_step(dto.getRe_step() + 1);
-			dto.setRe_level(dto.getRe_level() + 1);
-		}
+		
 		int res = 0;
 		try{
 			con = ds.getConnection();
-			ps = con.prepareStatement(sql);
-			ps.executeUpdate();
+
 			
-			sql = "insert into board values(board_num.nextval, ?,?,?,?,sysdate,0,?,?,?,?,?,?)";
+			sql = "insert into board values(board_num.nextval, ?,?,?,?,sysdate,0,?,?,?,?,?,?,?)";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, dto.getWriter());
 			ps.setString(2, dto.getEmail());
@@ -100,6 +94,7 @@ public class BoardDataBean {
 			ps.setInt(8, dto.getRe_level());
 			ps.setString(9, dto.getFilename());
 			ps.setInt(10, dto.getFilesize());
+			ps.setInt(11, dto.getRe_renum());
 			res = ps.executeUpdate();
 		}catch(SQLException e){
 			System.err.println("insertBoard 메소드 실행 중 오류 발생!!");
@@ -240,6 +235,118 @@ public class BoardDataBean {
 		}
 		return result;
 	}
+	
+	public String maxNum(){
+		String sql = "select max(num) from board";
+		String result=null;
+		try{
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			
+
+			rs = ps.executeQuery();
+			if(rs.next()){
+			result = rs.getString(1);
+			System.out.println(result);
+			}
+		}catch(SQLException e){
+			System.err.println("listBoard 메소드 실행 중 오류 발생!!");
+			e.printStackTrace();
+		}finally{
+			try{
+				if (rs != null) rs.close();
+				if (ps != null) ps.close();
+				if (con != null) con.close();
+			}catch(SQLException e){}
+		}
+		return result;
+	}
+	
+	public String maxReNum(int level){
+		String sql = "select max(re_renum) from board where re_level = ?";
+		String result=null;
+		try{
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, level);
+
+			rs = ps.executeQuery();
+			if(rs.next()){
+			result = rs.getString(1);
+			System.out.println(result);
+			}
+		}catch(SQLException e){
+			System.err.println("listBoard 메소드 실행 중 오류 발생!!");
+			e.printStackTrace();
+		}finally{
+			try{
+				if (rs != null) rs.close();
+				if (ps != null) ps.close();
+				if (con != null) con.close();
+			}catch(SQLException e){}
+		}
+		return result;
+	}
+	
+	
+	public void replyShare(int re_level, int re_renum){
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement("update board set re_renum = re_renum +1 where re_level =? and re_renum>?");
+			ps.setInt(1, re_level);
+			ps.setInt(2,re_renum);
+			ps.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally{
+			try{
+				if (rs != null) rs.close();
+				if (ps != null) ps.close();
+				if (con != null) con.close();
+			}catch(SQLException e){}
+		}
+	}
+	
+	
+	public int replyBoard(BoardDBBean dto) {
+		String sql = null;
+		replyShare(dto.getRe_level(),dto.getRe_renum());
+		int res = 0;
+		try{
+			con = ds.getConnection();
+
+			
+			sql = "insert into board values(board_num.nextval, ?,?,?,?,sysdate,0,?,?,?,?,?,?,?)";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, dto.getWriter());
+			ps.setString(2, dto.getEmail());
+			ps.setString(3, dto.getSubject());
+			ps.setString(4, dto.getPasswd());
+			ps.setString(5, dto.getContent());
+			ps.setString(6, dto.getIp());
+			ps.setInt(7, dto.getRe_step()+1);
+			ps.setInt(8, dto.getRe_level());
+			ps.setString(9, dto.getFilename());
+			ps.setInt(10, dto.getFilesize());
+			ps.setInt(11, (dto.getRe_renum())+1);
+			res = ps.executeUpdate();
+		}catch(SQLException e){
+			System.err.println("insertBoard 메소드 실행 중 오류 발생!!");
+			e.printStackTrace();
+		}finally{
+			try{
+				if (ps != null) ps.close();
+				if (con != null) con.close();
+			}catch(SQLException e){}
+		}
+		return res;
+	}
+	
+	
+	
+	
 	
 }
 
