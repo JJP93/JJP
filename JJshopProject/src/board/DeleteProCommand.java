@@ -15,7 +15,7 @@ public class DeleteProCommand implements CommandIf {
 		String msg = null, url = null;
 		if (res>0){
 			msg = "게시글 삭제 성공!! 글목록페이지로 이동합니다.";
-			url = "list.board";
+			url = "board.app?pageNum=1&perPageNum=10";
 		}else if (res<0){
 			msg = "비밀번호가 틀렸습니다. 다시 입력해 주세요";
 			url = "delete_form.board?num="+num;

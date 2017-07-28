@@ -5,18 +5,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width" initial-scale="1">
+<meta name="viewport" content="width=device-width initial-scale=1">
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
 <title>J&J shop</title>
 </head>
 <%
-	int num = 0, re_step = 0, re_level = 0;
+	int num = 0,re_step=0,re_level=0,re_renum=0;
 	String snum = request.getParameter("num");
-	if (snum != null) {//답글에서 왔느냐...
-		num = Integer.parseInt(snum);
+	if(snum != null){
 		re_step = Integer.parseInt(request.getParameter("re_step"));
 		re_level = Integer.parseInt(request.getParameter("re_level"));
+		re_renum = Integer.parseInt(request.getParameter("re_renum"));
 	}
 %>
 <body>
@@ -30,18 +30,27 @@
 	<jsp:include page="/menu.jsp"></jsp:include>
 	<div class="contaniner">
 		<div class="row">
-			<form name="f" method="post" action="write_pro.board" method="post"
-				enctype="multipart/form-data">
-				<input type="hidden" name="num" value="<%=num%>"> <input
-					type="hidden" name="re_step" value="<%=re_step%>"> <input
-					type="hidden" name="re_level" value="<%=re_level%>">
+		
+			<form name="f" method="post" action="write_pro.board" method="post" enctype="multipart/form-data">
+				
+				<%if(snum ==null){ %>
+					<input type="hidden" name="re_step" value="0"> 
+					<input type="hidden" name="re_level" value="0">
+					<input type="hidden" name="re_renum" value="new">
+					<%}else if(snum != null){ %>
+					<input type="hidden" name="re_step" value="<%=re_step%>"> 
+					<input type="hidden" name="re_level" value="<%=re_level%>">
+					<input type="hidden" name="re_renum" value="<%=re_renum%>">
+					
+					<%} %>
+				
 				<table style="width: 600px;" class="table table-striped"
 					style="text-align: center; border:1px solid #dddddd "
 					align="center">
 					<thead>
 						<tr>
 							<th colspan="2"
-								style="background-color: #eeeeeee; text-align: center;">게시판글쓰기양식</th>
+								style="background-color: #eeeeeee; text-align: center;">게시판글쓰기양식	<%=re_renum%></th>
 						</tr>
 					</thead>
 					<tbody>

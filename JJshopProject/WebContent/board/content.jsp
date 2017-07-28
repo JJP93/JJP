@@ -58,7 +58,7 @@ System.out.println(Wuser);
           
           %>
 					<input type="button" value="답글달기" class="btn btn-primary pull-right"
-						onclick="window.location='write_form.board?num=<%=dto.getNum()%>&re_step=<%=dto.getRe_step()%>&re_level=<%=dto.getRe_level()%>'">					
+						onclick="window.location='write_form.board?num=<%=dto.getNum()%>&re_step=<%=dto.getRe_step()%>&re_level=<%=dto.getRe_level()%>&re_renum=<%=dto.getRe_renum()%>'">					
 					<input type="button" value="글수정" class="btn btn-primary pull-right"onclick="window.location='update_form.board?num=<%=dto.getNum()%>'">
 					<input type="button" value="글삭제" class="btn btn-primary pull-right"onclick="window.location='delete_form.board?num=<%=dto.getNum()%>'">
 					<input type="button" value="글목록" class="btn btn-primary pull-right"onclick="window.location='list.board'">
@@ -66,7 +66,7 @@ System.out.println(Wuser);
 					%>
 					<input type="button" value="글목록" class="btn btn-primary pull-right"onclick="window.location='list.board'">
 					<input type="button" value="답글달기" class="btn btn-primary pull-right"
-						onclick="window.location='write_form.board?num=<%=dto.getNum()%>&re_step=<%=dto.getRe_step()%>&re_level=<%=dto.getRe_level()%>'">					
+						onclick="window.location='write_form.board?num=<%=dto.getNum()%>&re_step=<%=dto.getRe_step()%>&re_level=<%=dto.getRe_level()%>&re_renum=<%=dto.getRe_renum()%>'">					
 				<% }%>
 				
 			<% }else{%>

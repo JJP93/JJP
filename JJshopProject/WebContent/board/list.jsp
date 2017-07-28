@@ -56,10 +56,9 @@ if(session.getAttribute("userID") != null){
 					for(BoardDBBean dto : boardList){%>
 				<tr>
 					<td><%=dto.getNum()%></td>
-					<td>
-						<%					if (dto.getRe_level()>0){ %> <img src="level.gif"
-						width="<%=dto.getRe_level()*10%>"> <img src="re.gif">
-						<%					} %> <a href="content.board?num=<%=dto.getNum()%>"> <%=dto.getSubject()%>
+					<td align="left">
+						<%					for(int i =0; i<dto.getRe_step();i++){ %> <img src="level.gif"> 
+						<%					} %><%if(dto.getRe_step() >0){ %><img src="re.gif"><%} %> <a href="content.board?num=<%=dto.getNum()%>"> <%=dto.getSubject()%>
 					</a> <%					if (dto.getReadcount()>10){ %> <img src="hot.gif"> <%					} %>
 					</td>
 					<td><%=dto.getWriter()%></td>
@@ -84,7 +83,7 @@ if(session.getAttribute("userID") != null){
 		
 		
 		<c:if test="${pageMaker.prev }">
-		<a href="board.app?pageNum=${pageMaker.startPage-1 }">&laquo;</a>
+		<a href="board.app?pageNum=${pageMaker.startPage-1 }&perPageNum=10" class="btn btn-primary">&laquo;</a>
 		</c:if>
 			
 		
@@ -92,16 +91,16 @@ if(session.getAttribute("userID") != null){
 <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">	
 		
 		<c:if test="${pageMaker.cri.page == idx }" >
-		<a href="board.app?pageNum=${idx }&perPageNum=10">[${idx }]
+		<a href="board.app?pageNum=${idx }&perPageNum=10" class="btn btn-primary active">[${idx }]
 			</a>
 </c:if>
 <c:if test="${pageMaker.cri.page != idx }" >
-			<a href="board.app?pageNum=${idx }&perPageNum=10">${idx }</a>
+			<a href="board.app?pageNum=${idx }&perPageNum=10" class="btn btn-primary">${idx }</a>
 			</c:if>
 			</c:forEach>
 		
 				<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
-			<a href="board.app?pageNum=${pageMaker.endPage+1 }&perPageNum=10">&raquo;</a>
+			<a href="board.app?pageNum=${pageMaker.endPage+1 }&perPageNum=10" class="btn btn-primary">&raquo;</a>
 	</c:if>
 		</div>
 	</div>

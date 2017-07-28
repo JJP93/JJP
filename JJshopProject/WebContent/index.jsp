@@ -114,6 +114,7 @@
 		   int ii=0;
 		   String url = "";
 		   String imageName = "";
+		   
    for(Cookie c: ck){
 	 
 	   if(c.getName().indexOf("pdcook") != -1){

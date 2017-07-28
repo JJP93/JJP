@@ -9,6 +9,7 @@ public class ContentCommand implements CommandIf {
 	@Override
 	public Object processCommand(HttpServletRequest req, HttpServletResponse resp) {
 		String num = req.getParameter("num");
+		System.out.println("ÄÁÅÙÃ÷ ³Ñ¹ö : "+num);
 		BoardDataBean dao = new BoardDataBean();
 		
 		Cookie cks[] = req.getCookies();
