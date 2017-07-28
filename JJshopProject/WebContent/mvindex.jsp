@@ -64,7 +64,7 @@
       ArrayList<MovieInfoDto> dtos;
       dtos = dao.getmoveListAll();
       
-      for(int i =0; i<3; i++){
+      for(int i =0; i<9; i++){
    %>
    	<div align="center" style="float: left; width: 33%;">
 			&nbsp;<span><a
